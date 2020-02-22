@@ -1,0 +1,13 @@
+
+#カラムの日本語化
+ja:
+  activerecord:
+    models:
+      user: "ユーザー"
+    attributes:
+      user:
+        name: ユーザー名
+        nick_name: ニックネーム
+        password: パスワード
+        password_confirmation: パスワード確認
+        email: メールアドレス
