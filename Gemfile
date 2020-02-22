@@ -73,3 +73,8 @@ gem 'jquery-rails'
 gem "refile", require: "refile/rails", github: 'manfe/refile'
 #アップロードした画像のリサイズ
 gem "refile-mini_magick"
+#MySQLを利用するため
+gem 'dotenv-rails'
+group :production do
+  gem 'mysql2'
+end
