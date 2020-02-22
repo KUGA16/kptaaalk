@@ -62,6 +62,8 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 #デバッグ用
 gem 'pry-byebug'
+#ログイン機能やユーザ登録機能など
+gem 'devise'
 #cssフレームワーク
 gem 'materialize-sass', '~> 1.0.0'
 gem 'material_icons'
