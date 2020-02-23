@@ -1,2 +1,15 @@
-<h1>Groups#new</h1>
-<p>Find me in app/views/groups/new.html.erb</p>
+<h1>グループ作成画面</h1>
+<div class="row">
+
+  <%= form_with model: @group_new do |f| %>
+    <div class="field">
+      <%= f.label :group_image %>
+      <%= f.attachment_field :group_image %>
+    </div>
+    <div class="field">
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </div>
+  <% end %>
+
+</div>

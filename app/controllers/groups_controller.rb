@@ -4,6 +4,7 @@ class GroupsController < ApplicationController
   end
 
   def new
+    @group_new = Group.new
   end
 
   def create
@@ -14,5 +15,5 @@ class GroupsController < ApplicationController
 
   def destroy
   end
-  
+
 end
