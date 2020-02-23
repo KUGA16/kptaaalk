@@ -8,6 +8,9 @@ class GroupsController < ApplicationController
   end
 
   def create
+    # @group_new = Group.new(group_params)
+    # @group_new.save
+
   end
 
   def edit
@@ -15,5 +18,10 @@ class GroupsController < ApplicationController
 
   def destroy
   end
+
+  # private
+  # def group_params
+  #   params.require(:group).permit(:name, :group_image)
+  # end
 
 end
