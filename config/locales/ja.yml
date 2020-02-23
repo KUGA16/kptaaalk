@@ -8,6 +8,7 @@ ja:
       user:
         name: ユーザー名
         nick_name: ニックネーム
+        profile_image: プロフィール画像
         password: パスワード
         password_confirmation: パスワード確認
         email: メールアドレス
