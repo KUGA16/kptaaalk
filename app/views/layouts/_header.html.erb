@@ -1,0 +1,33 @@
+<!-- ヘッダーテンプレート　-->
+<!-- 未ログイン時、Dropdownメニュー -->
+<ul id="dropdown1" class="dropdown-content">
+  <li><a href="#!">one</a></li>
+  <li><a href="#!">two</a></li>
+  <li class="divider"></li>
+  <li><a href="#!">three</a></li>
+</ul>
+
+<nav class="navbar amber lighten-2">
+  <div class="nav-wrapper">
+    <a href="#" class="brand-logo center">KPTAAALK</a>
+
+    <ul class="right hide-on-med-and-down">
+      <% if user_signed_in? %>
+        <!-- ログインしている時-->
+        <li><a href="#"><i class="material-icons">notifications</i></a></li>
+        <li>
+          <a class="dropdown-trigger" href="#!" data-target="dropdown1">
+            <%= attachment_image_tag current_user, :profile_image_id, fallback: "no_image.jpg", size:'60x60'%>
+            <i class="material-icons right">arrow_drop_down</i>
+          </a>
+        </li>
+      <% else %>
+        <!-- ログインしていないとき Dropdownバー -->
+        <li>
+          <a class="dropdown-trigger" href="#!" data-target="dropdown1">Dropdown<i class="material-icons right">arrow_drop_down</i>
+          </a>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</nav>

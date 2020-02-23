@@ -10,8 +10,29 @@
   </head>
 
   <body>
-    <div class="container">
-      <%= yield %>
-    </div>
+    <header>
+      <%= render 'layouts/header' %>
+    </header>
+
+    <main>
+      <div class="container">
+        <%= yield %>
+      </div>
+    </main>
+
+    <footer class="amber center lighten-2 page-footer">
+      <div class="container">
+        <div class="row">
+          <div class="brand-logo">
+            <h5 class="white-text">KPTAAAL</h5>
+          </div>
+        </div>
+      </div>
+      <div class="footer-copyright">
+        <div class="container">
+          © 2020 Copyright Text
+        </div>
+      </div>
+    </footer>
   </body>
 </html>
