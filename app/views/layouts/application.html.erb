@@ -10,22 +10,22 @@
   </head>
 
   <body>
-
     <header>
-      <%= render 'header' %>
+      <%= render 'layouts/header' %>
     </header>
 
-    <div class="container">
-      <%= yield %>
-    </div>
-  </body>
-
-  <footer>
-    <div class="footer-copyright">
+    <main>
       <div class="container">
-        KPTAAAL
+        <%= yield %>
       </div>
-    </div>
-  </footer>
+    </main>
 
+    <footer>
+      <div class="footer-copyright">
+        <div class="container">
+          KPTAAAL
+        </div>
+      </div>
+    </footer>
+  </body>
 </html>
