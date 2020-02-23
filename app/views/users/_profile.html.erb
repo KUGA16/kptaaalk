@@ -1,0 +1,19 @@
+
+<table class="table">
+		<tr>
+      <%= attachment_image_tag user, :profile_image_id, :fill, 300, 300, fallback: "no_image.jpg" %>
+    </tr>
+		<tr>
+			<th>ユーザー名</th>
+      <td><%= user.name %></td>
+    </tr>
+    <tr>
+      <th>ニックネーム</th>
+      <td><%= user.nick_name %></td>
+    </tr>
+    <tr>
+      <th>ステータスメッセージ</th>
+      <td><%= user.introduction %></td>
+    </tr>
+
+</table>
