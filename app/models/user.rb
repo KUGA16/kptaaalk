@@ -11,4 +11,6 @@ class User < ApplicationRecord
   validates :nick_name, presence: true, uniqueness: true
   #userが消えるとgroup_userも消える
   has_many :group_users, dependent: :destroy
+  #userが消えるとcommentも消える
+  has_many :comments, dependent: :destroy
 end
