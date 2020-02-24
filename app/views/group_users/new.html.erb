@@ -1,2 +1,8 @@
-<h1>GroupUsers#new</h1>
-<p>Find me in app/views/group_users/new.html.erb</p>
+<h3>グループメンバー追加</h3>
+
+<div class="row">
+  <% @users.each do |user| %>
+    <%= attachment_image_tag user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg", size:'60x60' %>
+    <%= user.nick_name %>
+  <% end %>
+</div>
