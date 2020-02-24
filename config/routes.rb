@@ -8,9 +8,11 @@ Rails.application.routes.draw do
   get 'about' => 'homes#about', as: 'about'
   resources :users, only: [:show, :edit, :update, :destroy]do
     collection do
-      get 'result'
+      get 'result' #検索結果表示ページ
     end
   end
+  #サイト退会ページ
+  get 'withdraw_top/:id' => 'users#withdraw_top' ,as: "user_withdrew"
   resources :groups, only: [:show, :new, :create, :edit, :update, :destroy]
 
 end
