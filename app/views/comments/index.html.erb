@@ -1,2 +1,9 @@
-<h1>Comments#index</h1>
-<p>Find me in app/views/comments/index.html.erb</p>
+<h3>KPTコメント一覧</h3>
+
+<div class="row">
+  <%= link_to "KPTを投稿する", new_comment_path, remote: true, class: "btn btn-lg btn-primary" %>
+  <div id="comment-modal" class="modal"></div>
+</div>
+
+<p>グループ画像、グループ名</p>
+<p>グループ参加メンバー</p>

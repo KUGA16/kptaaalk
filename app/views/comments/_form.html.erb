@@ -1,0 +1,22 @@
+
+    <div class="modal-content">
+
+      <!-- エラーメッセージ -->
+
+      <!-- エラーメッセージ -->
+
+      <%= form_with model: @comment_new do |f| %>
+
+        <div class="field">
+          <!-- ラジオボタン　KPT選択 -->
+        </div>
+        <div class="field">
+          <%= f.label :comment %>
+          <%= f.text_area :comment, placeholder: "投稿内容を入力" %>
+        </div>
+        <div class="actions">
+          <%= f.submit "投稿する", class: "btn btn-primary" %>
+        </div>
+
+      <% end %>
+    </div>
