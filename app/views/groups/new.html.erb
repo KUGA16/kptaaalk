@@ -1,15 +1,20 @@
 <h1>グループ作成画面</h1>
 <div class="row">
+  <div class="col s5">
 
-  <%= form_with model: @group_new do |f| %>
-    <div class="field">
-      <%= f.label :group_image %>
-      <%= f.attachment_field :group_image %>
-    </div>
-    <div class="field">
-      <%= f.label :name %>
-      <%= f.text_field :name %>
-    </div>
-  <% end %>
+    <%= form_with model: @group_new do |f| %>
+      <div class="field">
+        <%= f.label :group_image %>
+        <%= f.attachment_field :group_image %>
+      </div>
+      <div class="field">
+        <%= f.label :name %>
+        <%= f.text_field :name %>
+      </div>
+      <div class="actions">
+        <%= f.submit "次へ" %>
+      </div>
+    <% end %>
 
+  </div>
 </div>
