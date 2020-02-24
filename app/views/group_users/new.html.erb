@@ -3,7 +3,7 @@
 <div class="row">
 
   <div class="group">
-    <%= attachment_image_tag @group, :group_image, :fill, 80, 80, fallback: "no_group_image.jpg", size:'80x80' %>
+    <%= attachment_image_tag @group, :group_image, :fill, 100, 100, fallback: "no_group_image.jpg", size:'100x100' %>
     <%= @group.name %>
   </div>
 
@@ -13,16 +13,19 @@
 </div>
 
 <div class="row">
-  <% @users.each do |user| %>
-    <p>
-      <label>
-        <input type="checkbox" class="filled-in" checked="checked" />
-        <span>
-          <%= attachment_image_tag user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg", size:'60x60' %>
-          <%= user.nick_name %>
-        </span>
-      </label>
-    </p>
+  <%= form_with model: @group_user_new do |f| %>
 
-  <% end %>
+      <% @users.each do |user| %>
+        <p>
+          <label>
+            <%= f.check_box :user,{},"true","false" %>
+            <span>
+              <%= attachment_image_tag user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg", size:'60x60' %>
+              <%= user.nick_name %>
+            </span>
+          </label>
+        </p>
+      <% end %>
+      <%= f.submit "次へ" %>
+    <% end %>
 </div>
