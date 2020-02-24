@@ -17,7 +17,7 @@
         <li><a href="#"><i class="material-icons">notifications</i></a></li>
         <li>
           <a class="dropdown-trigger" href="#!" data-target="dropdown1">
-            <%= attachment_image_tag current_user, :profile_image_id, fallback: "no_image.jpg", size:'60x60'%>
+            <%= attachment_image_tag current_user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg", size:'60x60'%>
             <i class="material-icons right">arrow_drop_down</i>
           </a>
         </li>
