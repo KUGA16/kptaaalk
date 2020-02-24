@@ -5,7 +5,6 @@ Rails.application.routes.draw do
 
   root 'homes#top'
   get 'about' => 'homes#about', as: 'about'
-  
   resources :users,       only: [:show, :edit, :update, :destroy] do
     member do
       get 'withdraw_top' #サイト退会ページ
@@ -16,11 +15,9 @@ Rails.application.routes.draw do
   end
   resources :group_users, only: [:create] do
     member do
-      get 'new'
+      get 'new' #グループ作成ページ
     end
   end
-  #サイト退会ページ
-  # get 'withdraw_top/:id' => 'users#withdraw_top' ,as: "user_withdrew"
   resources :groups,       only: [:show, :new, :create, :edit, :update, :destroy]
-
+  resources :comments,     only: [:index, :new, :create, :edit, :update, :destroy]
 end
