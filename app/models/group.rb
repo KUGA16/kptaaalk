@@ -5,4 +5,6 @@ class Group < ApplicationRecord
   attachment :group_image
   #groupが消えるとgroup_userも消える
   has_many :group_users, dependent: :destroy
+  #groupが消えるとcommentも消える
+  has_many :comments, dependent: :destroy
 end
