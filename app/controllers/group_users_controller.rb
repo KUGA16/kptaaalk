@@ -1,7 +1,9 @@
 class GroupUsersController < ApplicationController
 
   def new
-    @users = User.all
+    #ログインユーザー以外のユーザー
+    @users = User.where.not(id: current_user.id)
+    @group = Group.find(params[:id])
   end
 
   def create
