@@ -1,0 +1,31 @@
+<h3>グループメンバー追加</h3>
+
+<div class="row">
+
+  <div class="group">
+    <%= attachment_image_tag @group, :group_image, :fill, 100, 100, fallback: "no_group_image.jpg", size:'100x100' %>
+    <%= @group.name %>
+  </div>
+
+  下から追加したユーザーを表示
+  <%= attachment_image_tag current_user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg", size:'60x60' %>
+  <%= current_user.nick_name %>
+</div>
+
+<div class="row">
+  <%= form_with model: @group_user_new do |f| %>
+
+      <% @users.each do |user| %>
+        <p>
+          <label>
+            <%= f.check_box :user,{},"true","false" %>
+            <span>
+              <%= attachment_image_tag user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg", size:'60x60' %>
+              <%= user.nick_name %>
+            </span>
+          </label>
+        </p>
+      <% end %>
+      <%= f.submit "次へ" %>
+    <% end %>
+</div>

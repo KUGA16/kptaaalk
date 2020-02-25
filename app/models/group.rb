@@ -1,5 +1,5 @@
 class Group < ApplicationRecord
-  has_many :group_users, dependent: :destroy #groupが消えるとgroup_userも消える
+  has_many :members, dependent: :destroy #groupが消えるとgroup_userも消える
   has_many :comments,    dependent: :destroy #groupが消えるとcommentも消える
 
   attachment :group_image#画像を挿入するため

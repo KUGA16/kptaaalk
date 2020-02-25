@@ -13,11 +13,8 @@ Rails.application.routes.draw do
       get 'result' #検索結果表示ページ
     end
   end
-  resources :group_users, only: [:create] do
-    member do
-      get 'new' #グループ作成ページ
-    end
+  resources :groups,       only: [:show, :new, :create, :edit, :update, :destroy] do
+    resource :members, only: [:new, :create]
   end
-  resources :groups,       only: [:show, :new, :create, :edit, :update, :destroy]
   resources :comments,     only: [:index, :new, :create, :edit, :update, :destroy]
 end
