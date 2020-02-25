@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     end
   end
   resources :groups,       only: [:show, :new, :create, :edit, :update, :destroy] do
-    resource :members, only: [:new, :create]
+    resource :members,     only: [:new, :create]
   end
   resources :comments,     only: [:index, :new, :create, :edit, :update, :destroy]
 end
