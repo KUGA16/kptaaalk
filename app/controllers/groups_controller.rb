@@ -10,12 +10,13 @@ class GroupsController < ApplicationController
   def create
     @group_new = Group.new(group_params)
     if @group_new.save
-       @group_user = GroupUser.new
-         @group_user.user_id = current_user.id
-         @group_user.group_id = @group_new.id
-         @group_user.is_confirmed = true
-         @group_user.save
-       redirect_to group_user_path(@group_new)
+        @member = Member.new(
+           user_id: current_user.id,
+           group_id: @group_new.id,
+           is_confirmed: true
+         )
+         @member.save
+       redirect_to new_group_members_path(@group_new)
     else
        render 'new'
     end
