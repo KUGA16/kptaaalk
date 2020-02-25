@@ -3,13 +3,14 @@ class MembersController < ApplicationController
   def new
     #ログインユーザー以外のユーザー
     @users = User.where.not(id: current_user.id)
-    @group = Group.find(params[:id])
-    @member_new = Menber.new
+    @group = Group.find(params[:group_id])
+    # @member_new = Member.new
   end
 
   def create
-    if @member_new = Member.new(member_params)
-       @member_new.save!
+     @member_new = Member.new(member_params)
+    if @member_new.save!
+
     else
       # render 'new'
     end
