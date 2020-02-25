@@ -1,0 +1,3 @@
+$("#comment-modal").html("<%= escape_javascript(render 'form') %>")
+// idがuser-modalをindex.html.erb中のdivに対して、新規作成用のformをレンダリング
+$("#comment-modal").modal("open")

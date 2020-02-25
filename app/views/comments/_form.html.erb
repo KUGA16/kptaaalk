@@ -7,9 +7,11 @@
 
       <%= form_with model: @comment_new do |f| %>
 
-        <div class="field">
-          <!-- ラジオボタン　KPT選択 -->
+        <div class="radio-inline">
+          <%= f.radio_button :place_status, :K %>
+          <%= f.label :K %>
         </div>
+
         <div class="field">
           <%= f.label :comment %>
           <%= f.text_area :comment, placeholder: "投稿内容を入力" %>

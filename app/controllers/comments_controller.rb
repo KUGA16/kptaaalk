@@ -9,9 +9,9 @@ class CommentsController < ApplicationController
   def create
     @comment_new = Comment.new(comment_params)
     if @comment_new.save!
-       render :success
+
     else
-       render :error
+       
     end
   end
 
