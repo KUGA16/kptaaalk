@@ -8,16 +8,16 @@ class GroupsController < ApplicationController
   end
 
   def create
-    if @group_new = Group.create(group_params)
-       @member = Member.new(
+    if  @group_new = Group.create(group_params)
+        @group_user_new = GroupUser.new(
           user_id: current_user.id,
           group_id: @group_new.id,
           is_confirmed: true
-         )
-         @member.save
-       redirect_to new_group_members_path(@group_new)
+        )
+        @group_user_new.save
+        redirect_to new_group_group_users_path(@group_new)
     else
-       render 'new'
+        render 'new'
     end
   end
 
