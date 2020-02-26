@@ -11,7 +11,6 @@ class ApplicationController < ActionController::Base
     root_path
   end
 
-
   #他のコントローラからも参照可能
   protected
   #sign_up,sign_in,account_updateの際に、keyのデータ操作を許可
