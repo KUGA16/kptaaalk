@@ -10,11 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_25_120114) do
+ActiveRecord::Schema.define(version: 2020_02_26_081453) do
 
   create_table "comments", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "group_id"
+    t.string "user_id"
+    t.string "group_id"
     t.text "comment"
     t.integer "place_status"
     t.datetime "created_at", null: false

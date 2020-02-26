@@ -8,12 +8,11 @@ class GroupsController < ApplicationController
   end
 
   def create
-    @group_new = Group.new(group_params)
-    if @group_new.save
-        @member = Member.new(
-           user_id: current_user.id,
-           group_id: @group_new.id,
-           is_confirmed: true
+    if @group_new = Group.create(group_params)
+       @member = Member.new(
+          user_id: current_user.id,
+          group_id: @group_new.id,
+          is_confirmed: true
          )
          @member.save
        redirect_to new_group_members_path(@group_new)
