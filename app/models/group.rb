@@ -1,4 +1,5 @@
 class Group < ApplicationRecord
+  has_many :users, :through => :members
   has_many :members,  dependent: :destroy #groupが消えるとmemberも消える
   has_many :comments, dependent: :destroy #groupが消えるとcommentも消える
 
