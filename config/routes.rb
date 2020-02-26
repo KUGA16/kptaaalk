@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   end
   resources :groups,    only: [:show, :new, :create, :edit, :update, :destroy] do
     resources :comments, only: [:index, :create, :edit, :update, :destroy]
-    resource :members,  only: [:new, :create]
+    resource :group_users,  only: [:new, :create]
   end
 
 end
