@@ -13,19 +13,18 @@
 </div>
 
 <div class="row">
-  <%= form_with model: @member do |f| %>
+  <%= form_with model: [@group,@member_new], local: true do |f| %>
 
       <% @users.each do |user| %>
-        <p>
-          <label>
-            <%= f.check_box :user,{},"true","false" %>
-            <span>
-              <%= attachment_image_tag user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg", size:'60x60' %>
-              <%= user.nick_name %>
-            </span>
-          </label>
-        </p>
+        <label>
+          <%= f.check_box :user_id, { multiple: true ,include_hidden: false }, checked_value = user.id %>
+          <span>
+            <%= attachment_image_tag user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg", size:'60x60' %>
+            <%= user.nick_name %>
+          </span>
+        </label>
       <% end %>
+
       <%= f.submit "次へ" %>
     <% end %>
 </div>
