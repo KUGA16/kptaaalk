@@ -4,8 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :groups, through: :members       
-  has_many :members, dependent: :destroy#userが消えるとmemberも消える
+  has_many :groups, through: :group_users       
+  has_many :group_users, dependent: :destroy#userが消えるとmemberも消える
   has_many :comments,    dependent: :destroy #userが消えるとcommentも消える
   attachment :profile_image #refileが指定のカラムにアクセスするために必要
 
