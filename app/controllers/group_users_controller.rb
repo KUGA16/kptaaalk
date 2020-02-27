@@ -8,11 +8,10 @@ class GroupUsersController < ApplicationController
   end
 
   def create
-    # member_new = Member.new(group_user_params)
+    # group_user_new = GroupUser.new(group_user_params)
     params[:group_user][:user_id].each do |id|
-      if GroupUser.create!(user_id: id, group_id:  params[:group_id])
-         # redirect_to group_comments_path(@member_new)
-         redirect_to '/'
+      if GroupUser.create!(user_id: id, group_id: params[:group_id])
+         redirect_to group_comments_path
       else
       # render 'new'
       end
