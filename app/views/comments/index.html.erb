@@ -4,5 +4,7 @@
 <p>グループ参加メンバー</p>
 
 <div class="row">
+  <!-- remte: trueでjsファイルを探しにいく-->
+  <%= link_to "KPTを投稿する", new_group_comment_path, remote: true, class: "btn btn-lg btn-primary" %>
   <div id="comment-modal" class="modal"></div>
 </div>
