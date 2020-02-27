@@ -2,7 +2,7 @@
 <div class="row">
   <div class="col s5">
 
-    <%= form_with model: @group_new do |f| %>
+    <%= form_with model: @group_new, lacol: true do |f| %>
       <div class="field">
         <%= f.label :group_image %>
         <%= f.attachment_field :group_image %>
