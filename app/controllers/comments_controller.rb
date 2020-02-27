@@ -1,6 +1,9 @@
 class CommentsController < ApplicationController
   def index
-    @comment_new = Comment.new
+    # @comment_new = Comment.new
+    @group = Group.find(params[:group_id])
+    #このグループに参加しているユーザー
+    #userモデルからgroup_userモデルのis_confirmedがtrueのユーザーのみ抽出
   end
 
   def new
@@ -11,7 +14,7 @@ class CommentsController < ApplicationController
     if @comment_new.save!
 
     else
-       
+
     end
   end
 
