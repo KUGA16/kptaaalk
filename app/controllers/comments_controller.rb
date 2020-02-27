@@ -3,7 +3,10 @@ class CommentsController < ApplicationController
     # @comment_new = Comment.new
     @group = Group.find(params[:group_id])
     #このグループに参加しているユーザー
+    @group_users = GroupUser.where(group_id: prams[:group_id]).where(is_confirmed: true)
+    # (is_confirmed: true)
     #userモデルからgroup_userモデルのis_confirmedがtrueのユーザーのみ抽出
+
   end
 
   def new

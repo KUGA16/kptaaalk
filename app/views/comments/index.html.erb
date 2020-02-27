@@ -1,13 +1,19 @@
 <h3>KPTコメント一覧</h3>
 
 <div class="row">
-<p>グループ画像、グループ名</p>
-<%= attachment_image_tag @group, :group_image, :fill, 100, 100, fallback: "no_group_image.jpg", size:'100x100' %>
-<%= @group.name %>
-<p>グループ参加メンバー</p>
+  <%= attachment_image_tag @group, :group_image, :fill, 100, 100, fallback: "no_group_image.jpg", size:'100x100' %>
+  <%= @group.name %>
 
-
+  <div class="group_users">
+    <p>グループ参加メンバー</p>
+    <% @group_users.each do |group_user| %>
+      <%= attachment_image_tag group_user.user, :profile_image, :fill, 50, 50, fallback: "no_group_image.jpg", size:'50x50' %>
+      <%= group_user.user.nick_name %>
+    <% end %>
+  </div>
   <!-- remte: trueでjsファイルを探しにいく-->
-  <%= link_to "KPTを投稿する", new_group_comment_path, remote: true, class: "btn btn-lg btn-primary" %>
-  <div id="comment-modal" class="modal"></div>
+  <div class="actions">
+    <%= link_to "KPTを投稿する", new_group_comment_path, remote: true, class: "btn btn-lg btn-primary" %>
+    <div id="comment-modal" class="modal"></div>
+  </div>
 </div>
