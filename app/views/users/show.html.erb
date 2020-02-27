@@ -4,13 +4,6 @@
     <div class="col m5">
       <!-- ユーザープロフィール -->
       <%= render 'profile', user: @user %>
-
-      <div class="">
-        <%= link_to "プロフィール編集", edit_user_path(@user) %>
-      </div>
-      <div class="">
-        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-      </div>
     </div>
   </div>
 <!-- ここからはcurrent_userのみ -->
