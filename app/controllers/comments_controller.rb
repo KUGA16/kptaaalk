@@ -4,19 +4,21 @@ class CommentsController < ApplicationController
     @group = Group.find(params[:group_id])
     #このグループに参加しているユーザー
     @group_users = GroupUser.where(group_id: params[:group_id]).where(is_confirmed: true)
-    #このグループのみのコメントを引っ張ってくる
+    #このグループのみのコメント
     @comments = Comment.where(group_id: params[:group_id])
   end
 
   def new
+    @comment_new = Comment.new
     @group = Group.find(params[:group_id])
   end
 
   def create
+    @comments = Comment.where(group_id: params[:group_id])
     @comment_new = Comment.new(
       user_id: current_user.id,
       group_id: params[:group_id],
-      comment: params[:comment],
+      comment: params[:comment][:comment],
       place_status: params[:place_status]
     )
     respond_to do |format|
