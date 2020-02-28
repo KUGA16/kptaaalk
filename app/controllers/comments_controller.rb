@@ -3,21 +3,32 @@ class CommentsController < ApplicationController
     # @comment_new = Comment.new
     @group = Group.find(params[:group_id])
     #このグループに参加しているユーザー
-    @group_users = GroupUser.where(group_id: prams[:group_id]).where(is_confirmed: true)
-    # (is_confirmed: true)
-    #userモデルからgroup_userモデルのis_confirmedがtrueのユーザーのみ抽出
-
+    @group_users = GroupUser.where(group_id: params[:group_id]).where(is_confirmed: true)
+    #このグループのみのコメントを引っ張ってくる
+    @comments = Comment.where(group_id: params[:group_id])
   end
 
   def new
+    @group = Group.find(params[:group_id])
   end
 
   def create
-    @comment_new = Comment.new(comment_params)
-    if @comment_new.save!
-
-    else
-
+    @comment_new = Comment.new(
+      user_id: current_user.id,
+      group_id: params[:group_id],
+      comment: params[:comment],
+      place_status: params[:place_status]
+    )
+    respond_to do |format|
+      if  @comment_new.save
+          format.html { redirect_to @comment_new, notice: 'User was successfully created.' }
+          format.json { render :new, status: :created, location: @comment_new }
+          format.js { @status = 'success' }
+      else
+          format.html { render :new }
+          format.json { render json: @comment_new.errors, status: :unprocessable_entity }
+          format.js { @status = 'fail' }
+      end
     end
   end
 
@@ -33,6 +44,6 @@ class CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(:comment,:place_status)
+    params.permit(:comment,:place_status)
   end
 end
