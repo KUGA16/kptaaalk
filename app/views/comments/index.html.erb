@@ -1,31 +1,39 @@
-<h3>KPTコメント一覧</h3>
+<div class="col s12 center">
+  <h4><%= "#{@group.name}のKPT" %></h4>
+</div>
 
-<div class="row">
-
-  <div class="group">
-    <%= link_to group_path(@group) do %>
-      <%= attachment_image_tag @group, :group_image, :fill, 100, 100, fallback: "no_group_image.jpg", size:'100x100' %><br>
-      <%= @group.name %>
-    <% end %>
+<div class="row center">
+  <div class="col s6">
+    <div class="group">
+      <%= link_to group_path(@group) do %>
+        <%= attachment_image_tag @group, :group_image, :fill, 200, 150, fallback: "no_group_image.jpg", size:'200x150' %><br>
+        <%= @group.name %>
+      <% end %>
+    </div>
   </div>
 
-  <div class="group_users">
-    <p>グループ参加メンバー</p>
-    <% @group_users.each do |group_user| %>
-      <%= attachment_image_tag group_user.user, :profile_image, :fill, 50, 50, fallback: "no_group_image.jpg", size:'50x50' %>
-      <%= group_user.user.nick_name %>
-    <% end %>
+  <div class="col s6">
+    <div class="group_users">
+      <p>グループ参加メンバー</p>
+      <% @group_users.each do |group_user| %>
+        <%= attachment_image_tag group_user.user, :profile_image, :fill, 50, 50, fallback: "no_group_image.jpg", size:'50x50' %>
+        <%= group_user.user.nick_name %>
+      <% end %>
+    </div>
   </div>
+</div>
+
+<div class="col s6 center">
   <!-- remte: trueでjsファイルを探しにいく-->
   <div class="actions">
     <%= link_to "KPTを投稿する", new_group_comment_path, remote: true, class: "btn btn-lg btn-primary" %>
-    <div id="comment-modal" class="modal"></div><!-- ここに_formが入る -->
   </div>
-
 </div>
 
+<div id="comment-modal" class="modal"></div><!-- ここに_formが入る -->
+
 <div class="row">
-  <div class="col s12" id="comment_box">
+  <div id="comment_box">
     <%= render 'tr', comments: @comments %><!-- ここにcreate.jsが上書き -->
   </div>
 </div>
