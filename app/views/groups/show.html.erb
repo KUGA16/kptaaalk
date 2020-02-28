@@ -4,6 +4,7 @@
     <%= attachment_image_tag @group, :group_image, :fill, 350, 250, fallback: "no_group_image.jpg", size:'350x250' %><br>
     <%= @group.name %><br>
     <%= link_to "グループ編集", edit_group_path(@group) %>
+    <%= link_to "グループ退会", withdraw_group_path(@group) %>
   </div>
 </div>
 
