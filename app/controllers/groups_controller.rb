@@ -2,6 +2,7 @@ class GroupsController < ApplicationController
 
   def show
     @group = Group.find(params[:id])
+    @group_users = GroupUser.where(group_id: params[:id]).where(is_confirmed: true)
   end
 
   def new
