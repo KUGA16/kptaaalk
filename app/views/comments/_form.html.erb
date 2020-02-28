@@ -1,9 +1,9 @@
 
 <div class="modal-content">
   <!-- エラーメッセージ -->
-  <!-- render 'devise/shared/error_messages', resource: @comment_new -->
+
   <!-- エラーメッセージ -->
-  <%= form_with model: @comment_new do |f| %>
+  <%= form_with model: comment_new, url:{controller: 'comments', action: 'create'} do |f| %>
 
     <div class="radio-inline">
       <label>
@@ -31,6 +31,7 @@
       <%= f.text_area :comment, placeholder: "投稿内容を入力" %>
     </div>
     <div class="actions">
+      <%= f.hidden_field :group_id, :value => group.id %>
       <%= f.submit "投稿する", class: "btn btn-primary" %>
     </div>
 

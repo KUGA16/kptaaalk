@@ -1,6 +1,7 @@
 <h3>KPTコメント一覧</h3>
 
 <div class="row">
+
   <%= attachment_image_tag @group, :group_image, :fill, 100, 100, fallback: "no_group_image.jpg", size:'100x100' %>
   <%= @group.name %>
 
@@ -14,20 +15,14 @@
   <!-- remte: trueでjsファイルを探しにいく-->
   <div class="actions">
     <%= link_to "KPTを投稿する", new_group_comment_path, remote: true, class: "btn btn-lg btn-primary" %>
-    <div id="comment-modal" class="modal"></div>
+    <div id="comment-modal" class="modal"></div><!-- ここに_formが入る -->
   </div>
+
 </div>
 
 <div class="row">
-  <div class="col s12">
-    <% @comments.each do | comment | %>
-      <%= attachment_image_tag comment.user, :profile_image, :fill, 80, 80, fallback: "no_group_image.jpg", size:'80x80' %>
-      <%= comment.user.nick_name %>
-      <%= comment.comment %>
-    <% end %>
-  </div>
 
-  <div class="col s6">
-
+    <div class="col s12" id="comment_box">
+      <%= render 'tr', comments: @comments %><!-- ここにcreate.jsが上書き -->
+    </div>
   </div>
-</div>

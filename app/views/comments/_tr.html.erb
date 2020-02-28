@@ -1,0 +1,8 @@
+
+<% comments.each do | comment | %>
+
+  <%= attachment_image_tag comment.user, :profile_image, :fill, 80, 80, fallback: "no_group_image.jpg", size:'80x80' %>
+  <%= comment.user.nick_name %>
+  <%= comment.comment %>
+
+<% end %>
