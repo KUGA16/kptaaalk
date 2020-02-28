@@ -1,2 +1,5 @@
-<h1>Groups#show</h1>
-<p>Find me in app/views/groups/show.html.erb</p>
+<h1>Group詳細画面</h1>
+<div class="row">
+    <%= attachment_image_tag @group, :group_image, :fill, 300, 200, fallback: "no_group_image.jpg", size:'300x200' %><br>
+    <%= @group.name %>
+</div>
