@@ -25,6 +25,12 @@ class GroupsController < ApplicationController
   def edit
   end
 
+  def update
+  end
+
+  def withdraw  
+  end
+
   def destroy
   end
 
