@@ -1,6 +1,5 @@
 class CommentsController < ApplicationController
   def index
-    # @comment_new = Comment.new
     @group = Group.find(params[:group_id])
     #このグループに参加しているユーザー
     @group_users = GroupUser.where(group_id: params[:group_id]).where(is_confirmed: true)
