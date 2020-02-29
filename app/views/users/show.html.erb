@@ -1,27 +1,29 @@
 
-<h1>マイページ</h1>
-  <div class="row">
-    <div class="col m5">
-      <!-- ユーザープロフィール -->
-      <%= render 'profile', user: @user %>
-
-      <div class="">
-        <%= link_to "プロフィール編集", edit_user_path(@user) %>
-      </div>
-      <div class="">
-        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-      </div>
-    </div>
+<h3>マイページ</h3>
+<div class="row">
+  <div class="col center">
+    <!-- ユーザープロフィール -->
+    <%= render 'profile', user: @user %>
   </div>
+</div>
 <!-- ここからはcurrent_userのみ -->
+<% if @user == current_user %>
   <div class="row">
-    <div class="col m6">
-      <p>参加グループ一覧</p>
+    <div class="col s6">
+      <p>参加グループ</p>
+      <% @group_users.each do |group_user| %>
+        <%= link_to group_path(group_user.group) do %>
+          <%= attachment_image_tag group_user.group, :group_image, :fill, 150, 150, fallback: "no_group_image.jpg", size:'150x150' %>
+          <%= group_user.group.name %>
+        <% end %>
+      <% end %>
     </div>
-    <div class="col m6">
-      <p>フレンド？一覧</p>
+
+    <p>メンバー</p>
+    <div class="col s6">
+      <%= render 'search', users: @follow_users %>
     </div>
   </div>
+<% end %>
 <!-- ここまで -->
-
   <p>サイト退会リンク</p>

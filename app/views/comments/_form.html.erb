@@ -1,0 +1,36 @@
+
+<div class="modal-content">
+  <%= form_with model: comment_new, url:{controller: 'comments', action: 'create'} do |f| %>
+
+    <div class="radio-inline">
+      <label>
+        <%= f.radio_button :place_status, :k, checked: "checked", class: "with-gap"%>
+        <span><%= f.label :K %></span>
+      </label>
+    </div>
+
+    <div class="radio-inline">
+      <label>
+        <%= f.radio_button :place_status, :p, class: "with-gap" %>
+        <span><%= f.label :P %></span>
+      </label>
+    </div>
+
+    <div class="radio-inline">
+      <label>
+        <%= f.radio_button :place_status, :t, class: "with-gap" %>
+        <span><%= f.label :T %></span>
+      </label>
+    </div>
+
+    <div class="field">
+      <%= f.label :comment %>
+      <%= f.text_area :comment, placeholder: "投稿内容を入力" %>
+    </div>
+    <div class="actions">
+      <%= f.hidden_field :group_id, :value => group.id %>
+      <%= f.submit "投稿する", class: "btn btn-primary" %>
+    </div>
+
+  <% end %>
+</div>

@@ -1,7 +1,9 @@
-
+<!-- ユーザープロフィール -->
 <table class="table">
 		<tr>
-      <%= attachment_image_tag user, :profile_image, :fill, 200, 200, fallback: "no_image.jpg", size:'200x200' %>
+			<div class="col s12 center">
+				<%= attachment_image_tag user, :profile_image, :fill, 200, 200, fallback: "no_image.jpg", size:'200x200' %>
+			</div>
     </tr>
 		<tr>
 			<th>ユーザー名</th>
@@ -15,5 +17,13 @@
       <th>ステータスメッセージ</th>
       <td><%= user.introduction %></td>
     </tr>
-
 </table>
+<!-- ログインユーザーのみ表示　-->
+<% if user == current_user %>
+	<div class="actions">
+		<%= link_to "プロフィール編集", edit_user_path(@user) %>
+	</div>
+	<div class="actions">
+		<%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+	</div>
+<% end %>
