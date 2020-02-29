@@ -4,6 +4,9 @@ class GroupUsersController < ApplicationController
 
   def new
     @users = current_user.followings #ログインユーザーのフォローしているユーザー
+    # 送られてきたgroup_idと一致するgroup取得
+    #そのグループに入っているユーザーは表示しない（is_confirmedがtrue）
+    #is_confirmedがfalseの人は表示する
     @group = Group.find(params[:group_id])
     @group_user_new = GroupUser.new
   end
