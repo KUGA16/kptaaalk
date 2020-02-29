@@ -7,6 +7,16 @@ class User < ApplicationRecord
   has_many :groups, through: :group_users
   has_many :group_users, dependent: :destroy#userが消えるとmemberも消える
   has_many :comments,    dependent: :destroy #userが消えるとcommentも消える
+
+  # ====================自分がフォローしているユーザーとの関連 ===================================
+  has_many :active_relationships, class_name: "Relationship", foreign_key: :following_id
+  has_many :followings, through: :active_relationships, source: :follower
+  # ========================================================================================
+  # ====================自分がフォローされるユーザーとの関連 ===================================
+  has_many :passive_relationships, class_name: "Relationship", foreign_key: :follower_id
+  has_many :followers, through: :passive_relationships, source: :following
+  # =======================================================================================
+
   attachment :profile_image #refileが指定のカラムにアクセスするために必要
 
   validates :name,      presence: true #名前:空白禁止
