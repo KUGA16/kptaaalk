@@ -4,6 +4,7 @@ class UsersController < ApplicationController
 
   def show
     @group_users = GroupUser.where(user_id: current_user.id)
+    @follow_users = @user.followings
   end
 
   def edit

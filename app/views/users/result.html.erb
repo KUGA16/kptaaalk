@@ -1,6 +1,6 @@
 <h3>メンバー追加ページ</h3>
 <div class="row">
-  <div class="col s6">
+  <div class="col s4">
     <div class="search-form">
       <%= search_form_for @q, url: result_users_path  do |f| %>
         <%= f.label :nick_name %>
@@ -14,19 +14,5 @@
 
 <div class="row">
     <!-- 検索結果 -->
-    <% @search_users.each do |user| %>
-      <div class="col s2 center">
-        <%= attachment_image_tag user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg", size:'100x100' %><br>
-        <%= user.nick_name %><br>
-        <%= user.introduction %>
-        <p>参加KPT数</p>
-        <% if current_user != user %>
-          <% if user.followed_by?(current_user) %>
-              <p><%=link_to "フォロー済み", user_relationships_path(user.id), method: :delete, class: "btn" %></p>
-          <% else %>
-              <p><%=link_to "フォローする", user_relationships_path(user.id), method: :post, class: "btn" %></p>
-          <% end %>
-        <% end %>
-      </div>
-    <% end %>
+    <%= render 'search', users: @search_users %>
 </div>
