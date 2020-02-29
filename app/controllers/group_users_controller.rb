@@ -11,12 +11,10 @@ class GroupUsersController < ApplicationController
 
   def create
     group = Group.find(params[:group_id])
-    # group_user_new = GroupUser.new(group_user_params)
     params[:group_user][:user_id].each do |id|
       if GroupUser.create!(user_id: id, group_id: params[:group_id])
          redirect_to group_comments_path(group)
-      else
-      # render 'new'
+         return
       end
     end
   end
