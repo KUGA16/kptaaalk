@@ -5,7 +5,7 @@
   <ul id="dropdown1" class="dropdown-content">
     <li><%= link_to "マイページ", user_path(current_user) %></li>
     <li><%= link_to "KPT作成", new_group_path %></li>
-    <li><a href="#!">メンバー追加</a></li>
+    <li><%= link_to "メンバー追加", result_users_path %></li>
     <li><%= link_to "使用方法", about_path %></li>
     <li class="divider"></li>
     <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
