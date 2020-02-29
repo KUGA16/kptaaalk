@@ -5,6 +5,7 @@ ja:
     models:
       user: "ユーザー"
       group: "グループ"
+      comment: "コメント"
     attributes:
       user:
         name: ユーザー名
@@ -17,3 +18,5 @@ ja:
       group:
         name: グループ名
         group_image: グループ画像
+      comment:
+        comment: コメント
