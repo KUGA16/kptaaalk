@@ -1,5 +1,6 @@
 class GroupsController < ApplicationController
 
+  before_action :authenticate_user!
   before_action :group_find, only: [:show,:edit,:update]
 
   def show
