@@ -1,5 +1,7 @@
 class GroupUsersController < ApplicationController
 
+  before_action :authenticate_user!
+
   def new
     #ログインユーザー以外のユーザー
     @users = User.where.not(id: current_user.id)
