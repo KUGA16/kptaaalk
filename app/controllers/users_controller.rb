@@ -10,10 +10,10 @@ class UsersController < ApplicationController
   end
 
   def update
-    if  @user.update(user_params)
-        redirect_to @user, notice: "プロフィールを変更しました！"
+    if @user.update(user_params)
+      redirect_to @user, notice: "プロフィールを変更しました！"
     else
-        render 'edit'
+      render 'edit'
     end
   end
 
@@ -21,8 +21,13 @@ class UsersController < ApplicationController
   end
 
   def result
-    @search = User.ransack(params[:q]) # (qurey)検索フォームで入力された値をパラメータで取得
-    @search_users = @search.result(distinct: true) # 空検索しないようにするため
+    @q = User.ransack(params[:q]) # (qurey)検索フォームで入力された値をパラメータで取得
+    if params[:q] == nil || params[:q][:nick_name_cont] == ""
+      @search_users = []
+      return
+    end
+    @search_users = @q.result(distinct: true).where.not(id: current_user.id) # 空検索しないようにするため
+    # @search_usersの配列から、idがcurrent_user.id と同じ要素は取り除く
   end
 
 
