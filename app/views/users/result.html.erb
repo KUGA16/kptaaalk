@@ -1,2 +1,9 @@
 <h3>メンバー追加ページ</h3>
-<p>Find me in app/views/users/result.html.erb</p>
+<div class="row">
+  <div class="search-form">
+    <%= form_tag(result_users_path,:method => 'get') do %>
+      <%= text_field_tag :search %>
+      <%= submit_tag '検索', :name => nil %>
+    <% end %>
+  </div>
+</div>
