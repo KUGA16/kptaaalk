@@ -9,6 +9,9 @@ Rails.application.routes.draw do
   get 'about' => 'homes#about', as: 'about'
 
   resources :users, only: [:show, :edit, :update, :destroy] do
+    resource :relationships, only: [:create,:destroy]
+    get :follows, on: :member #フォロー一覧
+    get :followers, on: :member #フォロワー一覧
     member do
       get 'withdraw' #サイト退会ページ
     end
@@ -16,7 +19,7 @@ Rails.application.routes.draw do
       get 'result' #検索結果表示ページ
     end
   end
-  
+
   resources :groups,       only: [:show, :new, :create, :edit, :update, :destroy] do
     resources :comments,   only: [:index, :new, :create, :edit, :update, :destroy]
     resource :group_users, only: [:new, :create]
