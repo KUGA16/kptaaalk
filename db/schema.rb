@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_23_084241) do
+ActiveRecord::Schema.define(version: 2020_02_29_082336) do
+
+  create_table "comments", force: :cascade do |t|
+    t.string "user_id"
+    t.string "group_id"
+    t.text "comment"
+    t.integer "place_status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["group_id"], name: "index_comments_on_group_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
 
   create_table "group_users", force: :cascade do |t|
     t.string "user_id"
@@ -23,6 +34,13 @@ ActiveRecord::Schema.define(version: 2020_02_23_084241) do
   create_table "groups", force: :cascade do |t|
     t.string "name"
     t.string "group_image_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "relationships", force: :cascade do |t|
+    t.integer "following_id"
+    t.integer "follower_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

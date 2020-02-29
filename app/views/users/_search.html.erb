@@ -1,0 +1,15 @@
+<% users.each do |user| %>
+  <div class="col s3 center">
+    <%= attachment_image_tag user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg", size:'100x100' %><br>
+    <%= user.nick_name %><br>
+    <%= user.introduction %>
+    <p>参加KPT数</p>
+    <% if current_user != user %>
+      <% if user.followed_by?(current_user) %>
+          <p><%=link_to "フォロー済み", user_relationships_path(user.id), method: :delete, class: "btn" %></p>
+      <% else %>
+          <p><%=link_to "フォローする", user_relationships_path(user.id), method: :post, class: "btn" %></p>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>

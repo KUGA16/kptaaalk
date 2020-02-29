@@ -75,6 +75,8 @@ gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
 #MySQLを利用するため
 gem 'dotenv-rails'
+# 検索機能
+gem 'ransack'
 group :production do
   gem 'mysql2'
 end

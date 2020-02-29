@@ -1,2 +1,33 @@
-<h1>GroupUsers#new</h1>
-<p>Find me in app/views/group_users/new.html.erb</p>
+<h3>グループメンバー追加</h3>
+
+<div class="row">
+
+  <div class="group">
+    <%= attachment_image_tag @group, :group_image, :fill, 100, 100, fallback: "no_group_image.jpg", size:'100x100' %>
+    <%= @group.name %>
+  </div>
+
+  下から追加したユーザーを表示
+  <%= attachment_image_tag current_user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg", size:'60x60' %>
+  <%= current_user.nick_name %>
+</div>
+
+<div class="row">
+  <%= form_with model: [@group,@group_user_new], local: true do |f| %>
+
+      <% @users.each do |user| %>
+        <label>
+          <%= f.check_box :user_id, { multiple: true ,include_hidden: false }, checked_value = user.id %>
+          <span>
+            <%= attachment_image_tag user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg", size:'60x60' %>
+            <%= user.nick_name %>
+          </span>
+        </label>
+      <% end %>
+
+      <div class="actions">
+        <%= f.submit "次へ" %>
+      </div>
+
+    <% end %>
+</div>

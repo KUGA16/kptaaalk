@@ -16,3 +16,12 @@
 //= require turbolinks
 //= require materialize
 //= require_tree .
+
+// モーダルの初期化
+$(document).ready(function(){
+    $('.modal').modal();
+});
+// ヘッダーのドロップダウン初期化
+$( document ).ready(function(){
+  $(".dropdown-trigger").dropdown();
+});

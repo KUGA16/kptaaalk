@@ -1,2 +1,18 @@
-<h1>Users#result</h1>
-<p>Find me in app/views/users/result.html.erb</p>
+<h3>メンバー追加ページ</h3>
+<div class="row">
+  <div class="col s4">
+    <div class="search-form">
+      <%= search_form_for @q, url: result_users_path  do |f| %>
+        <%= f.label :nick_name %>
+         <!-- nameカラムの単語の一部分を含むものを検索 -->
+        <%= f.search_field :nick_name_cont %>
+        <%= f.submit "検索", class: 'btn btn-primary' %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+    <!-- 検索結果 -->
+    <%= render 'search', users: @search_users %>
+</div>

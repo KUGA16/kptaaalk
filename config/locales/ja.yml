@@ -4,6 +4,8 @@ ja:
   activerecord:
     models:
       user: "ユーザー"
+      group: "グループ"
+      comment: "コメント"
     attributes:
       user:
         name: ユーザー名
@@ -13,9 +15,8 @@ ja:
         password_confirmation: パスワード確認
         email: メールアドレス
         introduction: ステータスメッセージ
-    models:
-      group: "グループ"
-    attributes:
       group:
         name: グループ名
         group_image: グループ画像
+      comment:
+        comment: コメント

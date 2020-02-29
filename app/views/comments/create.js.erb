@@ -1,0 +1,6 @@
+<% if @status == 'success' %>
+  $("#comment_box").html("<%= j(render("tr", comments: @comments)) %>");
+<%  elsif @status == 'fail' %>
+  alert('入力に誤りがあります!');
+<% end %>
+$("#comment-modal").modal('close');
