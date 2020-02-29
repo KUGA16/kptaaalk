@@ -1,20 +1,19 @@
 class UsersController < ApplicationController
 
+  before_action :user_find, only: [:show,:edit,:update]
+
   def show
-    @user = User.find(params[:id])
     @group_users = GroupUser.where(user_id: current_user.id)
   end
 
   def edit
-    @user = User.find(params[:id])
   end
 
   def update
-    if @user = User.find(params[:id])
-       @user.update(user_params)
-       redirect_to @user, notice: "プロフィールを変更しました！"
+    if  @user.update(user_params)
+        redirect_to @user, notice: "プロフィールを変更しました！"
     else
-       render 'edit'
+        render 'edit'
     end
   end
 
@@ -24,7 +23,13 @@ class UsersController < ApplicationController
   def result
   end
 
+
   private
+
+  def user_find
+    @user = User.find(params[:id])
+  end
+
   def user_params
     params.require(:user).permit(:name, :nick_name, :introduction, :profile_image)
   end
