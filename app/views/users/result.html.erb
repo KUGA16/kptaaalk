@@ -20,7 +20,13 @@
         <%= user.nick_name %><br>
         <%= user.introduction %>
         <p>参加KPT数</p>
-        <p>追加</p>
+        <% if current_user != user %>
+          <% if user.followed_by?(current_user) %>
+              <p><%=link_to "フォロー済み", user_relationships_path(user.id), method: :delete %></p>
+          <% else %>
+              <p><%=link_to "フォローする", user_relationships_path(user.id), method: :post %></p>
+          <% end %>
+        <% end %>
       </div>
     <% end %>
 </div>
