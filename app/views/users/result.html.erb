@@ -1,9 +1,26 @@
 <h3>メンバー追加ページ</h3>
 <div class="row">
-  <div class="search-form">
-    <%= form_tag(result_users_path,:method => 'get') do %>
-      <%= text_field_tag :search %>
-      <%= submit_tag '検索', :name => nil %>
-    <% end %>
+  <div class="col s6">
+    <div class="search-form">
+      <%= search_form_for @search, url: result_users_path  do |f| %>
+        <%= f.label :nick_name %>
+         <!-- nameカラムの単語の一部分を含むものを検索 -->
+        <%= f.search_field :nick_name_cont %>
+        <%= f.submit "検索", class: 'btn btn-primary' %>
+      <% end %>
+    </div>
   </div>
+</div>
+
+<div class="row">
+    <!-- 検索結果 -->
+    <% @search_users.each do |user| %>
+      <div class="col">
+        <%= attachment_image_tag user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg", size:'100x100' %><br>
+        <%= user.nick_name %><br>
+        <%= user.introduction %>
+        <p>フレンド数</p>
+        <p>参加KPT数</p>
+      </div>
+    <% end %>
 </div>

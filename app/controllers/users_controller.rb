@@ -21,6 +21,8 @@ class UsersController < ApplicationController
   end
 
   def result
+    @search = User.ransack(params[:q]) # (qurey)検索で入力された値をパラメータで取得
+    @search_users = @search.result(distinct: true) # 空検索しないようにするため
   end
 
 

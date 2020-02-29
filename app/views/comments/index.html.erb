@@ -16,7 +16,7 @@
     <div class="group_users">
       <p>グループ参加メンバー</p>
       <% @group_users.each do |group_user| %>
-        <%= attachment_image_tag group_user.user, :profile_image, :fill, 50, 50, fallback: "no_group_image.jpg", size:'50x50' %>
+        <%= attachment_image_tag group_user.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg", size:'50x50' %>
         <%= group_user.user.nick_name %>
       <% end %>
     </div>
