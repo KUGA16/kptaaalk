@@ -22,4 +22,9 @@ class User < ApplicationRecord
   validates :name,      presence: true #名前:空白禁止
   validates :nick_name, presence: true, uniqueness: true #ニックネーム:空白禁止、一意である
 
+  def followed_by?(user)
+    # フォローしようとしているユーザーがフォローされているユーザーの中から、自分がいるかどうかを調べる
+    passive_relationships.find_by(following_id: user.id).present?
+  end
+
 end
