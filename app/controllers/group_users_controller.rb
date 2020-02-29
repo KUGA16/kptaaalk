@@ -3,8 +3,7 @@ class GroupUsersController < ApplicationController
   before_action :authenticate_user!
 
   def new
-    #ログインユーザー以外のユーザー
-    @users = User.where.not(id: current_user.id)
+    @users = current_user.followings #ログインユーザーのフォローしているユーザー
     @group = Group.find(params[:group_id])
     @group_user_new = GroupUser.new
   end
