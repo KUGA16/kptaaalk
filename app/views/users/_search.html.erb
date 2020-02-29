@@ -1,5 +1,5 @@
 <% users.each do |user| %>
-  <div class="col s2 center">
+  <div class="col s3 center">
     <%= attachment_image_tag user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg", size:'100x100' %><br>
     <%= user.nick_name %><br>
     <%= user.introduction %>
