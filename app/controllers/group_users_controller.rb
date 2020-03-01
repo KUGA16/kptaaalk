@@ -3,10 +3,11 @@ class GroupUsersController < ApplicationController
   before_action :authenticate_user!
 
   def new
-    @users = current_user.followings #ログインユーザーのフォローしているユーザー
-    # 送られてきたgroup_idと一致するgroup取得
-    #そのグループに入っているユーザーは表示しない（is_confirmedがtrue）
-    #is_confirmedがfalseの人は表示する
+    @follower_ids = current_user.followings.pluck(:id) #ログインユーザーのフォローしているユーザー
+    #params[:group_id]と同じgroup_idのGroupUserのuser_idを配列かつint型で取得
+    @group_user_ids = GroupUser.where(group_id: params[:group_id]).pluck(:user_id).map!(&:to_i)
+    @invite_user_ids = @follower_ids - @group_user_ids #差分を取得
+    @can_invite_users = User.find(@invite_user_ids) #差分user_idを持つuserの情報を取得
     @group = Group.find(params[:group_id])
     @group_user_new = GroupUser.new
   end
