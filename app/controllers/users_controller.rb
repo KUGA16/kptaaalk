@@ -1,17 +1,20 @@
 class UsersController < ApplicationController
 
   before_action :authenticate_user!
-  before_action :user_find, only: [:show,:edit,:update]
+  before_action :params_user_id
 
   def show
+    @user = User.find(params_user_id)
     @join_groups = GroupUser.where(user_id: current_user.id).where(is_confirmed: true)
     @follow_users = @user.followings
   end
 
   def edit
+    @user = User.find(params_user_id)
   end
 
   def update
+    @user = User.find(params_user_id)
     if @user.update(user_params)
       redirect_to @user, notice: "プロフィールを変更しました！"
     else
@@ -35,8 +38,8 @@ class UsersController < ApplicationController
 
   private
 
-  def user_find
-    @user = User.find(params[:id])
+  def params_user_id
+    params.require(:id)
   end
 
   def user_params
