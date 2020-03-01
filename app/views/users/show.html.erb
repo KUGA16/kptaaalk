@@ -11,10 +11,10 @@
   <div class="row">
     <div class="col s6">
       <p>参加グループ</p>
-      <% @group_users.each do |group_user| %>
-        <%= link_to group_path(group_user.group) do %>
-          <%= attachment_image_tag group_user.group, :group_image, :fill, 150, 150, fallback: "no_group_image.jpg", size:'150x150' %>
-          <%= group_user.group.name %>
+      <% @join_groups.each do |join_group| %>
+        <%= link_to group_path(join_group.group) do %>
+          <%= attachment_image_tag join_group.group, :group_image, :fill, 150, 150, fallback: "no_group_image.jpg", size:'150x150' %>
+          <%= join_group.group.name %>
         <% end %>
       <% end %>
     </div>
