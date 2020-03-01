@@ -15,7 +15,7 @@
 <div class="row">
   <%= form_with model: [@group,@group_user_new], local: true do |f| %>
 
-      <% @users.each do |user| %>
+      <% @can_invite_users.each do |user| %>
         <label>
           <%= f.check_box :user_id, { multiple: true ,include_hidden: false }, checked_value = user.id %>
           <span>
