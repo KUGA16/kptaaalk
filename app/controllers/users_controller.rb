@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   before_action :user_find, only: [:show,:edit,:update]
 
   def show
-    @group_users = GroupUser.where(user_id: current_user.id)
+    @join_groups = GroupUser.where(user_id: current_user.id).where(is_confirmed: true)
     @follow_users = @user.followings
   end
 
