@@ -1,10 +1,11 @@
 class GroupsController < ApplicationController
 
   before_action :authenticate_user!
-  before_action :group_find, only: [:show,:edit,:update]
+  before_action :params_group_id
 
   def show
-    @group_users = GroupUser.where(group_id: params[:id]).where(is_confirmed: true)
+    @group = Group.find(params_group_id)
+    @group_users = GroupUser.where(group_id: params_group_id).where(is_confirmed: true)
   end
 
   def new
@@ -25,9 +26,11 @@ class GroupsController < ApplicationController
   end
 
   def edit
+    @group = Group.find(params_group_id)
   end
 
   def update
+    @group = Group.find(params_group_id)
     if  @group.update(group_params)
         redirect_to group_path(@group)
     else
@@ -44,8 +47,8 @@ class GroupsController < ApplicationController
 
   private
 
-  def group_find
-    @group = Group.find(params[:id])
+  def params_group_id
+    params.require(:id)
   end
 
   def group_params
