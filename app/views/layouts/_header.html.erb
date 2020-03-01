@@ -1,12 +1,28 @@
 <!-- ヘッダーテンプレート　-->
+<div class="headline">
+  <%= image_tag 'kpt_image.png', alt: "KPTAAALK icon", class: "brand-logo" %>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <!-- ドロップダウン子メニュー -->
-<%= render 'layouts/dropdown' %>
+<%# <%= render 'layouts/dropdown' %>
 
-<nav class="navbar amber lighten-2">
-  <div class="nav-wrapper">
-    <a href="/" class="brand-logo center">KPTAAALK</a>
-    <ul class="right hide-on-med-and-down">
       <% if user_signed_in? %>
         <!-- ログインしている時 親メニュー -->
         <li>
@@ -26,14 +42,5 @@
             <i class="material-icons right">arrow_drop_down</i>
           </a>
         </li>
-      <% else %>
-        <!-- ログインしていない時 親メニュー -->
-        <li>
-          <a class="dropdown-trigger" data-target="dropdown2">メニュー
-          <i class="material-icons right">arrow_drop_down</i>
-          </a>
-        </li>
       <% end %>
-    </ul>
-  </div>
-</nav>
+    
