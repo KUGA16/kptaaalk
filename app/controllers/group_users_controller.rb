@@ -1,20 +1,21 @@
 class GroupUsersController < ApplicationController
 
   before_action :authenticate_user!
-  before_action :group_find, only: [:new, :create]
+  before_action :params_group_id
 
   def new
+    @group = Group.find(params_group_id)
     @follower_ids = current_user.followings.pluck(:id) #フォローしているユーザーを配列で取得
     #params[:group_id]と同じgroup_idのGroupUserのuser_idを配列かつint型で取得
-    @group_user_ids = GroupUser.where(group_id: @group.id).pluck(:user_id).map!(&:to_i)
+    @group_user_ids = GroupUser.where(group_id: params_group_id).pluck(:user_id).map!(&:to_i)
     @invite_user_ids = @follower_ids - @group_user_ids #差分を取得
     @can_invite_users = User.find(@invite_user_ids) #差分user_idを持つuserの情報を取得
-    @join_users = GroupUser.where(group_id: @group.id).where(is_confirmed: true)
+    @join_users = GroupUser.where(group_id: params_group_id).where(is_confirmed: true)
     @group_user_new = GroupUser.new
   end
 
   def create
-
+    @group = Group.find(params_group_id)
     if params[:group_user].blank? #ユーザーを未選択でsubmitした時
       redirect_to new_group_group_users_path(@group)
       return
@@ -31,8 +32,8 @@ class GroupUsersController < ApplicationController
   end
 
   private
-  def group_find
-    @group = Group.find(params[:group_id])
+  def params_group_id
+    params.require(:group_id)
   end
 
   def params_group_user_ids
