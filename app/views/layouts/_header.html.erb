@@ -10,9 +10,15 @@
       <% if user_signed_in? %>
         <!-- ログインしている時 親メニュー -->
         <li>
-          <a href="#">
-            <i class="material-icons">notifications</i>
-          </a>
+          <% if @is_notification.present? %>
+            <a href="#">
+              <i class="material-icons">notifications</i>
+            </a>
+          <% else %>
+            <a>
+              なし
+            </a>
+          <% end %>
         </li>
         <li>
           <a class="dropdown-trigger" data-target="dropdown1">
