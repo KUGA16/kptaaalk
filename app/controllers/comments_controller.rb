@@ -1,7 +1,6 @@
 class CommentsController < ApplicationController
 
   before_action :authenticate_user!
-  before_action :params_group_id
 
   def index
     @group = Group.find(params_group_id)
@@ -21,9 +20,9 @@ class CommentsController < ApplicationController
     @comments = Comment.where(group_id: params_group_id)
     @comment_new = Comment.new(
       user_id: current_user.id,
-      group_id: params_comment_ids[:group_id],
-      comment: params_comment_ids[:comment],
-      place_status: params_comment_ids[:place_status]
+      group_id: params_post_comment_ids[:group_id],
+      comment: params_post_comment_ids[:comment],
+      place_status: params_post_comment_ids[:place_status]
     )
     respond_to do |format|
       if  @comment_new.save
@@ -45,11 +44,14 @@ class CommentsController < ApplicationController
   end
 
   def destroy
+    comment = Comment.find(params[:id])
+    comment.destroy
+    redirect_to group_comments_path, notice: "投稿を削除しました"
   end
 
   private
 
-  def params_comment_ids
+  def params_post_comment_ids
     params.require(:comment).permit(:group_id, :comment, :place_status)
   end
 
