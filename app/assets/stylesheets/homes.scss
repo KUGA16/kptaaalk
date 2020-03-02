@@ -1,3 +1,24 @@
 // Place all the styles related to the homes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.homes_signin_actions {
+  font-size: 26px;
+  color: #424242;
+  border: 2px dashed #424242;
+  padding: 10px;
+}
+// 新規登録ボタン押すとボーダーを点線にする
+.homes_signin_actions:hover {
+  border-style: solid;
+}
+.homes_login_actions {
+  font-size: 26px;
+  color: #00897b;
+  border: 2px dashed #00897b;
+  padding: 10px;
+  margin-left: 10px;
+}
+.homes_login_actions:hover {
+  border-style: solid;
+}
