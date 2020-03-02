@@ -6,12 +6,12 @@ class CommentsController < ApplicationController
     @group = Group.find(params_group_id)
     #このグループに参加しているユーザー
     @group_users = GroupUser.where(group_id: params_group_id).where(is_confirmed: true)
-    #このグループのみのコメント
-    @comments = Comment.where(group_id: params_group_id)
+    # #このグループのみのコメント
+    # @comments = Comment.where(group_id: params_group_id)
     # place_statusでKPTを分けて取得
-    @comments_place_keep = Comment.where(group_id: params_group_id, place_status: "keep")
-    @comments_place_probrem = Comment.where(group_id: params_group_id, place_status: "probrem")
-    @comments_place_try = Comment.where(group_id: params_group_id, place_status: "try")
+    @keep_comments = Comment.where(group_id: params_group_id, place_status: "keep")
+    @probrem_comments = Comment.where(group_id: params_group_id, place_status: "probrem")
+    @try_comments = Comment.where(group_id: params_group_id, place_status: "try")
   end
 
   def new

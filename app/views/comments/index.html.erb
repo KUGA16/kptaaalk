@@ -32,8 +32,6 @@
 
 <div id="comment-modal" class="modal"></div><!-- ここに_formが入る -->
 
-<div class="row">
-  <div id="comment_box">
-    <%= render 'tr', comments: @comments %><!-- ここにcreate.jsが上書き -->
-  </div>
+<div id="comment_box">
+  <%= render 'tr', keep_comments: @keep_comments, probrem_comments: @probrem_comments, try_comments: @try_comments %><!-- ここにcreate.jsが上書き -->
 </div>
