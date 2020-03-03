@@ -1,8 +1,34 @@
-<!-- KPT投稿内容　-->
-<% comments.each do | comment | %>
-  <div class="col s4">
-    <%= attachment_image_tag comment.user, :profile_image, :fill, 80, 80, fallback: "no_group_image.jpg", size:'80x80' %>
-    <%= comment.comment %><br>
-    <%= comment.user.nick_name %>
+
+<div class="comments_left">
+<!-- keep投稿内容　-->
+  <div class="comments">
+    <span>Keep</span>
+      <% keep_comments.each do |comment| %>
+        <%= attachment_image_tag comment.user, :profile_image, :fill, 80, 80, fallback: "no_group_image.jpg", size:'80x80' %>
+        <%= comment.comment %>
+        <%= comment.user.nick_name %>
+        <%= link_to "削除", group_comment_path(group_id: comment.group_id, id: comment.id), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"} %>
+      <% end %>
   </div>
-<% end %>
+  <!-- probrem投稿内容　-->
+  <div class="comments p_comments">
+    <span>Probrem</span>
+    <% probrem_comments.each do |comment| %>
+      <%= attachment_image_tag comment.user, :profile_image, :fill, 80, 80, fallback: "no_group_image.jpg", size:'80x80' %>
+      <%= comment.comment %>
+      <%= comment.user.nick_name %>
+      <%= link_to "削除", group_comment_path(group_id: comment.group_id, id: comment.id), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"} %>
+    <% end %>
+  </div>
+</div>
+
+<!-- try投稿内容　-->
+<div class="comments_right comments">
+  <span>Try</span>
+  <% try_comments.each do |comment| %>
+    <%= attachment_image_tag comment.user, :profile_image, :fill, 80, 80, fallback: "no_group_image.jpg", size:'80x80' %>
+    <%= comment.comment %>
+    <%= comment.user.nick_name %>
+    <%= link_to "削除", group_comment_path(group_id: comment.group_id, id: comment.id), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"} %>
+  <% end %>
+</div>

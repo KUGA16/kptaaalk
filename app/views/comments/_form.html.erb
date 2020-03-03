@@ -4,22 +4,22 @@
 
     <div class="radio-inline">
       <label>
-        <%= f.radio_button :place_status, :k, checked: "checked", class: "with-gap"%>
-        <span><%= f.label :K %></span>
+        <%= f.radio_button :place_status, :keep, checked: "checked", class: "with-gap"%>
+        <span><%= f.label :Keep %></span>
       </label>
     </div>
 
     <div class="radio-inline">
       <label>
-        <%= f.radio_button :place_status, :p, class: "with-gap" %>
-        <span><%= f.label :P %></span>
+        <%= f.radio_button :place_status, :probrem, class: "with-gap" %>
+        <span><%= f.label :probrem %></span>
       </label>
     </div>
 
     <div class="radio-inline">
       <label>
-        <%= f.radio_button :place_status, :t, class: "with-gap" %>
-        <span><%= f.label :T %></span>
+        <%= f.radio_button :place_status, :try, class: "with-gap" %>
+        <span><%= f.label :Try %></span>
       </label>
     </div>
 
@@ -28,6 +28,7 @@
       <%= f.text_area :comment, placeholder: "投稿内容を入力" %>
     </div>
     <div class="actions">
+      <%= f.hidden_field :user_id, :value => current_user.id %>
       <%= f.hidden_field :group_id, :value => group.id %>
       <%= f.submit "投稿する", class: "btn btn-primary" %>
     </div>

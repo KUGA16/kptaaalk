@@ -1,3 +1,21 @@
-<h1>KPTAAALK</h1>
-<p>KPTとは、</p>
-<p>about画面へのリンクを設定</p>
+
+<%= render 'layouts/flash_message' %>
+
+<div class="row">
+  <div class="col s5">
+    <%= link_to "新規登録", new_user_registration_path, class: "homes_signin_actions" %>
+    <%= link_to "ログイン", new_user_session_path, class: "homes_login_actions" %>
+  </div>
+</div>
+
+<div class="row">
+  <p>KPTとは、「Keep・Problem・Try」の3つからなるフレームワークのひとつです。
+  大切なことは、課題を放置しないよう、可視化してチームで共有することです。
+  次にやるべきことが明確になります。</p>
+</div>
+
+<div class="row">
+  <div class="col s2">
+    <%= link_to "KPTAAALKについて", about_path, class: "homes_about_actions" %>
+  </div>
+</div>
