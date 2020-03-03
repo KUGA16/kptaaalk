@@ -1,7 +1,6 @@
 class GroupUsersController < ApplicationController
 
   before_action :authenticate_user!
-  before_action :params_group_id
 
   def new
     @group = Group.find(params_group_id)
@@ -31,7 +30,19 @@ class GroupUsersController < ApplicationController
       redirect_to group_comments_path(@group)
   end
 
+  def update
+    join_group = GroupUser.find(params_group_id)
+    join_group.update(is_confirmed: true)
+    redirect_to user_path(current_user)
+  end
+
+  def destroy
+
+  end
+
+
   private
+
   def params_group_id
     params.require(:group_id)
   end
