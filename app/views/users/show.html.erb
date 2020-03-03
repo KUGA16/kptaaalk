@@ -21,7 +21,7 @@
             <%= attachment_image_tag group_user.group, :group_image, :fill, 150, 150, fallback: "no_group_image.jpg", size:'150x150' %>
             <%= group_user.group.name %>
             <%= link_to "参加", group_group_users_path(group_user.group.id), method: :put %>
-            <%= link_to "不参加", group_group_users_path(group_user.group.id), method: :delete %>
+            <%= link_to "不参加", group_group_users_path(group_user.group.id), method: :delete, data: {confirm: "本当に参加しませんか？"}  %>
           <% end %>
         <% end %>
       <% end %>
