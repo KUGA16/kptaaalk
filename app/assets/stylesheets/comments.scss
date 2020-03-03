@@ -1,3 +1,46 @@
 // Place all the styles related to the comments controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+// indexページ
+.group_icon{
+  text-align: center;
+}
+.group_image{
+  object-fit: cover;
+}
+.group_users{
+  margin-top: 32px;
+  text-align: center;
+}
+.kpt_actions{
+  text-align: center;
+}
+// フレックスボックス
+#comment_box{
+  display: flex;
+}
+.comments_left{
+  width: 50%;
+  align-self: stretch;
+}
+.comments_right{
+  width: 50%;
+  align-self: stretch;
+}
+.comments{
+  border: 2px solid;
+  padding: 16px;
+  height: auto;
+}
+.comments:nth-child(1){
+  margin-right: 12px;
+}
+.comments:nth-child(2){
+  margin-right: 12px;
+  margin-top: 12px;
+}
