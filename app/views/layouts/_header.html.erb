@@ -1,45 +1,27 @@
 <!-- ヘッダーテンプレート　-->
 <div class="headline">
-  <a href="/"><%= image_tag 'kpt_image.png', alt: "KPTAAALK icon", class: "brand-logo" %></a>
-</div>
+  <div class="brand">
+    <a href="/">
+      <%= image_tag 'kpt_image.png', alt: "KPTAAALK icon", class: "brand-logo" %>
+    </a>
+  </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- ドロップダウン子メニュー -->
-<%# <%= render 'layouts/dropdown' %>
-
-      <% if user_signed_in? %>
-        <!-- ログインしている時 親メニュー -->
+  <div class="navbar">
+    <% if user_signed_in? %> <!-- ログインユーザーのみ -->
+      <%= render 'layouts/dropdown' %> <!-- ドロップダウン子メニュー -->
+      <ul class="right hide-on-med-and-down">
         <li>
           <% if @is_notification.present? %> <!--グループに招待されているか -->
             <a href="#"> <!-- あり -->
               <i class="material-icons">notifications_active</i>
             </a>
-          <% else %>
-            <a href="#">　<!-- なし -->
-              <i class="material-icons">notifications</i>
-            </a>
           <% end %>
-        </li>
-        <li>
           <a class="dropdown-trigger" data-target="dropdown1">
-            <%= attachment_image_tag current_user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg", size:'60x60'%>
+            <%= attachment_image_tag current_user, :profile_image, :fill, 80, 80, fallback: "no_image.jpg", size:'80x80'%>
             <i class="material-icons right">arrow_drop_down</i>
           </a>
         </li>
-      <% end %>
+      </ul>
+    <% end %>
+  </div>
+</div>
