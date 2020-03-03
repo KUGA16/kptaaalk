@@ -26,21 +26,20 @@
 }
 .comments_left{
   width: 50%;
+  margin-right: 16px;
   align-self: stretch;
+  // display: table-cell;
 }
 .comments_right{
   width: 50%;
   align-self: stretch;
+  // display: table-cell;
 }
 .comments{
   border: 2px solid;
   padding: 16px;
   height: auto;
 }
-.comments:nth-child(1){
-  margin-right: 12px;
-}
-.comments:nth-child(2){
-  margin-right: 12px;
-  margin-top: 12px;
+.p_comments{
+  margin-top: 16px;
 }
