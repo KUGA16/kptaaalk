@@ -3,8 +3,8 @@ class GroupsController < ApplicationController
   before_action :authenticate_user!
 
   def show
-    @group = Group.find(params_group_id)
-    @group_users = GroupUser.where(group_id: params_group_id).where(is_confirmed: true)
+    @group = Group.find(params[:id])
+    @group_users = GroupUser.where(group_id: params[:id]).where(is_confirmed: true)
   end
 
   def new
@@ -25,11 +25,11 @@ class GroupsController < ApplicationController
   end
 
   def edit
-    @group = Group.find(params_group_id)
+    @group = Group.find(params[:id])
   end
 
   def update
-    @group = Group.find(params_group_id)
+    @group = Group.find(params[:id])
     if  @group.update(group_params)
         redirect_to group_path(@group)
     else
@@ -45,10 +45,6 @@ class GroupsController < ApplicationController
 
 
   private
-
-  def params_group_id
-    params.require(:id)
-  end
 
   def group_params
     params.require(:group).permit(:name, :group_image)
