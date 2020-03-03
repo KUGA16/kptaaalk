@@ -13,7 +13,7 @@
   <div class="group_user">
     <% @group_users.each do |group_user| %>
       <div class="col s2 center">
-        <%= attachment_image_tag group_user.user, :profile_image, :fill, 120, 120, fallback: "no_group_image.jpg", size:'120x120' %><br>
+        <%= attachment_image_tag group_user.user, :profile_image, :fill, 120, 120, fallback: "no_image.jpg", size:'120x120' %><br>
         <%= group_user.user.nick_name %>
       </div>
     <% end %>
