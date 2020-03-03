@@ -1,7 +1,6 @@
 class GroupsController < ApplicationController
 
   before_action :authenticate_user!
-  before_action :params_group_id
 
   def show
     @group = Group.find(params_group_id)
