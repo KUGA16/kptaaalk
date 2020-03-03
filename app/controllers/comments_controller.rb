@@ -3,30 +3,26 @@ class CommentsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @group = Group.find(params_group_id)
+    @group = Group.find(params[:group_id])
     #このグループに参加しているユーザー
-    @group_users = GroupUser.where(group_id: params_group_id).where(is_confirmed: true)
+    @group_users = GroupUser.where(group_id: params[:group_id]).where(is_confirmed: true)
     # place_statusでKPTを分けて取得
-    @keep_comments = Comment.where(group_id: params_group_id, place_status: "keep")
-    @probrem_comments = Comment.where(group_id: params_group_id, place_status: "probrem")
-    @try_comments = Comment.where(group_id: params_group_id, place_status: "try")
+    @keep_comments = Comment.where(group_id: params[:group_id], place_status: "keep")
+    @probrem_comments = Comment.where(group_id: params[:group_id], place_status: "probrem")
+    @try_comments = Comment.where(group_id: params[:group_id], place_status: "try")
   end
 
   def new
     @comment_new = Comment.new
-    @group = Group.find(params_group_id)
+    @group = Group.find(params[:group_id])
   end
 
   def create
-    @keep_comments = Comment.where(group_id: params_group_id, place_status: "keep")
-    @probrem_comments = Comment.where(group_id: params_group_id, place_status: "probrem")
-    @try_comments = Comment.where(group_id: params_group_id, place_status: "try")
-    @comment_new = Comment.new(
-      user_id: current_user.id,
-      group_id: params_post_comment_ids[:group_id],
-      comment: params_post_comment_ids[:comment],
-      place_status: params_post_comment_ids[:place_status]
-    )
+    @keep_comments = Comment.where(group_id: params[:group_id], place_status: "keep")
+    @probrem_comments = Comment.where(group_id: params[:group_id], place_status: "probrem")
+    @try_comments = Comment.where(group_id: params[:group_id], place_status: "try")
+    # hidden_fieldでuser_idとgroup_idを取得
+    @comment_new = Comment.new(params_post_comment_id)
     respond_to do |format|
       if  @comment_new.save
           format.html { redirect_to @comment_new, notice: 'User was successfully created.' }
@@ -54,11 +50,7 @@ class CommentsController < ApplicationController
 
   private
 
-  def params_post_comment_ids
-    params.require(:comment).permit(:group_id, :comment, :place_status)
-  end
-
-  def params_group_id
-    params.require(:group_id)
+  def params_post_comment_id
+    params.require(:comment).permit(:group_id, :comment, :place_status, :user_id)
   end
 end
