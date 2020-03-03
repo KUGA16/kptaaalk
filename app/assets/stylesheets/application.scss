@@ -28,7 +28,7 @@ html {
 // ヘッダー
 .headline {
   display: flex;
-  justify-content: flex-end;
+  // justify-content: flex-end;
   align-items: center;
   background-color: #b2dfdb;
 }
@@ -40,7 +40,7 @@ html {
   width: 250px;
   height: 130px;
   object-fit: cover;
-  margin-left: 100px;
+
 }
 i.material-icons{
   color: #ffab00;
