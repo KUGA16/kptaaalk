@@ -1,8 +1,8 @@
 
-<h3>マイページ</h3>
-<% if flash[:notice] %>
-  <div class="alert"><%= flash[:notice] %></div>
-<% end %>
+<h4>マイページ</h4>
+
+<%= render 'layouts/flash_message' %>
+
 <div class="row">
   <div class="col center">
     <!-- ユーザープロフィール -->
