@@ -1,39 +1,31 @@
-<div class="col s12 center">
-  <h4><%= "#{@group.name}のKPT" %></h4>
-</div>
 
-<div class="row center">
-  <div class="col s6">
-    <div class="group">
-      <%= link_to group_path(@group) do %>
-        <%= attachment_image_tag @group, :group_image, :fill, 200, 150, fallback: "no_group_image.jpg", size:'200x150' %><br>
-        <%= @group.name %>
-      <% end %>
-    </div>
-  </div>
-
-  <div class="col s6">
-    <div class="group_users">
-      <p>グループ参加メンバー</p>
-      <% @group_users.each do |group_user| %>
-        <%= attachment_image_tag group_user.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg", size:'50x50' %>
-        <%= group_user.user.nick_name %>
-      <% end %>
-    </div>
+<div class="row">
+  <div class="group_icon">
+    <%= link_to group_path(@group) do %>
+      <%= attachment_image_tag @group, :group_image, :fill, 350, 350, fallback: "no_group_image.jpg", size:'350x350' %>
+      <h6><%= "#{@group.name}のKPTルーム" %></h6>
+    <% end %>
   </div>
 </div>
 
-<div class="col s6 center">
-  <!-- remte: trueでjsファイルを探しにいく-->
-  <div class="actions">
-    <%= link_to "KPTを投稿する", new_group_comment_path, remote: true, class: "btn btn-lg btn-primary" %>
+<div class="row">
+  <div class="group_users">
+    <% @group_users.each do |group_user| %>
+      <%= attachment_image_tag group_user.user, :profile_image, :fill, 80, 80, fallback: "no_image.jpg", size:'80x80' %><br>
+      <%= group_user.user.nick_name %>
+    <% end %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="kpt_actions">
+    <!-- remte: trueでjsファイルを探しにいく-->
+    <%= link_to "KPTを投稿する", new_group_comment_path, remote: true, class: "btn btn-large" %>
   </div>
 </div>
 
 <div id="comment-modal" class="modal"></div><!-- ここに_formが入る -->
 
-<div class="row">
-  <div id="comment_box">
-    <%= render 'tr', comments: @comments %><!-- ここにcreate.jsが上書き -->
-  </div>
+<div id="comment_box">
+  <%= render 'tr', keep_comments: @keep_comments, probrem_comments: @probrem_comments, try_comments: @try_comments %><!-- ここにcreate.jsが上書き -->
 </div>

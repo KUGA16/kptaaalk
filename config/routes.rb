@@ -22,10 +22,7 @@ Rails.application.routes.draw do
 
   resources :groups,       only: [:show, :new, :create, :edit, :update, :destroy] do
     resources :comments,   only: [:index, :new, :create, :edit, :update, :destroy]
-    resource :group_users, only: [:new, :create]
-    member do
-      get 'withdraw' #グループ退会ページ
-    end
+    resource :group_users, only: [:new, :create, :update, :destroy]
   end
 
 end

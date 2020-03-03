@@ -7,7 +7,24 @@ body {
   min-height: 100vh;
   flex-direction: column;
 }
-
 main {
   flex: 10 auto;
+}
+.login_form {
+  float: none;
+  text-align: center;
+  margin-top: 70px;
+  margin-left: 500px;
+}
+.login_actions {
+  margin: 15px 15px;
+}
+.signin_form {
+  float: none;
+  width: 50%;
+  text-align: center;
+  margin-left: 460px;
+}
+.field,em {
+  color: grey;
 }
