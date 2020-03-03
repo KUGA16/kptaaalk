@@ -6,6 +6,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params_user_id)
     @join_groups = GroupUser.where(user_id: current_user.id).where(is_confirmed: true)
+    @invited_groups = GroupUser.where(user_id: current_user.id).where(is_confirmed: false)
     @follow_users = @user.followings
   end
 
