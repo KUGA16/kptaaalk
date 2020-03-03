@@ -25,7 +25,7 @@ class CommentsController < ApplicationController
     @comment_new = Comment.new(params_post_comment_id)
     respond_to do |format|
       if  @comment_new.save
-          format.html { redirect_to @comment_new, notice: 'User was successfully created.' }
+          format.html { redirect_to @comment_new, notice: 'KPTを投稿しました！' }
           format.json { render :new, status: :created, location: @comment_new }
           format.js { @status = 'success' }
       else
