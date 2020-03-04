@@ -38,6 +38,7 @@ main {
 }
 h6{
   border-bottom: 2px solid #e0e0e0;
+  width: 18%;
   padding: 4px;
 }
 // result.html.erb
@@ -46,5 +47,11 @@ h6{
   justify-content: center;
 }
 .form{
+  text-align: center;
+}
+// edit.html.erb
+.edit_profile{
+  display: flex;
+  justify-content: center;
   text-align: center;
 }
