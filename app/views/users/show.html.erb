@@ -1,12 +1,10 @@
 
+<%= render 'layouts/flash_message' %> <!-- サクセスメッセージ -->
 <h4>マイページ</h4>
 
-<%= render 'layouts/flash_message' %>
-
-<div class="row">
-  <div class="col center">
-    <!-- ユーザープロフィール -->
-    <%= render 'profile', user: @user %>
+<div class="row profile">
+  <div class="col s5">
+    <%= render 'profile', user: @user %><!-- プロフィール -->
   </div>
 </div>
 <!-- ここからはcurrent_userのみ -->
@@ -14,32 +12,34 @@
   <div class="row">
 
     <% if @is_notification.present? %> <!--グループに招待されているか -->
-      <div class="col s6">
-        <p>招待されているグループ</p>
-        <% @invited_groups.each do |group_user| %>
-          <%= link_to group_path(group_user.group) do %>
-            <%= attachment_image_tag group_user.group, :group_image, :fill, 150, 150, fallback: "no_group_image.jpg", size:'150x150' %>
-            <%= group_user.group.name %>
-            <%= link_to "参加", group_group_users_path(group_user.group.id), method: :put %>
-            <%= link_to "不参加", group_group_users_path(group_user.group.id), method: :delete, data: {confirm: "本当に参加しませんか？"}  %>
-          <% end %>
-        <% end %>
-      <% end %>
-
-      <p>参加グループ</p>
-      <% @join_groups.each do |group_user| %>
+      <p>招待されているグループ</p>
+      <% @invited_groups.each do |group_user| %>
         <%= link_to group_path(group_user.group) do %>
           <%= attachment_image_tag group_user.group, :group_image, :fill, 150, 150, fallback: "no_group_image.jpg", size:'150x150' %>
           <%= group_user.group.name %>
+          <%= link_to "参加", group_group_users_path(group_user.group.id), method: :put %>
+          <%= link_to "不参加", group_group_users_path(group_user.group.id), method: :delete, data: {confirm: "本当に参加しませんか？"}  %>
         <% end %>
       <% end %>
-    </div>
+    <% end %>
 
-    <p>メンバー</p>
-    <div class="col s6">
-      <%= render 'search', users: @follow_users %>
-    </div>
+    <p>参加グループ</p>
+    <% @join_groups.each do |group_user| %>
+      <%= link_to group_path(group_user.group) do %>
+        <%= attachment_image_tag group_user.group, :group_image, :fill, 150, 150, fallback: "no_group_image.jpg", size:'150x150' %>
+        <%= group_user.group.name %>
+      <% end %>
+    <% end %>
   </div>
+
+    <p>お仲間</p>
+      <% @follow_users.each do |user| %>
+        <%= link_to user_path(user) do %>
+          <%= attachment_image_tag user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg", size:'100x100' %><br>
+          <%= user.nick_name %><br>
+        <% end %>
+        <%= user.introduction %>
+        <p>参加KPT数</p>
+      <% end %>
+
 <% end %>
-<!-- ここまで -->
-  <p>サイト退会リンク</p>
