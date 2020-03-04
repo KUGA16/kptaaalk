@@ -8,16 +8,14 @@
 }
 // indexページ
 .group_icon{
-  text-align: center;
+
 }
-.group_icon > a > h5{
-  color: #757575;
+.group_icon > a > h6{
+  color: black;
 }
 .group_image{
   object-fit: cover;
-}
-.group_users{
-  display: flex;
+  margin-left: 250px;
 }
 .kpt_actions{
   text-align: center;
