@@ -1,16 +1,15 @@
 class RightsController < ApplicationController
   def create
-    comment = Comment.find(params[:comment_id])
-    right = current_user.rights.new(comment_id: comment.id, group_id: params[:group_id])
-    binding.pry
+    @comment = Comment.find(params[:comment_id])
+    right = current_user.rights.new(comment_id: @comment.id, group_id: params[:group_id])
     right.save
-    redirect_to group_comments_path
+    # create.js.erbを探しに行く
   end
 
   def destroy
-    comment = Comment.find(params[:comment_id])
-    right = current_user.rights.find_by(comment_id: comment.id, group_id: params[:group_id])
+    @comment = Comment.find(params[:comment_id])
+    right = current_user.rights.find_by(comment_id: @comment.id, group_id: params[:group_id])
     right.destroy
-    redirect_to group_comments_path
+    # destroy.js.erbを探しに行く
   end
 end
