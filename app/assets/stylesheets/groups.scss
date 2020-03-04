@@ -1,3 +1,13 @@
 // Place all the styles related to the groups controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+// new.html.erb
+.group_new{
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+.group_new_field{
+  margin-top: 20px;
+}
