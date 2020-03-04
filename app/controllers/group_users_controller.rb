@@ -10,7 +10,8 @@ class GroupUsersController < ApplicationController
     group_user_ids = GroupUser.where(group_id: params[:group_id]).pluck(:user_id).map!(&:to_i)
     invite_user_ids = follower_ids - group_user_ids #差分を取得
     @can_invite_users = User.find(invite_user_ids) #差分user_idを持つuserの情報を取得
-    @join_users = GroupUser.where(group_id: params[:group_id]).where(is_confirmed: true)
+    # チェックした瞬間にユーザー表示
+    # @join_users = GroupUser.where(group_id: params[:group_id])
   end
 
   def create
