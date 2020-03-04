@@ -4,22 +4,30 @@
   <div class="comments">
     <span>Keep</span>
       <% keep_comments.each do |comment| %>
-        <%= attachment_image_tag comment.user, :profile_image, :fill, 80, 80, fallback: "no_group_image.jpg", size:'80x80' %>
-        <%= comment.user.nick_name %>
-        <%= comment.comment %>
-        <%= render 'rights/button', comment: comment %>
-        <%= link_to "削除", group_comment_path(group_id: comment.group_id, id: comment.id), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"} %>
+        <div class="col s4 kpt_comments">
+          <%= attachment_image_tag comment.user, :profile_image, :fill, 80, 80, fallback: "no_group_image.jpg", size:'80x80' %>
+          <%= comment.user.nick_name %>
+          <%= comment.comment %>
+          <span id="rights_buttons_<%= comment.id %>">
+            <%= render 'rights/button', comment: comment %>
+          </span>
+          <%= link_to "削除", group_comment_path(group_id: comment.group_id, id: comment.id), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn light-green" %>
+        </div>
       <% end %>
   </div>
   <!-- probrem投稿内容　-->
   <div class="comments p_comments">
     <span>Probrem</span>
     <% probrem_comments.each do |comment| %>
-      <%= attachment_image_tag comment.user, :profile_image, :fill, 80, 80, fallback: "no_group_image.jpg", size:'80x80' %>
-      <%= comment.user.nick_name %>
-      <%= comment.comment %>
-      <%= render 'rights/button', comment: comment %>
-      <%= link_to "削除", group_comment_path(group_id: comment.group_id, id: comment.id), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"} %>
+      <div class="col s4 kpt_comments">
+        <%= attachment_image_tag comment.user, :profile_image, :fill, 80, 80, fallback: "no_group_image.jpg", size:'80x80' %>
+        <%= comment.user.nick_name %>
+        <%= comment.comment %>
+        <span id="rights_buttons_<%= comment.id %>">
+          <%= render 'rights/button', comment: comment %>
+        </span>
+        <%= link_to "削除", group_comment_path(group_id: comment.group_id, id: comment.id), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn light-green" %>
+      </div>
     <% end %>
   </div>
 </div>
@@ -28,10 +36,14 @@
 <div class="comments_right comments">
   <span>Try</span>
   <% try_comments.each do |comment| %>
-    <%= attachment_image_tag comment.user, :profile_image, :fill, 80, 80, fallback: "no_group_image.jpg", size:'80x80' %>
-      <%= comment.user.nick_name %>
-    <%= comment.comment %>
-    <%= render 'rights/button', comment: comment %>
-    <%= link_to "削除", group_comment_path(group_id: comment.group_id, id: comment.id), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"} %>
+    <div class="col s4 kpt_comments">
+      <%= attachment_image_tag comment.user, :profile_image, :fill, 80, 80, fallback: "no_group_image.jpg", size:'80x80' %>
+        <%= comment.user.nick_name %>
+      <%= comment.comment %>
+      <span id="rights_buttons_<%= comment.id %>">
+        <%= render 'rights/button', comment: comment %>
+      </span>
+      <%= link_to "削除", group_comment_path(group_id: comment.group_id, id: comment.id), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn light-green" %>
+    </div>
   <% end %>
 </div>
