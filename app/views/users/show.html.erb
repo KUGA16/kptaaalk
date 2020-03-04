@@ -3,16 +3,13 @@
 <h4>マイページ</h4>
 
 <div class="row profile">
-  <div class="col s5">
     <%= render 'profile', user: @user %><!-- プロフィール -->
-  </div>
 </div>
 <!-- ここからはcurrent_userのみ -->
 <% if @user == current_user %>
   <div class="row">
-
     <% if @is_notification.present? %> <!--グループに招待されているか -->
-      <p>招待されているグループ</p>
+      <h6>招待されているグループ</h6>
       <% @invited_groups.each do |group_user| %>
         <%= link_to group_path(group_user.group) do %>
           <%= attachment_image_tag group_user.group, :group_image, :fill, 150, 150, fallback: "no_group_image.jpg", size:'150x150' %>
@@ -22,24 +19,29 @@
         <% end %>
       <% end %>
     <% end %>
-
-    <p>参加グループ</p>
+  </div>
+  <div class="row">
+    <h6>参加グループ</h6>
     <% @join_groups.each do |group_user| %>
-      <%= link_to group_path(group_user.group) do %>
-        <%= attachment_image_tag group_user.group, :group_image, :fill, 150, 150, fallback: "no_group_image.jpg", size:'150x150' %>
-        <%= group_user.group.name %>
-      <% end %>
+      <div class="col s2">
+        <%= link_to group_path(group_user.group) do %>
+          <%= attachment_image_tag group_user.group, :group_image, :fill, 150, 150, fallback: "no_group_image.jpg", size:'150x150' %>
+          <%= group_user.group.name %>
+        <% end %>
+      </div>
     <% end %>
   </div>
 
-    <p>お仲間</p>
-      <% @follow_users.each do |user| %>
+  <div class="row">
+    <h6>お仲間</h6>
+    <% @follow_users.each do |user| %>
+      <div class="col s2">
         <%= link_to user_path(user) do %>
           <%= attachment_image_tag user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg", size:'100x100' %><br>
           <%= user.nick_name %><br>
         <% end %>
         <%= user.introduction %>
-        <p>参加KPT数</p>
-      <% end %>
-
+      </div>
+    <% end %>
+  </div>
 <% end %>
