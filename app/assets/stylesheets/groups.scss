@@ -11,3 +11,18 @@
 .group_new_field{
   margin-top: 20px;
 }
+// show.html.erd
+.group_show_actions{
+  text-align: center;
+}
+.group_show_actions > .btn{
+  margin: 20px 10px 0 0;
+}
+.group_comments_actions{
+  text-align: center;
+}
+.group_comments_actions > a{
+  color: #607d8b;
+  border: 2px solid;
+  padding: 16px;
+}
