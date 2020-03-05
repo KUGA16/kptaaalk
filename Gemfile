@@ -69,6 +69,8 @@ gem 'materialize-sass', '~> 1.0.0'
 gem 'material_icons'
 #jquery使用
 gem 'jquery-rails'
+# ドラッグ&ドロップで使用
+gem 'jquery-ui-rails'
 #ファイルをアップロード用
 gem "refile", require: "refile/rails", github: 'manfe/refile'
 #アップロードした画像のリサイズ
