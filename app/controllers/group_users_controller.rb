@@ -38,14 +38,14 @@ class GroupUsersController < ApplicationController
       redirect_to user_path(current_user)
     else
       flash[:notice] = "「#{join_group.group.name}」に参加できませんでした！"
-      redirect_to user_path(current_user)
+      redirect_to group_path(join_group)
     end
   end
 
   def destroy
     no_join_group = GroupUser.find_by(group_id: params[:group_id], user_id: current_user)
     no_join_group.destroy
-    redirect_to user_path(current_user)
+    redirect_to user_path(current_user), notice: "「#{no_join_group.group.name}」の参加を取り止めました！"
   end
 
 
