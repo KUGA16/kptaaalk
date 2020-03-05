@@ -8,14 +8,14 @@
 }
 // indexページ
 .group_icon{
-  text-align: center;
+
+}
+.group_icon > a > h6{
+  color: black;
 }
 .group_image{
   object-fit: cover;
-}
-.group_users{
-  margin-top: 32px;
-  text-align: center;
+  margin-left: 250px;
 }
 .kpt_actions{
   text-align: center;
@@ -28,12 +28,10 @@
   width: 50%;
   margin-right: 16px;
   align-self: stretch;
-  // display: table-cell;
 }
 .comments_right{
   width: 50%;
   align-self: stretch;
-  // display: table-cell;
 }
 .comments{
   border: 2px solid;
@@ -42,4 +40,9 @@
 }
 .p_comments{
   margin-top: 16px;
+}
+.kpt_comments{
+  border: 2px solid #e0e0e0;
+  padding: 5px;
+  margin-top: 10px;
 }

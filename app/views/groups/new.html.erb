@@ -1,20 +1,18 @@
-<h1>グループ作成画面</h1>
-<div class="row">
-  <div class="col s5">
-
+<h6>KPTグループ作成</h6>
+<div class="row group_new">
+  <div class="col">
     <%= form_with model: @group_new, lacol: true do |f| %>
-      <div class="field">
-        <%= f.label :group_image %>
+      <%= f.label :group_image %>
+      <div class="group_new_field">
         <%= f.attachment_field :group_image %>
       </div>
-      <div class="field">
+      <div class="group_new_field">
         <%= f.label :name %>
         <%= f.text_field :name %>
       </div>
       <div class="actions">
-        <%= f.submit "次へ" %>
+        <%= f.submit "次へ", class: "btn" %>
       </div>
     <% end %>
-
   </div>
 </div>

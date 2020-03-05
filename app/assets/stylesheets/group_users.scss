@@ -1,3 +1,17 @@
 // Place all the styles related to the group_users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+// new.html.erb
+.can_invite_users{
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+.can_invite_users_actions{
+  text-align: center;
+  margin-top: 50px;
+}
+.group_logo{
+  object-fit: cover;
+}

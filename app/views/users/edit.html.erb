@@ -1,12 +1,11 @@
-<h1>プロフィール編集画面</h1>
-  <div class="row">
-    <div class="col m5">
-
+<h6>プロフィール編集</h6>
+  <div class="row edit_profile">
+    <div class="col">
       <%= form_with model: @user, local: true do |f| %>
 
         <div class="field">
           <%= f.label :profile_image %><br>
-          <%= f.attachment_field :profile_image, placeholder: "画像選択" %>
+          <%= f.attachment_field :profile_image, direct: true %>
         </div>
 
         <div class="field">
@@ -25,9 +24,9 @@
         </div>
 
         <div class="action">
-          <%= f.submit '保存' %>
+          <%= f.submit '保存', class: "btn" %>
         </div>
-      <% end %>
 
+      <% end %>
     </div>
   </div>

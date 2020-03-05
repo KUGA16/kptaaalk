@@ -1,3 +1,28 @@
 // Place all the styles related to the groups controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+// new.html.erb
+.group_new{
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+.group_new_field{
+  margin-top: 20px;
+}
+// show.html.erd
+.group_show_actions{
+  text-align: center;
+}
+.group_show_actions > .btn{
+  margin: 20px 10px 0 0;
+}
+.group_comments_actions{
+  text-align: center;
+}
+.group_comments_actions > a{
+  color: #607d8b;
+  border: 2px solid;
+  padding: 16px;
+}

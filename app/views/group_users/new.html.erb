@@ -1,31 +1,26 @@
-<p>メンバー追加</p>
+
+<h6>メンバー追加</h6>
 <div class="row">
   <div class="col s12 center">
-    <%= attachment_image_tag @group, :group_image, :fill, 350, 250, fallback: "no_group_image.jpg", size:'350x250' %><br>
+    <%= attachment_image_tag @group, :group_image, :fill, 350, 250, fallback: "no_group_image.jpg", size:'350x250', class: "group_logo" %><br>
     <%= @group.name %>
-  </div>
-  グループ参加ユーザー
-  <div class="col s12 center">
-    <% @join_users.each do |join_user| %>
-      <%= attachment_image_tag join_user.user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg", size:'100x100' %><br>
-      <%= join_user.user.nick_name %>
-    <% end %>
   </div>
 </div>
 
 <div class="row">
-  <div class="col s12 center">
+  <div class="col s12 can_invite_users">
     <%= form_with model: [@group,@group_user_new], local: true do |f| %>
       <% @can_invite_users.each do |user| %>
-        <label>
-          <%= f.check_box :user_id, { multiple: true ,include_hidden: false }, checked_value = user.id %>
-          <span>
-            <%= attachment_image_tag user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg", size:'60x60' %>
-            <%= user.nick_name %>
-          </span>
-        </label>
+          <label>
+            <%= f.check_box :user_id, { multiple: true ,include_hidden: false }, checked_value = user.id %>
+            <span>
+              <%= attachment_image_tag user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg", size:'60x60' %>
+              <%= user.nick_name %>
+            </span>
+          </label>
       <% end %>
-      <div class="actions">
+      <div class="can_invite_users_actions">
+        <%= link_to "戻る", new_group_path(group_id: @group.id), class: "btn" %>
         <%= f.submit "次へ", class: "btn" %>
       </div>
     <% end %>
