@@ -12,7 +12,7 @@
 //
 //= require rails-ujs
 //= require jquery
-//= require jquery-ui/widgets/sortable
+//= require jquery-ui
 //= require activestorage
 //= require turbolinks
 //= require materialize
@@ -25,4 +25,8 @@ $(document).ready(function(){
 // ヘッダーのドロップダウン初期化
 $( document ).ready(function(){
   $(".dropdown-trigger").dropdown();
+});
+// ドラッグ&ドロップ
+$( document ).ready(function() {
+  $('.item').draggable();
 });
