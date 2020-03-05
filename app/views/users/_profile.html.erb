@@ -1,9 +1,7 @@
 <!-- ユーザープロフィール -->
 <table class="table">
 		<tr>
-			<div class="col s12 center">
-				<%= attachment_image_tag user, :profile_image, :fill, 200, 200, fallback: "no_image.jpg", size:'200x200' %>
-			</div>
+			<%= attachment_image_tag user, :profile_image, :fill, 200, 200, fallback: "no_image.jpg", size:'200x200' %>
     </tr>
 		<tr>
 			<th>ユーザー名</th>
@@ -18,12 +16,14 @@
       <td><%= user.introduction %></td>
     </tr>
 </table>
+<!-- フォローボタン　-->
+<div class="actions">
+	<%= render 'follow_button', user: user %>
+</div>
 <!-- ログインユーザーのみ表示　-->
 <% if user == current_user %>
 	<div class="actions">
-		<%= link_to "プロフィール編集", edit_user_path(@user) %>
-	</div>
-	<div class="actions">
-		<%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+		<%= link_to "プロフィール編集", edit_user_path(user), class: "btn purple lighten-3" %>
+		<%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn indigo lighten-2" %>
 	</div>
 <% end %>

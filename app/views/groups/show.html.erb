@@ -1,14 +1,16 @@
-<h3>Group詳細画面</h3>
+
+<h6>グループ詳細</h6>
 <div class="row">
-  <div class="col s12 center">
+  <div class="col s12 group_show_actions">
     <%= attachment_image_tag @group, :group_image, :fill, 350, 250, fallback: "no_group_image.jpg", size:'350x250' %><br>
     <%= @group.name %><br>
-    <%= link_to "メンバー追加", new_group_group_users_path(@group) %>
-    <%= link_to "グループ編集", edit_group_path(@group) %>
-    <%= link_to "グループ退会", group_group_users_path(@group), method: :delete, data: {confirm: "本当に#{@group.name}から退会しますか？"}  %>
+    <%= link_to "メンバー追加", new_group_group_users_path(@group), class: "btn cyan" %>
+    <%= link_to "グループ編集", edit_group_path(@group), class: "btn" %>
+    <%= link_to "グループ退会", group_group_users_path(@group), method: :delete, data: {confirm: "本当に#{@group.name}から退会しますか？"}, class: "btn blue-grey"  %>
   </div>
 </div>
 
+<h6>参加メンバー</h6>
 <div class="row">
   <div class="group_user">
     <% @group_users.each do |group_user| %>
@@ -21,7 +23,7 @@
 </div>
 
 <div class="row">
-  <div class="col s12 actions center">
-    <%= link_to "#{@group.name}のKPTをみる",  group_comments_path(@group) %>
+  <div class="col s12 group_comments_actions">
+    <%= link_to "#{@group.name}のKPTをみる",  group_comments_path(@group)  %>
   </div>
 </div>
