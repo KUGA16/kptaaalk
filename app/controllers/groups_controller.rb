@@ -12,13 +12,13 @@ class GroupsController < ApplicationController
   end
 
   def create
-    if  @group_new = Group.create!(group_params)
+    if @group_new = Group.create!(group_params)
         GroupUser.create!(
           user_id: current_user.id,
           group_id: @group_new.id,
           is_confirmed: true
         )
-        redirect_to new_group_group_users_path(@group_new)
+        redirect_to new_group_group_users_path(@group_new), notice: "「#{@group_new.name}」グループを作成しました！"
     else
         render 'new'
     end
@@ -35,9 +35,6 @@ class GroupsController < ApplicationController
     else
         render 'edit'
     end
-  end
-
-  def withdraw
   end
 
   def destroy
