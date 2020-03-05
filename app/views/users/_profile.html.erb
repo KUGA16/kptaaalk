@@ -3,10 +3,12 @@
 		<tr>
 			<%= attachment_image_tag user, :profile_image, :fill, 200, 200, fallback: "no_image.jpg", size:'200x200' %>
     </tr>
-		<tr>
-			<th>ユーザー名</th>
-      <td><%= user.name %></td>
-    </tr>
+		<% if user == current_user %> <!-- ユーザー名は自分のみ表示 -->
+			<tr>
+				<th>ユーザー名</th>
+	      <td><%= user.name %></td>
+	    </tr>
+		<% end %>
     <tr>
       <th>ニックネーム</th>
       <td><%= user.nick_name %></td>

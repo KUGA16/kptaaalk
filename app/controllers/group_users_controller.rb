@@ -28,7 +28,7 @@ class GroupUsersController < ApplicationController
       redirect_to new_group_group_users_path(group)
       return
     end
-      redirect_to group_comments_path(group)
+      redirect_to group_comments_path(group), notice: "KPTを作成しました！"
   end
 
   def update
@@ -45,7 +45,7 @@ class GroupUsersController < ApplicationController
   def destroy
     no_join_group = GroupUser.find_by(group_id: params[:group_id], user_id: current_user)
     no_join_group.destroy
-    redirect_to user_path(current_user)
+    redirect_to user_path(current_user), notice: "「#{no_join_group.group.name}」の参加を取り止めました！"
   end
 
 
