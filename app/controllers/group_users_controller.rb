@@ -28,7 +28,7 @@ class GroupUsersController < ApplicationController
       redirect_to new_group_group_users_path(group)
       return
     end
-      redirect_to group_comments_path(group)
+      redirect_to group_comments_path(group), notice: "KPTを作成しました！"
   end
 
   def update
