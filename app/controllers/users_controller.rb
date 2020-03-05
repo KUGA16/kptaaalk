@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 
   before_action :authenticate_user!
+  before_action :baria_user, only: [:show, :edit, :update]
 
   def show
     @user = User.find(params[:id])
@@ -41,4 +42,13 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :nick_name, :introduction, :profile_image)
   end
+
+  #url直接防止　メソッドを自己定義してbefore_actionで発動。
+  def baria_user
+       user = User.find(params[:id])
+    unless user.id == current_user.id
+      redirect_to user_path(current_user)
+    end
+  end
+
 end
