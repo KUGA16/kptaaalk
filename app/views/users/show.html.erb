@@ -23,7 +23,7 @@
   <div class="row">
     <h6>参加グループ</h6>
     <% @join_groups.each do |group_user| %>
-      <div class="col s2">
+      <div class="col s2 center">
         <%= link_to group_path(group_user.group) do %>
           <%= attachment_image_tag group_user.group, :group_image, :fill, 150, 150, fallback: "no_group_image.jpg", size:'150x150' %>
           <%= group_user.group.name %>
