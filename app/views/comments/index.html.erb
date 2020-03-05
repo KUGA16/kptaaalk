@@ -3,7 +3,7 @@
   <div class="group_icon">
     <%= link_to group_path(@group) do %>
       <h6><%= @group.name %>のKPTルーム</h6>
-      <%= attachment_image_tag @group, :group_image, :fill, 350, 350, fallback: "no_group_image.jpg", size:'350x350', class: "group_image" %>
+      <%= attachment_image_tag @group, :group_image, :fill, 350, 350, fallback: "no_group_image.jpg", size:'350x350', class: "comment_index_group_image" %>
     <% end %>
   </div>
 </div>
