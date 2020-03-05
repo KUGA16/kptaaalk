@@ -1,23 +1,21 @@
-<h3>Group編集画面</h3>
 
-<div class="row">
+<h6>グループ編集</h6>
+<div class="row edit_group_profile">
   <div class="col s12">
     <%= form_with model: @group, local: true do |f| %>
+      <div class="field center">
+        <%= f.label :group_image %><br>
+        <%= f.attachment_field :group_image %>
+      </div>
 
-    <div class="field center">
-      <%= f.label :group_image %><br>
-      <%= f.attachment_field :group_image %>
-    </div>
+      <div class="field">
+        <%= f.label :name %><br>
+        <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+      </div>
 
-    <div class="field">
-      <%= f.label :name %><br>
-      <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
-    </div>
-
-    <div class="actions">
-      <%= f.submit "保存", class: "btn btn-primary" %>
-    </div>
-
+      <div class="actions">
+        <%= f.submit "保存", class: "btn btn-primary" %>
+      </div>
     <% end %>
   </div>
 </div>
