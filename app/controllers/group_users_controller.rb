@@ -38,7 +38,7 @@ class GroupUsersController < ApplicationController
       redirect_to user_path(current_user)
     else
       flash[:notice] = "「#{join_group.group.name}」に参加できませんでした！"
-      redirect_to group_path(join_group)
+      redirect_to user_path(current_user)
     end
   end
 
