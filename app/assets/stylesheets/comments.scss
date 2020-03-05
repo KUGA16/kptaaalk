@@ -7,9 +7,9 @@
   box-sizing: border-box;
 }
 // indexページ
-.group_icon{
-
-}
+.item:hover {
+  cursor: pointer;
+  }
 .group_icon > a > h6{
   color: black;
 }

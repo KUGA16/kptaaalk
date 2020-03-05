@@ -4,7 +4,7 @@
   <div class="comments">
     <span>Keep</span>
       <% keep_comments.each do |comment| %>
-        <div class="col s4 kpt_comments">
+        <div class="col s4 kpt_comments item">
           <%= attachment_image_tag comment.user, :profile_image, :fill, 80, 80, fallback: "no_group_image.jpg", size:'80x80' %>
           <%= comment.user.nick_name %>
           <%= comment.comment %>
@@ -19,7 +19,7 @@
   <div class="comments p_comments">
     <span>Probrem</span>
     <% probrem_comments.each do |comment| %>
-      <div class="col s4 kpt_comments">
+      <div class="col s4 kpt_comments item">
         <%= attachment_image_tag comment.user, :profile_image, :fill, 80, 80, fallback: "no_group_image.jpg", size:'80x80' %>
         <%= comment.user.nick_name %>
         <%= comment.comment %>
@@ -36,7 +36,7 @@
 <div class="comments_right comments">
   <span>Try</span>
   <% try_comments.each do |comment| %>
-    <div class="col s4 kpt_comments">
+    <div class="col s4 kpt_comments item">
       <%= attachment_image_tag comment.user, :profile_image, :fill, 80, 80, fallback: "no_group_image.jpg", size:'80x80' %>
         <%= comment.user.nick_name %>
       <%= comment.comment %>
