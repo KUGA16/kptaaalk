@@ -9,14 +9,16 @@
 <% if @user == current_user %>
   <div class="row">
     <% if @is_notification.present? %> <!--グループに招待されているか -->
-      <h6>招待されているグループ</h6>
+      <h6>招待グループ</h6>
       <% @invited_groups.each do |group_user| %>
-        <%= link_to group_path(group_user.group) do %>
-          <%= attachment_image_tag group_user.group, :group_image, :fill, 150, 150, fallback: "no_group_image.jpg", size:'150x150' %>
-          <%= group_user.group.name %>
-          <%= link_to "参加", group_group_users_path(group_user.group.id), method: :put %>
-          <%= link_to "不参加", group_group_users_path(group_user.group.id), method: :delete, data: {confirm: "本当に参加しませんか？"}  %>
-        <% end %>
+        <div class="col s2 center">
+          <%= link_to group_path(group_user.group) do %>
+            <%= attachment_image_tag group_user.group, :group_image, :fill, 150, 150, fallback: "no_group_image.jpg", size:'150x150' %><br>
+            <%= group_user.group.name %><br>
+            <%= link_to "参加", group_group_users_path(group_user.group.id), method: :put, class: "btn" %>
+            <%= link_to "不参加", group_group_users_path(group_user.group.id), method: :delete, data: {confirm: "本当に参加しませんか？"}, class:"btn"  %>
+          <% end %>
+        </div>
       <% end %>
     <% end %>
   </div>
