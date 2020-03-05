@@ -32,17 +32,26 @@
 .comments_right{
   width: 50%;
   align-self: stretch;
+  background-color: #b2ebf2;
 }
 .comments{
   border: 2px solid;
   padding: 16px;
   height: auto;
 }
+.comments:nth-child(1){
+  background-color: #ffe0b2;
+}
 .p_comments{
   margin-top: 16px;
+  background-color: #ffcdd2;
 }
 .kpt_comments{
   border: 2px solid #e0e0e0;
   padding: 5px;
   margin-top: 10px;
+  background-color: white;
+}
+.kpt_comments > span{
+  margin-left: 120px;
 }
