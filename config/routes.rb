@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   root 'homes#top'
   get 'about' => 'homes#about', as: 'about'
+  post 'place_status_update' => 'comments#place_status_update' # ドラッグ&ドロップ
 
   resources :users,          only: [:show, :edit, :update, :destroy] do
     resource :relationships, only: [:create,:destroy]
