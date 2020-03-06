@@ -48,6 +48,9 @@ class CommentsController < ApplicationController
     redirect_to group_comments_path, notice: "投稿を削除しました"
   end
 
+  def place_status_update
+  end
+
   private
 
   def params_post_comment_id
