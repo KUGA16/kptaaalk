@@ -10,6 +10,7 @@ class CommentsController < ApplicationController
     @keep_comments = Comment.where(group_id: params[:group_id], place_status: "keep")
     @probrem_comments = Comment.where(group_id: params[:group_id], place_status: "probrem")
     @try_comments = Comment.where(group_id: params[:group_id], place_status: "try")
+    @comment_new = Comment.new
   end
 
   def new
@@ -49,11 +50,25 @@ class CommentsController < ApplicationController
   end
 
   def place_status_update
+    comment = Comment.find(params[:comment][:id])
+    comment.update(
+      id: comment.id,
+      user_id: comment.user_id,
+      group_id: comment.group_id,
+      comment: comment.comment,
+      place_status: update_params[:place_status]
+    )
   end
+
 
   private
 
   def params_post_comment_id
     params.require(:comment).permit(:group_id, :comment, :place_status, :user_id)
   end
+
+  def update_params
+     params.require(:comment).permit(:id, :place_status)
+  end
+
 end
