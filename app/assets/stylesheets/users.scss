@@ -16,13 +16,12 @@ main {
   position: inherit;
   pointer-events: auto;
 }
-.signin_form {
-  float: none;
-  width: 50%;
-  text-align: center;
-  margin-left: 460px;
+// 新規登録フォーム
+.border{
+  border-bottom: double 1px #ff7f50;
 }
 .field,em {
+  font-size: 12px;
   color: grey;
 }
 // パスワード変更ページ
