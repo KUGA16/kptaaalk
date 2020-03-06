@@ -11,7 +11,6 @@ main {
   flex: 10 auto;
 }
 .login_form {
-  float: none;
   text-align: center;
   margin-top: 70px;
   margin-left: 500px;
@@ -27,6 +26,10 @@ main {
 }
 .field,em {
   color: grey;
+}
+// パスワード変更ページ
+.flex{
+  display: flex;
 }
 // show.html.erb
 .profile{
