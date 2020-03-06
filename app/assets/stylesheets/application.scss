@@ -17,9 +17,9 @@
  @import "material_icons";
 
 * {
-   margin: 0;
-   padding: 0;
-   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 html {
   font-size: 18px;
@@ -69,6 +69,10 @@ main {
   padding-bottom: 10px;
   background-color: #b2dfdb;
   margin-top: 20px;
+}
+// エラーメッセージ
+#error_explanation{
+  color: red;
 }
 // フラッシュメッセージ
 .alert{
