@@ -26,20 +26,16 @@ html {
   font-family: "Yu Gothic",YuGothic,sans-serif,"Hiragino Kaku Gothic ProN","Hiragino Kaku Gothic Pro",sans-serif,"ＭＳ ゴシック";
 }
 // ヘッダー
-.headline {
+header {
   display: flex;
-  align-items: center;
+  justify-content: center;
   background-color: #b2dfdb;
-}
-.headline > :first-child{
-  margin: 0 auto;
 }
 // KPTAAALKロゴ
 .brand-logo {
-  width: 250px;
-  height: 130px;
+  width: 220px;
+  height: 120px;
   object-fit: cover;
-
 }
 i.material-icons{
   color: #ffab00;
