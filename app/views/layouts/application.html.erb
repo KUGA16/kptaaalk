@@ -9,6 +9,8 @@
   </head>
 
   <body>
+    <!-- topページ以外 -->
+    <% if request.path != '/' %>
     <header>
       <nav>
         <div class="nav-wrapper">
@@ -25,27 +27,29 @@
         </div>
       </nav>
     </header>
-
-    <!-- Aboutページのみ -->
-    <% if request.path == '/' %>
+    <% else %>
+    <!-- topページのみ -->
       <div style="background-color: #b2dfdb">
     <% end %>
 
+    <!-- 共通 -->
     <main>
       <div class="container">
         <%= yield %>
       </div>
     </main>
 
-    <!-- Aboutページのみ -->
+    <!-- topページのみ -->
     <% if request.path == '/' %>
       <footer class="page-footer center" style="color: #80cbc4; background-color: #b2dfdb">
     <% else %>
+      <!-- topページ以外 -->
       <footer class="page-footer center" style="color: #cfd8dc; background-color: white">
     <% end %>
         <div class="container">
           KPTAAALK
         </div>
       </footer>
+      
   </body>
 </html>
