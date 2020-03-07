@@ -42,17 +42,14 @@ nav .nav-wrapper i {
   height: 100px;
   object-fit: cover;
 }
-
-.hide-on-med-and-down > li{
-  margin-right: 20px;
+// ログインユーザーimg
+.dropdown-trigger {
+  height: 100px;
 }
-.dropdown-trigger>img{
-  border-radius: 25px;
-}
-i.right{
-  font-size: 30px;
-  color: #4db6ac;
-  padding-top: 20px;
+.dropdown-trigger > img {
+  margin-top: 10px;
+  border-radius: 40px;
+  object-fit: cover;
 }
 .container {
   width: 100%;
