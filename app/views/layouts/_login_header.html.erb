@@ -1,13 +1,13 @@
-<!-- ヘッダーテンプレート　-->
+
+<!-- ログイン中ヘッダー　-->
 <div class="headline">
   <div class="brand">
     <a href="/">
       <%= image_tag 'kpt_image.png', alt: "KPTAAALK icon", class: "brand-logo" %>
     </a>
   </div>
-
   <div class="navbar">
-    <% if user_signed_in? %> <!-- ログインユーザーのみ -->
+
       <%= render 'layouts/dropdown' %> <!-- ドロップダウン子メニュー -->
       <ul class="right hide-on-med-and-down">
         <li>
@@ -22,6 +22,5 @@
           </a>
         </li>
       </ul>
-    <% end %>
   </div>
 </div>
