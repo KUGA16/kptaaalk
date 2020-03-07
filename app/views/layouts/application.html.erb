@@ -12,11 +12,18 @@
   <body>
     <header>
       <% if user_signed_in? %>
+        <!-- ユーザーサインイン時 -->
         <%= render 'layouts/login_header' %>
       <% else %>
+        <!-- ユーザーサインアウト時 -->
         <%= render 'layouts/signout_header'%>
       <% end %>
     </header>
+
+    <!-- Aboutページのみ -->
+    <% if request.path == '/' %>
+      <div style="background-color: #b2dfdb">
+    <% end %>
 
     <main>
       <div class="container">
