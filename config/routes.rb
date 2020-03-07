@@ -7,8 +7,8 @@ Rails.application.routes.draw do
 
   resources :users,          only: [:show, :edit, :update, :destroy] do
     resource :relationships, only: [:create,:destroy]
-    get :follows,   on: :member #フォロー一覧
-    get :followers, on: :member #フォロワー一覧
+    get :follows #フォロー一覧
+    get :followers #フォロワー一覧
     member do
       get 'withdraw' #サイト退会ページ
     end
