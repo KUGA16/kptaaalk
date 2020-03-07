@@ -4,23 +4,26 @@
     <title>Kptaaalk</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
     <header>
-      <a href="/">
-        <%= image_tag 'kpt_image.png', alt: "KPTAAALK icon", class: "brand-logo" %>
-      </a>
-      <% if user_signed_in? %>
-        <!-- ユーザーサインイン時 -->
-        <%= render 'layouts/login_header' %>
-      <% else %>
-        <!-- ユーザーサインアウト時 -->
-        <%= render 'layouts/signout_header'%>
-      <% end %>
+      <nav>
+        <div class="nav-wrapper">
+          <a href="/">
+            <%= image_tag 'kpt_image.png', alt: "KPTAAALK icon", class: "brand-logo center" %>
+          </a>
+          <% if user_signed_in? %>
+            <!-- ユーザーサインイン時 -->
+            <%= render 'layouts/login_header' %>
+          <% else %>
+            <!-- ユーザーサインアウト時 -->
+            <%= render 'layouts/signout_header'%>
+          <% end %>
+        </div>
+      </nav>
     </header>
 
     <!-- Aboutページのみ -->
