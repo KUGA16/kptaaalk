@@ -1,0 +1,59 @@
+<!-- グループ一覧 -->
+<% if is_notification.present? %> <!--グループに招待されているか -->
+  <% invited_groups.each do |group_user| %>
+  <div class="col s12 m3">
+    <div class="card">
+      <div class="card-image waves-effect waves-block waves-light">
+        <%= attachment_image_tag group_user.group, :group_image, fallback: "no_group_image.jpg" %>
+      </div>
+      <div class="card-content">
+        <span class="card-title activator grey-text text-darken-4">
+          <%= group_user.group.name %>
+        </span>
+        <p class="center">
+          <%= link_to "参加", group_group_users_path(group_user.group.id), method: :put, class: "btn" %>
+          <%= link_to "不参加", group_group_users_path(group_user.group.id), method: :delete, data: {confirm: "本当に参加しませんか？"}, class: "btn" %>
+        <% end %>
+        </p>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+
+
+
+
+<div class="col s12 m9">
+  <div class="card-panel teal lighten-3">
+    <span class="white-text">
+      <h6>参加グループ</h6>
+    </span>
+  </div>
+</div>
+<% join_groups.each do |group_user| %>
+  <div class="col s12 m3">
+    <div class="card">
+      <div class="card-image waves-effect waves-block waves-light">
+        <%= attachment_image_tag group_user.group, :group_image, fallback: "no_group_image.jpg" %>
+      </div>
+      <div class="card-content">
+        <span class="card-title activator grey-text text-darken-4">
+          <%= group_user.group.name %>
+          <i class="material-icons right">
+            more_vert
+          </i>
+        </span>
+        <p>参加中</p>
+
+      </div>
+      <div class="card-reveal">
+        <span class="card-title grey-text text-darken-4"><%= group_user.group.name %><i class="material-icons right">close</i></span>
+        <p>kptをみる</p>
+        <p>メンバー</p>
+        <p>編集</p>
+        <p>退会</p>
+      </div>
+    </div>
+  </div>
+<% end %>
