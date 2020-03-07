@@ -11,7 +11,11 @@
 
   <body>
     <header>
-      <%= render 'layouts/header' %>
+      <% if user_signed_in? %>
+        <%= render 'layouts/login_header' %>
+      <% else %>
+        <%= render 'layouts/signout_header'%>
+      <% end %>
     </header>
 
     <main>
