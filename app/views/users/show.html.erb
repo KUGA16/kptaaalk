@@ -1,38 +1,12 @@
 
-<%= render 'layouts/flash_message' %> <!-- サクセスメッセージ -->
-<h6>マイページ</h6>
+<%= render 'shared/flash_message' %> <!-- サクセスメッセージ -->
 
-<div class="row profile">
-    <%= render 'profile', user: @user %><!-- プロフィール -->
+<h6>マイページ</h6>
+<div class="row">
+  <%= render 'profile', user: @user %><!-- プロフィール -->
+  <%= render 'shared/groups', is_notification: @is_notification, invited_groups: @invited_groups, join_groups: @join_groups %>
 </div>
-<!-- ここからはcurrent_userのみ -->
-<% if @user == current_user %>
-  <div class="row">
-    <% if @is_notification.present? %> <!--グループに招待されているか -->
-      <h6>招待グループ</h6>
-      <% @invited_groups.each do |group_user| %>
-        <div class="col s2 center">
-          <%= link_to group_path(group_user.group) do %>
-            <%= attachment_image_tag group_user.group, :group_image, :fill, 150, 150, fallback: "no_group_image.jpg", size:'150x150' %><br>
-            <%= group_user.group.name %><br>
-            <%= link_to "参加", group_group_users_path(group_user.group.id), method: :put, class: "btn" %>
-            <%= link_to "不参加", group_group_users_path(group_user.group.id), method: :delete, data: {confirm: "本当に参加しませんか？"}, class:"btn"  %>
-          <% end %>
-        </div>
-      <% end %>
-    <% end %>
-  </div>
-  <div class="row">
-    <h6>参加グループ</h6>
-    <% @join_groups.each do |group_user| %>
-      <div class="col s2 center">
-        <%= link_to group_path(group_user.group) do %>
-          <%= attachment_image_tag group_user.group, :group_image, :fill, 150, 150, fallback: "no_group_image.jpg", size:'150x150' %>
-          <%= group_user.group.name %>
-        <% end %>
-      </div>
-    <% end %>
-  </div>
+
 
   <div class="row">
     <h6>お仲間</h6>
@@ -46,4 +20,3 @@
       </div>
     <% end %>
   </div>
-<% end %>
