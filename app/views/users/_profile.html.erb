@@ -15,13 +15,13 @@
     </div>
       <div class="card-action center">
         <p>
-          <%= link_to follows_user_path(user) do %>
+          <%= link_to user_follows_path(user) do %>
 					  <%= user.followings.count %><br>
 				  <% end %>
           フォロー
         </p>
         <p>
-          <%= link_to followers_user_path(user) do %>
+          <%= link_to user_followers_path(user) do %>
 				  <%= user.followers.count %><br>
 			    <% end %>
           フォロワー
