@@ -45,8 +45,7 @@ $( document ).ready(function() {
     drop: function(e,ui) {
         $(this)
           .addClass("ui-state-highlight")
-          .css('background', '#fdf5e6')
-          .css('border', '2px solid #ffa07a')
+          .css('background', '#e0e0e0')
 console.log(this);
           var comment_id = ui.draggable.attr('name');
           var place_status = $(this).attr('id');
