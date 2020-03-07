@@ -11,6 +11,9 @@
 
   <body>
     <header>
+      <a href="/">
+        <%= image_tag 'kpt_image.png', alt: "KPTAAALK icon", class: "brand-logo" %>
+      </a>
       <% if user_signed_in? %>
         <!-- ユーザーサインイン時 -->
         <%= render 'layouts/login_header' %>
