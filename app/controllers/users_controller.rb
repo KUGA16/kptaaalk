@@ -1,13 +1,12 @@
 class UsersController < ApplicationController
 
   before_action :authenticate_user!
-  before_action :baria_user, only: [:show, :edit, :update]
+  before_action :baria_user, only: [:edit, :update]
 
   def show
     @user = User.find(params[:id])
     @join_groups = GroupUser.where(user_id: current_user.id).where(is_confirmed: true)
     @invited_groups = GroupUser.where(user_id: current_user.id).where(is_confirmed: false)
-    @follow_users = @user.followings
   end
 
   def edit
@@ -34,6 +33,11 @@ class UsersController < ApplicationController
     end
     @search_users = @q.result(distinct: true).where.not(id: current_user.id) # 空検索しないようにするため
     # @search_usersの配列から、idがcurrent_user.id と同じ要素は取り除く
+  end
+
+  def follows
+    @user = User.find(params[:id])
+    @following_users = @user.followings
   end
 
 
