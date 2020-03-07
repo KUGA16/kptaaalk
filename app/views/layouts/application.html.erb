@@ -31,10 +31,19 @@
       </div>
     </main>
 
-    <footer class="page-footer center">
+    <!-- Aboutページのみ -->
+    <% if request.path == '/' %>
+      <footer class="page-footer center" style="color: #80cbc4; background-color: #b2dfdb">
         <div class="container">
           KPTAAALK
         </div>
-    </footer>
+      </footer>
+    <% else %>
+      <footer class="page-footer center" style="color: #cfd8dc; background-color: white">
+          <div class="container">
+            KPTAAALK
+          </div>
+      </footer>
+    <% end %>
   </body>
 </html>
