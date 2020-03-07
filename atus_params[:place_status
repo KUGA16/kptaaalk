@@ -1,0 +1,18 @@
+
+[1mFrom:[0m /vagrant/kptaaalk/app/controllers/comments_controller.rb @ line 54 CommentsController#place_status_update:
+
+    [1;34m52[0m: [32mdef[0m [1;34mplace_status_update[0m
+    [1;34m53[0m:   binding.pry
+ => [1;34m54[0m:   update_comment = [1;34;4mComment[0m.find(params[[33m:comment[0m][[33m:id[0m])
+    [1;34m55[0m:   [32mif[0m update_status_params[[33m:place_status[0m] != status_params[[33m:place_status[0m]
+    [1;34m56[0m:     update_comment.update(
+    [1;34m57[0m:       [35mid[0m: update_comment.id,
+    [1;34m58[0m:       [35muser_id[0m: update_comment.user_id,
+    [1;34m59[0m:       [35mgroup_id[0m: update_comment.group_id,
+    [1;34m60[0m:       [35mcomment[0m: update_comment.comment,
+    [1;34m61[0m:       [35mplace_status[0m: update_status_params[[33m:place_status[0m]
+    [1;34m62[0m:     )
+    [1;34m63[0m:   [32melse[0m
+    [1;34m64[0m:   [32mend[0m
+    [1;34m65[0m: [32mend[0m
+
