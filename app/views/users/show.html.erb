@@ -1,5 +1,5 @@
 <!-- マイページ -->
 <div class="row">
   <%= render 'profile', user: @user %>
-  <%= render 'shared/groups', is_notification: @is_notification, invited_groups: @invited_groups, join_groups: @join_groups %>
+  <%= render 'groups', is_notification: @is_notification, invited_groups: @invited_groups, join_groups: @join_groups %>
 </div>
