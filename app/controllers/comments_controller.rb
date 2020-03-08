@@ -41,8 +41,28 @@ class CommentsController < ApplicationController
 
   def create
     @keep_comments = Comment.where(group_id: params[:group_id], place_status: "keep")
+    comment_righted_count = @keep_comments.joins(:rights).group(:comment_id).count
+    comment_righted_ids = Hash[comment_righted_count.sort_by{ |_, v| -v }].keys
+    @keep_comment_ranking = []
+    comment_righted_ids.each do | id |
+      @keep_comment_ranking << Comment.find(id)
+    end
+
     @probrem_comments = Comment.where(group_id: params[:group_id], place_status: "probrem")
+    comment_righted_count = @probrem_comments.joins(:rights).group(:comment_id).count
+    comment_righted_ids = Hash[comment_righted_count.sort_by{ |_, v| -v }].keys
+    @probrem_comment_ranking = []
+    comment_righted_ids.each do | id |
+      @probrem_comment_ranking << Comment.find(id)
+    end
+
     @try_comments = Comment.where(group_id: params[:group_id], place_status: "try")
+    comment_righted_count = @try_comments.joins(:rights).group(:comment_id).count
+    comment_righted_ids = Hash[comment_righted_count.sort_by{ |_, v| -v }].keys
+    @try_comment_ranking = []
+    comment_righted_ids.each do | id |
+      @try_comment_ranking << Comment.find(id)
+    end
     # hidden_fieldでuser_idとgroup_idを取得
     @comment_new = Comment.new(params_post_comment_id)
     respond_to do |format|
