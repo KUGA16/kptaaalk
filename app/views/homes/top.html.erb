@@ -1,15 +1,37 @@
-
-<%= render 'shared/flash_message' %>
-
+<!-- トップページ且アバウトページ -->
 <div class="row">
-  <div class="col s5">
-    <%= link_to "新規登録", new_user_registration_path, class: "homes_signin_actions" %>
-    <%= link_to "ログイン", new_user_session_path, class: "homes_login_actions" %>
+  <div class="col s12 m6">
+    <%= image_tag 'kpt_image.png', alt: "KPTAAALK icon", size:'600x600' %>
+  </div>
+  <div class="col s12 m6 center login_sigin_actions">
+    <%= link_to "新規登録", new_user_registration_path, class: "signin_actions" %>
+    <%= link_to "ログイン", new_user_session_path, class: "login_actions" %>
   </div>
 </div>
 
-<div class="row">
-  <p>KPTとは、「Keep・Problem・Try」の3つからなるフレームワークのひとつです。
-  大切なことは、課題を放置しないよう、可視化してチームで共有することです。
-  次にやるべきことが明確になります。</p>
+
+
+<div class="row center">
+  <div class="col s12">
+    <%= image_tag 'top_image1.png', alt: "conversation icon", size:'200x200' %>
+    <h4>KPTとは、</h4>
+    <p>
+      「ふりかえり」を行うためのフレームワークのひとつです。<br>
+      「Keep（成果が出ているので継続すること）」「Problem（問題があり改善が必要なこと）」「Try（新しく取り組むべきこと）」<br>
+      の順に検討することで、次にやるべきことが明確になります。<br>
+      大切なことは、課題を放置しないよう、可視化してチームで共有することです。
+    </p>
+  </div>
+</div>
+
+<div class="row center" style="background-color: #80cbc4; border-radius: 40px;">
+  <div class="col s4">
+    <%= image_tag 'top_image3.png', alt: "team icon", size:'100x100' %>
+  </div>
+  <div class="col s4">
+    <%= image_tag 'top_image3.png', alt: "team icon", size:'100x100' %>
+  </div>
+  <div class="col s4">
+    <%= image_tag 'top_image3.png', alt: "team icon", size:'100x100' %>
+  </div>
 </div>
