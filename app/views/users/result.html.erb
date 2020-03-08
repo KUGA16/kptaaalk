@@ -1,10 +1,10 @@
-<h5>お仲間追加</h5>
+<!-- お仲間検索ページ -->
 <div class="row">
   <div class="search_form">
-    <div class="form">
+    <div class="form center">
       <%= search_form_for @q, url: result_users_path  do |f| %>
         <%= f.label :nick_name %>
-         <!-- nameカラムの単語の一部分を含むものを検索 -->
+<!-- nameカラムの単語の一部分を含むものを検索 -->
         <%= f.search_field :nick_name_cont %>
         <%= f.submit "検索", class: 'btn btn-primary' %>
       <% end %>
@@ -18,7 +18,7 @@
         <%= user.nick_name %><br>
       <% end %>
       <%= user.introduction %>
-      <!-- フォローボタン　-->
+<!-- フォローボタン　-->
       <% if current_user != user %>
         <% if user.followed_by?(current_user) %>
           <p><%=link_to "フォロー済み", user_relationships_path(user.id), method: :delete, remote: true, class: "btn cyan" %></p>
@@ -28,5 +28,4 @@
       <% end %>
     </div>
   <% end %>
-
 </div>
