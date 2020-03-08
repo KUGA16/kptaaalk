@@ -1,23 +1,32 @@
 <!-- お仲間ページ -->
 <div class="row">
+
   <%= render 'profile', user: @user %>
 
   <div class="col s12 m9">
-    <div class="card-panel teal lighten-3">
+    <div class="card-panel teal lighten-4 z-depth-0">
       <span class="white-text">
         <h6>お仲間</h6>
       </span>
     </div>
   </div>
-
-  <% @following_users.each do |user| %>
-    <div class="col s12 m2">
-      <div class="card">
+<!-- タブメニュー -->
+  <div class="col s12 m9">
+    <ul class="tabs tabs-fixed-width tab-demo z-depth-0">
+      <li class="tab"><a href="#test1">フォロー</a></li>
+      <li class="tab"><a href="#test2">フォロワー</a></li>
+      <li class="tab"><a href="#test3">お仲間追加</a></li>
+    </ul>
+  </div>
+<!-- フォロー -->
+  <div id="test1" class="col s9 m9">
+    <% @following_users.each do |user| %>
+      <div class="card" style="width: 32%; display: inline-block;">
         <div class="card-image waves-effect waves-block waves-light">
           <%= attachment_image_tag user, :profile_image, fallback: "no_image.jpg" %>
         </div>
-        <div class="card-content center">
-          <span class="card-title activator grey-text text-darken-4">
+        <div class="card-content center" style="height: 115px;">
+          <span class="card-title">
             <%= user.nick_name %>
           </span>
           <%= user.introduction %>
@@ -30,6 +39,11 @@
           <% end %>
         </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
+
+<!-- フォロワー -->
+  <div id="test2" class="col s12 m9">Test 2</div>
+  <div id="test3" class="col s12 m9">Test 3</div>
+
 </div>
