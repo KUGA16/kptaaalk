@@ -30,21 +30,10 @@ main {
   display: flex;
   flex-wrap: wrap;
 }
-// result.html.erb
-.search_form{
-  display: flex;
-  justify-content: center;
-}
-.form{
-  text-align: center;
-}
 // edit.html.erb
 .edit_profile{
   display: flex;
   justify-content: center;
   text-align: center;
   width: 30%;
-}
-#user_profile_image{
-  margin: 20px 20px;
 }

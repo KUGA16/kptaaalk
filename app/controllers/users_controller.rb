@@ -7,6 +7,15 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @join_groups = GroupUser.where(user_id: current_user.id).where(is_confirmed: true)
     @invited_groups = GroupUser.where(user_id: current_user.id).where(is_confirmed: false)
+# (qurey)検索フォームで入力された値をパラメータで取得
+    # @q = User.ransack(params[:q])
+    # if params[:q] == nil || params[:q][:nick_name_cont] == ""
+    #   @search_users = []
+    #   return
+    # end
+# 空検索しないようにするため
+# @search_usersの配列からcurrent_user要素は取り除く
+    # @search_users = @q.result(distinct: true).where.not(id: current_user.id)
   end
 
   def edit
@@ -26,16 +35,18 @@ class UsersController < ApplicationController
   end
 
   def result
-    @q = User.ransack(params[:q]) # (qurey)検索フォームで入力された値をパラメータで取得
+# (qurey)検索フォームで入力された値をパラメータで取得
+    @q = User.ransack(params[:q])
     if params[:q] == nil || params[:q][:nick_name_cont] == ""
       @search_users = []
       return
     end
-    @search_users = @q.result(distinct: true).where.not(id: current_user.id) # 空検索しないようにするため
-    # @search_usersの配列から、idがcurrent_user.id と同じ要素は取り除く
+# 空検索しないようにするため
+# @search_usersの配列からcurrent_user要素は取り除く
+    @search_users = @q.result(distinct: true).where.not(id: current_user.id)
   end
 
-  def follows
+  def friends
     @user = User.find(params[:user_id])
     @following_users = @user.followings
     @follower_users = @user.followers
