@@ -30,14 +30,16 @@
       </p>
     </div>
     <div class="card-action center">
-      <a href="#">お仲間一覧</a>
+      <i class="material-icons">person_add</i>
+      <%= link_to "お仲間追加", user_friends_path(user) %>
     </div>
     <div class="card-action center">
-      <a href="#">KPT作成</a>
+      <i class="material-icons">people</i>
+      <%= link_to "チーム作成", new_group_path %>
     </div>
 		<% if user == current_user %><!-- ログインユーザーのみ表示　-->
     	<div class="card-action center">
-				<i class="material-icons">person</i>
+				<i class="material-icons">build</i>
 				<%= link_to "プロフィール編集", edit_user_path(user), style: "white" %>
 			</div>
 			<div class="card-action center">
