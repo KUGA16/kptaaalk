@@ -15,7 +15,7 @@
       </span>
 			<%= user.introduction %>
     </div>
-    <div class="card-action center">
+    <div class="card-action flex center" style="justify-content: center;">
       <p>
         <%= link_to user_friends_path(user) do %>
 				  <%= user.followings.count %><br>
@@ -28,6 +28,10 @@
 		    <% end %>
         フォロワー
       </p>
+    </div>
+    <div class="card-action center">
+      <i class="material-icons">pets</i>
+      <%= link_to "マイページ", user_friends_path(user) %>
     </div>
     <div class="card-action center">
       <i class="material-icons">person_add</i>
