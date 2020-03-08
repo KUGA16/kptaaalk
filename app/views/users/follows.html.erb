@@ -43,7 +43,28 @@
   </div>
 
 <!-- フォロワー -->
-  <div id="test2" class="col s12 m9">Test 2</div>
+  <div id="test2" class="col s12 m9">
+    <% @follower_users.each do |user| %>
+      <div class="card" style="width: 32%; display: inline-block;">
+        <div class="card-image waves-effect waves-block waves-light">
+          <%= attachment_image_tag user, :profile_image, fallback: "no_image.jpg" %>
+        </div>
+        <div class="card-content center" style="height: 115px;">
+          <span class="card-title">
+            <%= user.nick_name %>
+          </span>
+          <%= user.introduction %>
+        </div>
+        <div class="card-action center">
+          <% if user.followed_by?(current_user) %>
+              <%=link_to "フォロー済み", user_relationships_path(user.id), method: :delete, class: "btn" %>
+          <% else %>
+              <%=link_to "フォローする", user_relationships_path(user.id), method: :post, class: "btn" %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
   <div id="test3" class="col s12 m9">Test 3</div>
 
 </div>
