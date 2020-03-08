@@ -32,10 +32,12 @@
           <%= user.introduction %>
         </div>
         <div class="card-action center">
-          <% if user.followed_by?(current_user) %>
-              <%=link_to "フォロー済み", user_relationships_path(user.id), method: :delete, class: "btn" %>
-          <% else %>
-              <%=link_to "フォローする", user_relationships_path(user.id), method: :post, class: "btn" %>
+          <% if current_user != user %>
+            <% if user.followed_by?(current_user) %>
+                <%=link_to "フォロー済み", user_relationships_path(user.id), method: :delete, class: "btn" %>
+            <% else %>
+                <%=link_to "フォローする", user_relationships_path(user.id), method: :post, class: "btn" %>
+            <% end %>
           <% end %>
         </div>
       </div>
@@ -56,10 +58,12 @@
           <%= user.introduction %>
         </div>
         <div class="card-action center">
-          <% if user.followed_by?(current_user) %>
-              <%=link_to "フォロー済み", user_relationships_path(user.id), method: :delete, class: "btn" %>
-          <% else %>
-              <%=link_to "フォローする", user_relationships_path(user.id), method: :post, class: "btn" %>
+          <% if current_user != user %>
+            <% if user.followed_by?(current_user) %>
+                <%=link_to "フォロー済み", user_relationships_path(user.id), method: :delete, class: "btn" %>
+            <% else %>
+                <%=link_to "フォローする", user_relationships_path(user.id), method: :post, class: "btn" %>
+            <% end %>
           <% end %>
         </div>
       </div>
@@ -67,7 +71,7 @@
   </div>
 <!-- お仲間検索 -->
   <div id="test3" class="col s12 m9">
-  
+
   </div>
 
 </div>
