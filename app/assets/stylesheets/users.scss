@@ -20,6 +20,7 @@ main {
 .border{
   border-bottom: double 1px #ff7f50;
 }
+// 6文字以上　テキスト
 .field,em {
   font-size: 12px;
   color: grey;
@@ -27,6 +28,7 @@ main {
 // パスワード変更ページ
 .flex{
   display: flex;
+  flex-wrap: wrap;
 }
 // result.html.erb
 .search_form{

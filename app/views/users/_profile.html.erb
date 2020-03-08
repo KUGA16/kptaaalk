@@ -1,5 +1,5 @@
 <!-- ユーザープロフィール -->
-<div class="col s3 m3">
+<div class="col s12 m3">
   <div class="card">
     <div class="card-image">
       <%= attachment_image_tag user, :profile_image, fallback: "no_image.jpg" %>
@@ -13,20 +13,26 @@
       <%= user.nick_name %><br>
 			<%= user.introduction %><br>
     </div>
-      <div class="card-action center">
-        <p>
-          <%= link_to user_follows_path(user) do %>
-					  <%= user.followings.count %><br>
-				  <% end %>
-          フォロー
-        </p>
-        <p>
-          <%= link_to user_followers_path(user) do %>
-				  <%= user.followers.count %><br>
-			    <% end %>
-          フォロワー
-        </p>
-      </div>
+    <div class="card-action center">
+      <p>
+        <%= link_to user_follows_path(user) do %>
+				  <%= user.followings.count %><br>
+			  <% end %>
+        フォロー
+      </p>
+      <p>
+        <%= link_to user_followers_path(user) do %>
+			  <%= user.followers.count %><br>
+		    <% end %>
+        フォロワー
+      </p>
+    </div>
+    <div class="card-action center">
+      <a href="#">お仲間一覧</a>
+    </div>
+    <div class="card-action center">
+      <a href="#">KPT作成</a>
+    </div>
 		<% if user == current_user %><!-- ログインユーザーのみ表示　-->
     	<div class="card-action center">
 				<i class="material-icons">person</i>
