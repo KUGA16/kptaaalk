@@ -7,29 +7,26 @@ class CommentsController < ApplicationController
     #このグループに参加しているユーザー
     @group_users = GroupUser.where(group_id: params[:group_id]).where(is_confirmed: true)
     # place_statusでKPTを分けて取得
-    @keep_comments = Comment.where(group_id: params[:group_id], place_status: "keep")
-    comment_righted_count = @keep_comments.joins(:rights).group(:comment_id).count
-    comment_righted_ids = Hash[comment_righted_count.sort_by{ |_, v| -v }].keys
-    @keep_comment_ranking = []
-    comment_righted_ids.each do | id |
-      @keep_comment_ranking << Comment.find(id)
-    end
+    @keep_comments, @keep_comment_ranking = Comment.get_right_ranking(params[:group_id], "keep")
 
-    @probrem_comments = Comment.where(group_id: params[:group_id], place_status: "probrem")
-    comment_righted_count = @probrem_comments.joins(:rights).group(:comment_id).count
-    comment_righted_ids = Hash[comment_righted_count.sort_by{ |_, v| -v }].keys
-    @probrem_comment_ranking = []
-    comment_righted_ids.each do | id |
-      @probrem_comment_ranking << Comment.find(id)
-    end
 
-    @try_comments = Comment.where(group_id: params[:group_id], place_status: "try")
-    comment_righted_count = @try_comments.joins(:rights).group(:comment_id).count
-    comment_righted_ids = Hash[comment_righted_count.sort_by{ |_, v| -v }].keys
-    @try_comment_ranking = []
-    comment_righted_ids.each do | id |
-      @try_comment_ranking << Comment.find(id)
-    end
+    @probrem_comments, @probrem_comment_ranking = Comment.get_right_ranking(params[:group_id], "probrem")
+    # @probrem_comments = Comment.where(group_id: params[:group_id], place_status: "probrem")
+    # comment_righted_count = @probrem_comments.joins(:rights).group(:comment_id).count
+    # comment_righted_ids = Hash[comment_righted_count.sort_by{ |_, v| -v }].keys
+    # @probrem_comment_ranking = []
+    # comment_righted_ids.each do | id |
+    #   @probrem_comment_ranking << Comment.find(id)
+    # end
+
+    @try_comments, @try_comment_ranking = Comment.get_right_ranking(params[:group_id], "try")
+    # @try_comments = Comment.where(group_id: params[:group_id], place_status: "try")
+    # comment_righted_count = @try_comments.joins(:rights).group(:comment_id).count
+    # comment_righted_ids = Hash[comment_righted_count.sort_by{ |_, v| -v }].keys
+    # @try_comment_ranking = []
+    # comment_righted_ids.each do | id |
+    #   @try_comment_ranking << Comment.find(id)
+    # end
 
     @comment_new = Comment.new
   end
@@ -40,33 +37,52 @@ class CommentsController < ApplicationController
   end
 
   def create
-    @keep_comments = Comment.where(group_id: params[:group_id], place_status: "keep")
-    comment_righted_count = @keep_comments.joins(:rights).group(:comment_id).count
-    comment_righted_ids = Hash[comment_righted_count.sort_by{ |_, v| -v }].keys
-    @keep_comment_ranking = []
-    comment_righted_ids.each do | id |
-      @keep_comment_ranking << Comment.find(id)
-    end
+    @keep_comments, @keep_comment_ranking = Comment.get_right_ranking(params[:group_id], "keep")
 
-    @probrem_comments = Comment.where(group_id: params[:group_id], place_status: "probrem")
-    comment_righted_count = @probrem_comments.joins(:rights).group(:comment_id).count
-    comment_righted_ids = Hash[comment_righted_count.sort_by{ |_, v| -v }].keys
-    @probrem_comment_ranking = []
-    comment_righted_ids.each do | id |
-      @probrem_comment_ranking << Comment.find(id)
-    end
+    @probrem_comments, @probrem_comment_ranking = Comment.get_right_ranking(params[:group_id], "probrem")
 
-    @try_comments = Comment.where(group_id: params[:group_id], place_status: "try")
-    comment_righted_count = @try_comments.joins(:rights).group(:comment_id).count
-    comment_righted_ids = Hash[comment_righted_count.sort_by{ |_, v| -v }].keys
-    @try_comment_ranking = []
-    comment_righted_ids.each do | id |
-      @try_comment_ranking << Comment.find(id)
-    end
+    @try_comments, @try_comment_ranking = Comment.get_right_ranking(params[:group_id], "try")
+    # @keep_comments = Comment.where(group_id: params[:group_id], place_status: "keep")
+    # comment_righted_count = @keep_comments.joins(:rights).group(:comment_id).count
+    # comment_righted_ids = Hash[comment_righted_count.sort_by{ |_, v| -v }].keys
+    # @keep_comment_ranking = []
+    # comment_righted_ids.each do | id |
+    #   @keep_comment_ranking << Comment.find(id)
+    # end
+    # comments_ids = @keep_comments.pluck(:id)
+    # no_rights_ids = comments_ids - comment_righted_ids
+    # no_rights_ids.each do | id |
+    #   @keep_comment_ranking << Comment.find(id)
+    # end
+    #
+    # @probrem_comments = Comment.where(group_id: params[:group_id], place_status: "probrem")
+    # comment_righted_count = @probrem_comments.joins(:rights).group(:comment_id).count
+    # comment_righted_ids = Hash[comment_righted_count.sort_by{ |_, v| -v }].keys
+    # @probrem_comment_ranking = []
+    # comment_righted_ids.each do | id |
+    #   @probrem_comment_ranking << Comment.find(id)
+    # end
+    #
+    # @try_comments = Comment.where(group_id: params[:group_id], place_status: "try")
+    # comment_righted_count = @try_comments.joins(:rights).group(:comment_id).count
+    # comment_righted_ids = Hash[comment_righted_count.sort_by{ |_, v| -v }].keys
+    # @try_comment_ranking = []
+    # comment_righted_ids.each do | id |
+    #   @try_comment_ranking << Comment.find(id)
+    # end
     # hidden_fieldでuser_idとgroup_idを取得
     @comment_new = Comment.new(params_post_comment_id)
     respond_to do |format|
       if  @comment_new.save
+          if params_post_comment_id[:place_status] == "keep"
+            @keep_comment_ranking << Comment.find(@comment_new.id)
+          end
+          if params_post_comment_id[:place_status] == "probrem"
+            @probrem_comment_ranking << Comment.find(@comment_new.id)
+          end
+          if params_post_comment_id[:place_status] == "try"
+            @try_comment_ranking << Comment.find(@comment_new.id)
+          end
           format.html { redirect_to @comment_new, notice: 'KPTを投稿しました！' }
           format.json { render :new, status: :created, location: @comment_new }
           format.js { @status = 'success' }
@@ -103,14 +119,16 @@ class CommentsController < ApplicationController
         place_status: update_status_params[:place_status]
       )
       user = User.find(update_comment.user_id)
+      right = Comment.find(update_comment.id).rights.count
       render json: {
-        'id':update_comment.id,
-        'user_id':update_comment.user_id,
-        'nick_name':user.nick_name,
-        'comment':update_comment.comment,
-        'group_id':update_comment.group_id,
-        'user_image':user.profile_image,
-        'place_status': update_status_params[:place_status]
+        'id': update_comment.id,
+        'user_id': update_comment.user_id,
+        'nick_name': user.nick_name,
+        'comment': update_comment.comment,
+        'group_id': update_comment.group_id,
+        'user_image': user.profile_image,
+        'place_status': update_status_params[:place_status],
+        'right': right
       }
   end
 
