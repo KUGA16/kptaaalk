@@ -1,7 +1,9 @@
+<!-- グループ作成ページ -->
+<div class="row">
 
-<h6>KPTグループ作成</h6>
-<div class="row group_new">
-  <div class="col">
+  <%= render 'shared/error_message', hoge: @group_new %>
+
+  <div class="col s4 m4 center" style="width: 50%;">
     <%= form_with model: @group_new, lacol: true do |f| %>
       <%= f.label :group_image %>
       <div class="group_new_field">
