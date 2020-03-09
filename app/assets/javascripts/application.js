@@ -63,7 +63,6 @@ $( document ).ready(function() {
         })
         // Ajaxリクエストが成功した時
         .done((data) => {
-  console.log(data);
             let id = parseInt(data.id);
             let user_id = parseInt(data.user_id);
             let nick_name = data.nick_name;
