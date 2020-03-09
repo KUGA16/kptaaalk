@@ -6,30 +6,16 @@
   padding: 0;
   box-sizing: border-box;
 }
-// indexページ
-.group_icon{
-
-}
-.group_icon > a > h6{
-  color: black;
-}
-.comment_index_group_image{
-  object-fit: cover;
-  margin-left: 250px;
-}
-.kpt_actions{
-  text-align: center;
-}
 // フレックスボックス
-#comment_box{
+#comment_box {
   display: flex;
 }
-.comments_left{
+.comments_left {
   width: 50%;
   margin-right: 16px;
   align-self: stretch;
 }
-.comments_right{
+.comments_right {
   width: 50%;
   align-self: stretch;
   background-color: #b2ebf2;
