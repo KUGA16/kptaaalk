@@ -1,6 +1,6 @@
 <!-- お仲間ページ -->
 <div class="row">
-
+<!-- ログインユーザープロフィール -->
   <%= render 'profile', user: @user %>
 
   <div class="col s12 m9">
@@ -15,63 +15,15 @@
     <ul class="tabs tabs-fixed-width tab-demo z-depth-0">
       <li class="tab"><a href="#followings">フォロー</a></li>
       <li class="tab"><a href="#followers">フォロワー</a></li>
-      <li class="tab"><a href="#add-friends">お仲間追加</a></li>
     </ul>
   </div>
 <!-- フォロー -->
   <div id="followings" class="col s9 m9">
-    <% @following_users.each do |user| %>
-      <div class="card" style="width: 32%; display: inline-block;">
-        <div class="card-image waves-effect waves-block waves-light">
-          <%= attachment_image_tag user, :profile_image, fallback: "no_image.jpg" %>
-        </div>
-        <div class="card-content center" style="height: 115px;">
-          <span class="card-title">
-            <%= user.nick_name %>
-          </span>
-          <%= user.introduction %>
-        </div>
-        <div class="card-action center">
-          <% if current_user != user %>
-            <% if user.followed_by?(current_user) %>
-                <%=link_to "フォロー済み", user_relationships_path(user.id), method: :delete, class: "btn" %>
-            <% else %>
-                <%=link_to "フォローする", user_relationships_path(user.id), method: :post, class: "btn" %>
-            <% end %>
-          <% end %>
-        </div>
-      </div>
-    <% end %>
+    <%= render 'following', following_users: @following_users %>
   </div>
-
 <!-- フォロワー -->
   <div id="followers" class="col s12 m9">
-    <% @follower_users.each do |user| %>
-      <div class="card" style="width: 32%; display: inline-block;">
-        <div class="card-image waves-effect waves-block waves-light">
-          <%= attachment_image_tag user, :profile_image, fallback: "no_image.jpg" %>
-        </div>
-        <div class="card-content center" style="height: 115px;">
-          <span class="card-title">
-            <%= user.nick_name %>
-          </span>
-          <%= user.introduction %>
-        </div>
-        <div class="card-action center">
-          <% if current_user != user %>
-            <% if user.followed_by?(current_user) %>
-                <%=link_to "フォロー済み", user_relationships_path(user.id), method: :delete, class: "btn" %>
-            <% else %>
-                <%=link_to "フォローする", user_relationships_path(user.id), method: :post, class: "btn" %>
-            <% end %>
-          <% end %>
-        </div>
-      </div>
-    <% end %>
-  </div>
-<!-- お仲間検索 -->
-  <div id="add-friends" class="col s12 m9">
-
+    <%= render 'follower', follower_users: @follower_users %>
   </div>
 
 </div>
