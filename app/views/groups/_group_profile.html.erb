@@ -29,5 +29,9 @@
       <i class="material-icons">exit_to_app</i>
       <%= link_to "グループ退会", group_group_users_path(group), method: :delete, data: {confirm: "本当に#{group.name}から退会しますか？"} %>
     </div>
+    <div class="card-action center">
+      <i class="material-icons">exit_to_app</i>
+      <%= link_to "グループ削除", group_path(group), method: :delete, data: {confirm: "本当に#{group.name}を削除しますか？"} %>
+    </div>
   </div>
 </div>
