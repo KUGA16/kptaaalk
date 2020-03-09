@@ -16,7 +16,7 @@
 <!-- グループ所属ユーザーのみ表示　-->
       <div class="card-action center">
         <i class="material-icons">dashboard</i>
-        <%= link_to "#{@group.name}のKPTをみる",  group_comments_path(@group)  %>
+        <%= link_to "#{@group.name}のKPT",  group_comments_path(@group)  %>
       </div>
       <div class="card-action center">
         <i class="material-icons">people</i>
@@ -63,7 +63,7 @@
               <%=link_to "フォローする", user_relationships_path(user.id), method: :post, class: "btn" %>
           <% end %>
         <% else %>
-          <%=link_to "マイページ", user_relationships_path(user.id), method: :post, class: "btn" %>
+          <%=link_to "マイページ", user_path(user), class: "btn" %>
         <% end %>
       </div>
     </div>
