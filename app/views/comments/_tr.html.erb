@@ -1,10 +1,10 @@
 
 <div class="comments_left">
 <!-- keep投稿内容　-->
-  <div class="comments">
+  <div class="comments drop_area" id="keep">
     <span>Keep</span>
       <% keep_comments.each do |comment| %>
-        <div class="col s4 kpt_comments">
+        <div class="col s4 kpt_comments item" name="<%= comment.id %>"　>
           <%= attachment_image_tag comment.user, :profile_image, :fill, 80, 80, fallback: "no_group_image.jpg", size:'80x80' %>
           <%= comment.user.nick_name %>
           <%= comment.comment %>
@@ -16,10 +16,10 @@
       <% end %>
   </div>
   <!-- probrem投稿内容　-->
-  <div class="comments p_comments">
+  <div class="comments p_comments drop_area" id="probrem">
     <span>Probrem</span>
     <% probrem_comments.each do |comment| %>
-      <div class="col s4 kpt_comments">
+      <div class="col s4 kpt_comments item" name="<%= comment.id %>">
         <%= attachment_image_tag comment.user, :profile_image, :fill, 80, 80, fallback: "no_group_image.jpg", size:'80x80' %>
         <%= comment.user.nick_name %>
         <%= comment.comment %>
@@ -33,10 +33,10 @@
 </div>
 
 <!-- try投稿内容　-->
-<div class="comments_right comments">
+<div class="comments_right comments drop_area" id="try">
   <span>Try</span>
   <% try_comments.each do |comment| %>
-    <div class="col s4 kpt_comments">
+    <div class="col s4 kpt_comments item" name="<%= comment.id %>">
       <%= attachment_image_tag comment.user, :profile_image, :fill, 80, 80, fallback: "no_group_image.jpg", size:'80x80' %>
         <%= comment.user.nick_name %>
       <%= comment.comment %>

@@ -1,31 +1,16 @@
-
-<%= render 'layouts/flash_message' %> <!-- サクセスメッセージ -->
-
-<h6>グループ詳細</h6>
+<!-- グループ詳細ページ -->
 <div class="row">
-  <div class="col s12 group_show_actions">
-    <%= attachment_image_tag @group, :group_image, :fill, 350, 250, fallback: "no_group_image.jpg", size:'350x250' %><br>
-    <%= @group.name %><br>
-    <%= link_to "メンバー追加", new_group_group_users_path(@group), class: "btn cyan" %>
-    <%= link_to "グループ編集", edit_group_path(@group), class: "btn" %>
-    <%= link_to "グループ退会", group_group_users_path(@group), method: :delete, data: {confirm: "本当に#{@group.name}から退会しますか？"}, class: "btn blue-grey"  %>
+<!-- グループのプロフィール -->
+  <%= render 'group_profile', group: @group, group_users: @group_users %>
+<!-- メンバー一覧 -->
+  <div class="col s12 m9">
+    <div class="card-panel teal lighten-4 z-depth-0">
+      <span class="white-text">
+        <h6>参加メンバー</h6>
+      </span>
+    </div>
   </div>
-</div>
+<!-- ユーザー一覧 -->
+  <%= render 'user_list', hoge: @group_users %>
 
-<h6>参加メンバー</h6>
-<div class="row">
-  <div class="group_user">
-    <% @group_users.each do |group_user| %>
-      <div class="col s2 center">
-        <%= attachment_image_tag group_user.user, :profile_image, :fill, 120, 120, fallback: "no_image.jpg", size:'120x120' %><br>
-        <%= group_user.user.nick_name %>
-      </div>
-    <% end %>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col s12 group_comments_actions">
-    <%= link_to "#{@group.name}のKPTをみる",  group_comments_path(@group)  %>
-  </div>
 </div>
