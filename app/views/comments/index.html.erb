@@ -32,5 +32,12 @@
 <div id="comment-modal" class="modal"></div><!-- ここに_formが入る -->
 
 <div id="comment_box">
-  <%= render 'tr', keep_comments: @keep_comments, probrem_comments: @probrem_comments, try_comments: @try_comments %><!-- ここにcreate.jsが上書き -->
+  <%= render 'tr', keep_comments: @keep_comment_ranking, probrem_comments: @probrem_comment_ranking, try_comments: @try_comment_ranking %><!-- ここにcreate.jsが上書き -->
+</div>
+
+<div style="display: none;">
+  <%= form_with model: @comment_new, url: place_status_update_path, id: "status_update_form" do |f| %>
+    <%= f.text_field :id, id: "update_comment_id" %> <!-- comment.idが入る、idを設定 -->
+    <%= f.text_field :place_status, id: "update_place_status" %><!-- place_statusが入る -->
+  <% end %>
 </div>
