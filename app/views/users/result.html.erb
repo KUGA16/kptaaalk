@@ -1,15 +1,26 @@
 <!-- お仲間検索ページ -->
 <div class="row">
-  <div class="search_form">
-    <div class="form center">
-      <%= search_form_for @q, url: result_users_path  do |f| %>
-        <%= f.label :nick_name %>
-<!-- nameカラムの単語の一部分を含むものを検索 -->
-        <%= f.search_field :nick_name_cont %>
-        <%= f.submit "検索", class: 'btn btn-primary' %>
-      <% end %>
+<!-- ログインユーザープロフィール -->
+  <%= render 'profile', user: current_user %>
+
+  <div class="col s12 m9">
+    <div class="card-panel teal lighten-4 z-depth-0">
+
+        <div class="search_form">
+          <div class="form center">
+            <%= search_form_for @q, url: result_users_path  do |f| %>
+      <!-- nameカラムの単語の一部分を含むものを検索 -->
+              <%= f.search_field :nick_name_cont, :placeholder => "ニックネームを入力", style: "width: 300px; background-color: white;" %>
+              <%= f.submit "検索", class: 'btn btn-primary' %>
+            <% end %>
+          </div>
+        </div>
+
+
+
     </div>
   </div>
+
 
   <% @search_users.each do |user| %>
     <div class="col s2">
