@@ -11,6 +11,5 @@
     </div>
   </div>
 <!-- グループのユーザー一覧 -->
-  <%= render 'user_list', hoge: @group_users %>
-
+  <%= render 'user_list', hoge: @group_users.map(&:user) %>
 </div>
