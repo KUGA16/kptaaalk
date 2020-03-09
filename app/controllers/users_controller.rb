@@ -7,15 +7,6 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @join_groups = GroupUser.where(user_id: current_user.id).where(is_confirmed: true)
     @invited_groups = GroupUser.where(user_id: current_user.id).where(is_confirmed: false)
-# (qurey)検索フォームで入力された値をパラメータで取得
-    # @q = User.ransack(params[:q])
-    # if params[:q] == nil || params[:q][:nick_name_cont] == ""
-    #   @search_users = []
-    #   return
-    # end
-# 空検索しないようにするため
-# @search_usersの配列からcurrent_user要素は取り除く
-    # @search_users = @q.result(distinct: true).where.not(id: current_user.id)
   end
 
   def edit
