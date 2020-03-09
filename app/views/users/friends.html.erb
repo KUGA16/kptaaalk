@@ -13,13 +13,13 @@
 <!-- タブメニュー -->
   <div class="col s12 m9">
     <ul class="tabs tabs-fixed-width tab-demo z-depth-0">
-      <li class="tab"><a href="#test1">フォロー</a></li>
-      <li class="tab"><a href="#test2">フォロワー</a></li>
-      <li class="tab"><a href="#test3">お仲間追加</a></li>
+      <li class="tab"><a href="#followings">フォロー</a></li>
+      <li class="tab"><a href="#followers">フォロワー</a></li>
+      <li class="tab"><a href="#add-friends">お仲間追加</a></li>
     </ul>
   </div>
 <!-- フォロー -->
-  <div id="test1" class="col s9 m9">
+  <div id="followings" class="col s9 m9">
     <% @following_users.each do |user| %>
       <div class="card" style="width: 32%; display: inline-block;">
         <div class="card-image waves-effect waves-block waves-light">
@@ -45,7 +45,7 @@
   </div>
 
 <!-- フォロワー -->
-  <div id="test2" class="col s12 m9">
+  <div id="followers" class="col s12 m9">
     <% @follower_users.each do |user| %>
       <div class="card" style="width: 32%; display: inline-block;">
         <div class="card-image waves-effect waves-block waves-light">
@@ -70,7 +70,7 @@
     <% end %>
   </div>
 <!-- お仲間検索 -->
-  <div id="test3" class="col s12 m9">
+  <div id="add-friends" class="col s12 m9">
 
   </div>
 
