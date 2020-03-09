@@ -9,12 +9,12 @@
         <%= group.name %>
       </span>
     </div>
-    <div class="card-action flex center" style="justify-content: center;">
+    <div class="card-action center">
       <p>メンバー<%= group_users.count %>人</p>
     </div>
 <!-- グループ所属ユーザーのみ表示　-->
     <div class="card-action center">
-      <i class="material-icons">dashboard</i>
+      <i class="material-icons">web</i>
       <%= link_to "#{group.name}のKPT",  group_comments_path(group)  %>
     </div>
     <div class="card-action center">
@@ -23,14 +23,14 @@
     </div>
     <div class="card-action center">
       <i class="material-icons">build</i>
-      <%= link_to "プロフィール編集", edit_group_path(group) %>
+      <%= link_to "グループ編集", edit_group_path(group) %>
     </div>
     <div class="card-action center">
       <i class="material-icons">exit_to_app</i>
       <%= link_to "グループ退会", group_group_users_path(group), method: :delete, data: {confirm: "本当に#{group.name}から退会しますか？"} %>
     </div>
     <div class="card-action center">
-      <i class="material-icons">exit_to_app</i>
+      <i class="material-icons">delete</i>
       <%= link_to "グループ削除", group_path(group), method: :delete, data: {confirm: "本当に#{group.name}を削除しますか？"} %>
     </div>
   </div>
