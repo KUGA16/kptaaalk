@@ -1,30 +1,52 @@
-
-<%= render 'shared/flash_message' %> <!-- サクセスメッセージ -->
-
-<h6>メンバー追加</h6>
+<!-- メンバー追加ページ -->
 <div class="row">
-  <div class="col s12 center">
-    <%= attachment_image_tag @group, :group_image, :fill, 350, 250, fallback: "no_group_image.jpg", size:'350x250', class: "group_logo" %><br>
-    <%= @group.name %>
+
+  <div class="col s12 m3">
+    <div class="card z-depth-0">
+      <div class="card-image">
+        <%= attachment_image_tag @group, :group_image, fallback: "no_group_image.jpg" %>
+      </div>
+      <div class="card-content center">
+        <span class="card-title">
+          <%= @group.name %>
+        </span>
+      </div>
+      <div class="card-action center">
+        <i class="material-icons">build</i>
+        <%= link_to "グループ編集", edit_group_path(@group) %>
+      </div>
+    </div>
   </div>
-</div>
 
-<div class="row">
-  <div class="col s12 can_invite_users">
+  <div class="col s12 m9">
+    <div class="card-panel teal lighten-4 z-depth-0">
+      <span class="white-text">
+        <h6>招待するメンバーを選択してください</h6>
+      </span>
+    </div>
+  </div>
+
+  <div class="col s12 m9">
     <%= form_with model: [@group,@group_user_new], local: true do |f| %>
       <% @can_invite_users.each do |user| %>
-          <label>
-            <%= f.check_box :user_id, { multiple: true ,include_hidden: false }, checked_value = user.id %>
-            <span>
-              <%= attachment_image_tag user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg", size:'60x60' %>
-              <%= user.nick_name %>
-            </span>
-          </label>
+        <div class="card" style="width: 32%; display: inline-block;">
+          <div class="card-image waves-effect waves-block waves-light">
+            <%= attachment_image_tag user, :profile_image, fallback: "no_image.jpg" %>
+          </div>
+          <div class="card-content">
+            <label>
+              <%= f.check_box :user_id, { multiple: true ,include_hidden: false }, checked_value = user.id %>
+              <span class="card-title activator grey-text text-darken-4">
+                <%= user.nick_name %>
+              </span>
+            </label>
+          </div>
+        </div>
       <% end %>
-      <div class="can_invite_users_actions">
-        <%= link_to "戻る", new_group_path(group_id: @group.id), class: "btn" %>
-        <%= f.submit "次へ", class: "btn" %>
+      <div class="actions">
+        <%= f.submit "次へ", class: "btn-large" %>
       </div>
     <% end %>
   </div>
+
 </div>
