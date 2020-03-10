@@ -11,7 +11,9 @@
           <span id="rights_buttons_<%= comment.id %>">
             <%= render 'rights/button', comment: comment %>
           </span>
-          <%= link_to "削除", group_comment_path(group_id: comment.group_id, id: comment.id), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn light-green" %>
+          <%= link_to group_comment_path(group_id: comment.group_id, id: comment.id), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn  blue-grey lighten-3 z-depth-0" do %>
+            <i class="material-icons">delete_forever</i>
+          <% end %>
         </div>
       <% end %>
   </div>
@@ -26,7 +28,9 @@
         <span id="rights_buttons_<%= comment.id %>">
           <%= render 'rights/button', comment: comment %>
         </span>
-        <%= link_to "削除", group_comment_path(group_id: comment.group_id, id: comment.id), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn light-green" %>
+        <%= link_to group_comment_path(group_id: comment.group_id, id: comment.id), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn  blue-grey lighten-3 z-depth-0" do %>
+          <i class="material-icons">delete_forever</i>
+        <% end %>
       </div>
     <% end %>
   </div>
@@ -43,7 +47,9 @@
       <span id="rights_buttons_<%= comment.id %>">
         <%= render 'rights/button', comment: comment %>
       </span>
-      <%= link_to "削除", group_comment_path(group_id: comment.group_id, id: comment.id), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn light-green" %>
+      <%= link_to group_comment_path(group_id: comment.group_id, id: comment.id), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn  blue-grey lighten-3 z-depth-0" do %>
+        <i class="material-icons">delete_forever</i>
+      <% end %>
     </div>
   <% end %>
 </div>

@@ -10,7 +10,6 @@
       </span>
     </div>
   </div>
-<!-- ユーザー一覧 -->
-  <%= render 'user_list', hoge: @group_users %>
-
+<!-- グループのユーザー一覧 -->
+  <%= render 'user_list', hoge: @group_users.map(&:user) %>
 </div>

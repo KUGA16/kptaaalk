@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  get 'relationships/create'
-  get 'relationships/destroy'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   #deviseを使用する際にURLとしてusersを含む
   devise_for :users
@@ -11,8 +9,7 @@ Rails.application.routes.draw do
 
   resources :users,          only: [:show, :edit, :update, :destroy] do
     resource :relationships, only: [:create,:destroy]
-    get :follows,   on: :member #フォロー一覧
-    get :followers, on: :member #フォロワー一覧
+    get 'friends' #フォロー、フォロワー一覧
     member do
       get 'withdraw' #サイト退会ページ
     end

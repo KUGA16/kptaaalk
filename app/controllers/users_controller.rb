@@ -1,13 +1,12 @@
 class UsersController < ApplicationController
 
   before_action :authenticate_user!
-  before_action :baria_user, only: [:show, :edit, :update]
+  before_action :barrier_user, only: [:edit, :update]
 
   def show
     @user = User.find(params[:id])
     @join_groups = GroupUser.where(user_id: current_user.id).where(is_confirmed: true)
     @invited_groups = GroupUser.where(user_id: current_user.id).where(is_confirmed: false)
-    @follow_users = @user.followings
   end
 
   def edit
@@ -27,13 +26,21 @@ class UsersController < ApplicationController
   end
 
   def result
-    @q = User.ransack(params[:q]) # (qurey)検索フォームで入力された値をパラメータで取得
+# (qurey)検索フォームで入力された値をパラメータで取得
+    @q = User.ransack(params[:q])
     if params[:q] == nil || params[:q][:nick_name_cont] == ""
       @search_users = []
       return
     end
-    @search_users = @q.result(distinct: true).where.not(id: current_user.id) # 空検索しないようにするため
-    # @search_usersの配列から、idがcurrent_user.id と同じ要素は取り除く
+# 空検索しないようにするため
+# @search_usersの配列からcurrent_user要素は取り除く
+    @search_users = @q.result(distinct: true).where.not(id: current_user.id)
+  end
+
+  def friends
+    @user = User.find(params[:user_id])
+    @following_users = @user.followings
+    @follower_users = @user.followers
   end
 
 
@@ -44,7 +51,7 @@ class UsersController < ApplicationController
   end
 
   #url直接防止　メソッドを自己定義してbefore_actionで発動。
-  def baria_user
+  def barrier_user
        user = User.find(params[:id])
     unless user.id == current_user.id
       redirect_to user_path(current_user)

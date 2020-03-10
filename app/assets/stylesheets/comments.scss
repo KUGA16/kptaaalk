@@ -6,6 +6,7 @@
   padding: 0;
   box-sizing: border-box;
 }
+<<<<<<< HEAD
 // indexページ
 .item:hover {
   cursor: pointer;
@@ -20,16 +21,18 @@
 .kpt_actions{
   text-align: center;
 }
+=======
+>>>>>>> feature/202003/kuga/layout
 // フレックスボックス
-#comment_box{
+#comment_box {
   display: flex;
 }
-.comments_left{
+.comments_left {
   width: 50%;
   margin-right: 16px;
   align-self: stretch;
 }
-.comments_right{
+.comments_right {
   width: 50%;
   align-self: stretch;
   background-color: #b2ebf2;

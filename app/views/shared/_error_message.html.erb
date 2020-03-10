@@ -1,0 +1,9 @@
+<!-- エラーメッセージ表示-->
+<% if hoge.errors.any? %>
+	<h5><%= hoge.errors.count %>件のエラーがあります！</h5><!--エラーメッセ-->
+	<ul>
+		<% hoge.errors.full_messages.each do |message| %>
+		<li><%= message %></li>
+		<% end %>
+	</ul>
+<% end %>

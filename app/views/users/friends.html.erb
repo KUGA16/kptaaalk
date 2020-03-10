@@ -1,0 +1,29 @@
+<!-- お仲間ページ -->
+<div class="row">
+<!-- ログインユーザープロフィール -->
+  <%= render 'profile', user: @user %>
+
+  <div class="col s12 m9">
+    <div class="card-panel teal lighten-4 z-depth-0">
+      <span class="white-text">
+        <h6>お仲間</h6>
+      </span>
+    </div>
+  </div>
+<!-- タブメニュー -->
+  <div class="col s12 m9">
+    <ul class="tabs tabs-fixed-width tab-demo z-depth-0">
+      <li class="tab"><a href="#followings">フォロー</a></li>
+      <li class="tab"><a href="#followers">フォロワー</a></li>
+    </ul>
+  </div>
+<!-- フォロー -->
+  <div id="followings" class="col s9 m9">
+    <%= render 'following', following_users: @following_users %>
+  </div>
+<!-- フォロワー -->
+  <div id="followers" class="col s12 m9">
+    <%= render 'follower', follower_users: @follower_users %>
+  </div>
+
+</div>
