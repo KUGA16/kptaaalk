@@ -1,6 +1,8 @@
-
-<h6>グループ編集</h6>
+<!-- グループ編集ページ -->
 <div class="row edit_group_profile">
+
+  <%= render 'shared/error_message', hoge: @group %>
+
   <div class="col s12">
     <%= form_with model: @group, local: true do |f| %>
       <div class="field center">
@@ -18,4 +20,5 @@
       </div>
     <% end %>
   </div>
+  
 </div>

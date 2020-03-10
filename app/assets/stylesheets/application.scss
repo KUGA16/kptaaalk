@@ -26,35 +26,30 @@ html {
   font-family: "Yu Gothic",YuGothic,sans-serif,"Hiragino Kaku Gothic ProN","Hiragino Kaku Gothic Pro",sans-serif,"ＭＳ ゴシック";
 }
 // ヘッダー
-.headline {
-  display: flex;
-  // justify-content: flex-end;
-  align-items: center;
+nav .nav-wrapper {
+  height: 100px;
   background-color: #b2dfdb;
 }
-.headline > :first-child{
-  margin: 0 auto;
+// ナビゲーション
+nav .nav-wrapper i {
+  font-size: 20px;
+  height: 100px;
+  line-height: 100px;
 }
 // KPTAAALKロゴ
 .brand-logo {
-  width: 250px;
-  height: 130px;
+  width: 180px;
+  height: 100px;
   object-fit: cover;
-
 }
-i.material-icons{
-  color: #ffab00;
+// ログインユーザーimg
+.dropdown-trigger {
+  height: 100px;
 }
-.hide-on-med-and-down > li{
-  margin-right: 20px;
-}
-.dropdown-trigger>img{
-  border-radius: 25px;
-}
-i.right{
-  font-size: 30px;
-  color: #4db6ac;
-  padding-top: 20px;
+.dropdown-trigger > img {
+  margin-top: 10px;
+  border-radius: 40px;
+  object-fit: cover;
 }
 .container {
   width: 100%;
@@ -64,11 +59,13 @@ main {
 }
 // フッター
 .page-footer {
-  color: #80cbc4;
   font-size: 25px;
   padding-bottom: 10px;
-  background-color: #b2dfdb;
   margin-top: 20px;
+}
+// エラーメッセージ
+#error_explanation{
+  color: red;
 }
 // フラッシュメッセージ
 .alert{

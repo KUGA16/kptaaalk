@@ -1,33 +1,33 @@
+<!-- プロフィール編集画面 -->
+<div class="row edit_profile">
+  <div class="col s12">
+<!-- エラーメッセージ -->
+    <%= render 'shared/error_message', hoge: @user %>
 
-<h6>プロフィール編集</h6>
-  <div class="row edit_profile">
-    <div class="col s12">
-      <%= form_with model: @user, local: true do |f| %>
+    <%= form_with model: @user, local: true do |f| %>
+      <div class="field">
+        <%= f.label :profile_image %><br>
+        <%= f.attachment_field :profile_image, direct: true %>
+      </div>
 
-        <div class="field">
-          <%= f.label :profile_image %><br>
-          <%= f.attachment_field :profile_image, direct: true %>
-        </div>
+      <div class="field">
+        <%= f.label :name %><br>
+        <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+      </div>
+      
+      <div class="field">
+        <%= f.label :nick_name %><br>
+        <%= f.text_field :nick_name, autofocus: true, autocomplete: "nick_name" %>
+      </div>
 
-        <div class="field">
-          <%= f.label :name %><br>
-          <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
-        </div>
+      <div class="field">
+        <%= f.label :introduction %><br>
+        <%= f.text_area :introduction, autofocus: true, autocomplete: "introduction", class: "materialize-textarea" %>
+      </div>
 
-        <div class="field">
-          <%= f.label :nick_name %><br>
-          <%= f.text_field :nick_name, autofocus: true, autocomplete: "nick_name" %>
-        </div>
-
-        <div class="field">
-          <%= f.label :introduction %><br>
-          <%= f.text_area :introduction, autofocus: true, autocomplete: "introduction", class: "materialize-textarea" %>
-        </div>
-
-        <div class="action">
-          <%= f.submit '保存', class: "btn" %>
-        </div>
-
-      <% end %>
-    </div>
+      <div class="action">
+        <%= f.submit '保存', class: "btn" %>
+      </div>
+    <% end %>
   </div>
+</div>

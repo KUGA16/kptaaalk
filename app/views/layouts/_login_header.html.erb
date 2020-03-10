@@ -1,0 +1,20 @@
+
+<!-- ログイン中ヘッダー　-->
+<ul id="nav-mobile" class="right hide-on-med-and-down">
+  <li>
+    <!--グループに招待されているか -->
+    <% if @is_notification.present? %>
+      <a href="#">
+        <i class="material-icons">notifications_active</i>
+      </a>
+    <% end %>
+  </li>
+  <li>
+    <%= render 'layouts/dropdown' %> <!-- ドロップダウン子メニュー -->
+
+    <a class="dropdown-trigger" data-target="dropdown1">
+      <%= attachment_image_tag current_user, :profile_image, :fill, 80, 80, fallback: "no_image.jpg", size:'80x80'%>
+      <i class="material-icons right">arrow_drop_down</i>
+    </a>
+  </li>
+</ul>

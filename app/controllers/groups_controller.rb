@@ -38,6 +38,9 @@ class GroupsController < ApplicationController
   end
 
   def destroy
+    group = Group.find(params[:id])
+  	group.destroy
+  	redirect_to user_path(current_user), notice: "#{group.name}を削除しました"
   end
 
 

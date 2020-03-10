@@ -10,44 +10,25 @@ body {
 main {
   flex: 10 auto;
 }
-.login_form {
-  float: none;
-  text-align: center;
-  margin-top: 70px;
-  margin-left: 500px;
+// ログインフォーム
+#user_remember_me{
+  opacity: initial;
+  position: inherit;
+  pointer-events: auto;
 }
-.login_actions {
-  margin: 15px 15px;
+// 新規登録フォーム
+.border{
+  border-bottom: solid 1px #ff7f50;
 }
-.signin_form {
-  float: none;
-  width: 50%;
-  text-align: center;
-  margin-left: 460px;
-}
+// 6文字以上　テキスト
 .field,em {
+  font-size: 12px;
   color: grey;
 }
-// show.html.erb
-.profile{
-  width: 40%;
-  text-align: center;
-}
-.actions{
-  margin-top: 10px;
-}
-h6{
-  border-bottom: 2px solid #e0e0e0;
-  width: 18%;
-  padding: 4px;
-}
-// result.html.erb
-.search_form{
+// パスワード変更ページ
+.flex{
   display: flex;
-  justify-content: center;
-}
-.form{
-  text-align: center;
+  flex-wrap: wrap;
 }
 // edit.html.erb
 .edit_profile{
@@ -55,7 +36,4 @@ h6{
   justify-content: center;
   text-align: center;
   width: 30%;
-}
-#user_profile_image{
-  margin: 20px 20px;
 }

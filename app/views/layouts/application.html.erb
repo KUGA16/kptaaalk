@@ -4,26 +4,54 @@
     <title>Kptaaalk</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <!-- topページ以外 -->
+    <% if request.path != '/' %>
     <header>
-      <%= render 'layouts/header' %>
+      <nav>
+        <div class="nav-wrapper">
+          <a href="/">
+            <%= image_tag 'kpt_image.png', alt: "KPTAAALK icon", class: "brand-logo center" %>
+          </a>
+          <% if user_signed_in? %>
+            <!-- ユーザーサインイン時 -->
+            <%= render 'layouts/login_header' %>
+          <% else %>
+            <!-- ユーザーサインアウト時 -->
+            <%= render 'layouts/signout_header'%>
+          <% end %>
+        </div>
+      </nav>
     </header>
+    <% else %>
+    <!-- topページのみ -->
+      <div style="background-color: #b2dfdb">
+    <% end %>
 
+    <!-- 共通 -->
     <main>
       <div class="container">
+        <!-- フラッシュメッセージ -->
+        <%= render 'shared/flash_message' %>
         <%= yield %>
       </div>
     </main>
 
-    <footer class="page-footer center">
+    <!-- topページのみ -->
+    <% if request.path == '/' %>
+      <footer class="page-footer center" style="color: #80cbc4; background-color: #b2dfdb">
+    <% else %>
+      <!-- topページ以外 -->
+      <footer class="page-footer center" style="color: #cfd8dc; background-color: white">
+    <% end %>
         <div class="container">
           KPTAAALK
         </div>
-    </footer>
+      </footer>
+
   </body>
 </html>
