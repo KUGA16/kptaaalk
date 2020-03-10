@@ -50,7 +50,7 @@ class UsersController < ApplicationController
     params.require(:user).permit(:name, :nick_name, :introduction, :profile_image)
   end
 
-  #url直接防止　メソッドを自己定義してbefore_actionで発動。
+  #url直接入力禁止
   def barrier_user
        user = User.find(params[:id])
     unless user.id == current_user.id
