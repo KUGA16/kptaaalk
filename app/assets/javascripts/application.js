@@ -26,6 +26,10 @@ $(document).ready(function(){
 $( document ).ready(function(){
   $(".dropdown-trigger").dropdown();
 });
+// タブ初期化
+$(document).ready(function(){
+    $('.tabs').tabs();
+  });
 // ドラッグ&ドロップ
 $( document ).ready(function() {
   $('.item').draggable();
