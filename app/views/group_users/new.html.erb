@@ -25,7 +25,7 @@
   <div class="col s12 m9">
     <%= form_with model: [@group,@group_user_new], local: true do |f| %>
 <!-- 招待できるユーザーがいる場合 -->
-      <% if @can_invite_users =! [] %>
+      <% if @can_invite_users.present? %>
         <% @can_invite_users.each do |user| %>
           <div class="card" style="width: 32%; display: inline-block;">
             <div class="card-image waves-effect waves-block waves-light">
