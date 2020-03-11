@@ -1,10 +1,10 @@
 <!-- グループ作成ページ -->
 <div class="row">
-
-  <%= render 'shared/error_message', hoge: @group_new %>
+<!-- エラー文 -->
+  <%= render 'shared/error_message', something: @group_new %>
 
   <div class="col s4 m4 center" style="width: 50%;">
-    <%= form_with model: @group_new, lacol: true do |f| %>
+    <%= form_with model: @group_new, local: true do |f| %>
       <%= f.label :group_image %>
       <div class="group_new_field">
         <%= f.attachment_field :group_image %>
