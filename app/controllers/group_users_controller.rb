@@ -57,9 +57,8 @@ class GroupUsersController < ApplicationController
 
 #url直接入力禁止
   def barrier_group_user
-       group = Group.find(params[:group_id])
-       group_user = GroupUser.where(user_id: current_user.id).where(is_confirmed: true)
-    unless group.id == group_user.map(&:group_id)
+    group_users = GroupUser.where(group_id: params[:group_id]).where(user_id: current_user.id).where(is_confirmed: true).pluck(:user_id)
+    unless group_users.include?(current_user.id)
       redirect_to user_path(current_user)
     end
   end
