@@ -47,6 +47,7 @@
 
 <div style="display: none;">
   <%= form_with model: @comment_new, url: place_status_update_path, id: "status_update_form" do |f| %>
+    <%= f.text_field :group_id, value: @group.id %>
     <%= f.text_field :id, id: "update_comment_id" %> <!-- comment.idが入る、idを設定 -->
     <%= f.text_field :place_status, id: "update_place_status" %><!-- place_statusが入る -->
   <% end %>
