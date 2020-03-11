@@ -4,7 +4,7 @@ class GroupsController < ApplicationController
 
   def show
     @group = Group.find(params[:id])
-    @group_users = GroupUser.where(group_id: params[:id]).where(is_confirmed: true)
+    @group_users = GroupUser.where(group_id: @group.id).where(is_confirmed: true)
   end
 
   def new
@@ -12,8 +12,10 @@ class GroupsController < ApplicationController
   end
 
   def create
-    if @group_new = Group.create!(group_params)
-        GroupUser.create!(
+    @group_new = Group.new(group_params)
+    if @group_new.save
+# グループ作成者をgroup_usersテーブルに登録
+        GroupUser.create(
           user_id: current_user.id,
           group_id: @group_new.id,
           is_confirmed: true
