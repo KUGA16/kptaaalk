@@ -26,14 +26,12 @@ class UsersController < ApplicationController
   end
 
   def result
-# (qurey)検索フォームで入力された値をパラメータで取得
+    # (qurey)検索フォームで入力された値をパラメータで取得
     @q = User.ransack(params[:q])
     if params[:q] == nil || params[:q][:nick_name_cont] == ""
       @search_users = []
       return
     end
-# 空検索しないようにするため
-# @search_usersの配列からcurrent_user要素は取り除く
     @search_users = @q.result(distinct: true).where.not(id: current_user.id)
   end
 
@@ -42,7 +40,6 @@ class UsersController < ApplicationController
     @following_users = @user.followings
     @follower_users = @user.followers
   end
-
 
   private
 

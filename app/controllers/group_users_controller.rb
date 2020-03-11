@@ -6,9 +6,9 @@ class GroupUsersController < ApplicationController
   def new
     @group_user_new = GroupUser.new
     @group = Group.find(params[:group_id])
-#フォローしているユーザーを配列で取得
+    #フォローしているユーザーを配列で取得
     follower_ids = current_user.followings.pluck(:id)
-#params[:group_id]と同じidのuserを配列かつint型で取得
+    #params[:group_id]と同じidのuserを配列かつint型で取得
     group_user_ids = GroupUser.where(group_id: @group.id).pluck(:user_id).map!(&:to_i)
     invite_user_ids = follower_ids - group_user_ids #差分を取得
     @can_invite_users = User.find(invite_user_ids)
@@ -48,14 +48,13 @@ class GroupUsersController < ApplicationController
     redirect_to user_path(current_user), notice: "「#{no_join_group.group.name}」の参加を取り止めました！"
   end
 
-
   private
 
   def params_group_user_ids
     params.require(:group_user).permit(user_id: [])
   end
 
-#url直接入力禁止
+  #url直接入力禁止
   def barrier_group_user
     group_users = GroupUser.where(group_id: params[:group_id]).where(user_id: current_user.id).where(is_confirmed: true).pluck(:user_id)
     unless group_users.include?(current_user.id)
