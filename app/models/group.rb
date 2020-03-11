@@ -5,7 +5,10 @@ class Group < ApplicationRecord
   has_many :rights,       dependent: :destroy #groupが消えるとrightも消える
 
   attachment :group_image#画像を挿入するため
-  #グループ名:空白禁止、、一意であること、1文字以上20文字以内
-  validates :name, presence: true, uniqueness: true, length: { in: 1..20 }
+  #グループ名:空白禁止、一意であること、1文字以上20文字以内
+  validates :name,
+    presence: true,
+    uniqueness: true,
+    length: { in: 1..20 }
 
 end
