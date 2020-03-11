@@ -7,11 +7,9 @@ class GroupUsersController < ApplicationController
     @group = Group.find(params[:group_id])
     follower_ids = current_user.followings.pluck(:id) #フォローしているユーザーを配列で取得
     #params[:group_id]と同じgroup_idのGroupUserのuser_idを配列かつint型で取得
-    group_user_ids = GroupUser.where(group_id: params[:group_id]).pluck(:user_id).map!(&:to_i)
+    group_user_ids = GroupUser.where(group_id: @group.id).pluck(:user_id).map!(&:to_i)
     invite_user_ids = follower_ids - group_user_ids #差分を取得
-    @can_invite_users = User.find(invite_user_ids) #差分user_idを持つuserの情報を取得
-    # チェックした瞬間にユーザー表示
-    # @join_users = GroupUser.where(group_id: params[:group_id])
+    @can_invite_users = User.find(invite_user_ids)
   end
 
   def create
