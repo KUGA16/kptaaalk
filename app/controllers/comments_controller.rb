@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
 
   before_action :authenticate_user!
+  before_action :barrier_comment, except: [:place_status_update]
 
   def index
     @group = Group.find(params[:group_id])
@@ -147,6 +148,14 @@ class CommentsController < ApplicationController
 
   def status_params
     params.require(:comment).permit(:id, :place_status)
+  end
+
+#url直接入力禁止
+  def barrier_comment
+    group_users = GroupUser.where(group_id: params[:group_id]).where(user_id: current_user.id).where(is_confirmed: true).pluck(:user_id)
+    unless group_users.include?(current_user.id)
+      redirect_to user_path(current_user)
+    end
   end
 
 end
