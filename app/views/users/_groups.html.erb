@@ -32,27 +32,40 @@
       <div class="card-image waves-effect waves-block waves-light">
         <%= attachment_image_tag group_user.group, :group_image, :fill, 298, 298, fallback: "no_group_image.jpg" %>
       </div>
+
       <div class="card-content">
         <span class="card-title activator grey-text text-darken-4" style="border-bottom: double 1px #ff7f50;">
           <%= group_user.group.name %>
+<!-- ログインユーザーのみ -->
+      <% if user == current_user %>
           <i class="material-icons right">
             more_vert
           </i>
         </span>
-        <p class="center" style="width: 100px; background-color: #f8bbd0; border-radius: 20px;">
-          参加中
-        </p>
+          <p class="center" style="width: 100px; background-color: #f8bbd0; border-radius: 20px;">
+            参加中
+          </p>
       </div>
-      <div class="card-reveal">
-        <span class="card-title grey-text text-darken-4" style="border-bottom: double 1px #ff7f50;">
-          <%= group_user.group.name %>
-          <i class="material-icons right">close</i>
-        </span>
-        <%= link_to "#{group_user.group.name}のKPTをみる",  group_comments_path(group_user.group.id)  %>
-        <%= link_to "グループメンバー", group_path(group_user.group.id) %>
-        <%= link_to "グループ編集", edit_group_path(group_user.group.id) %>
-        <%= link_to "グループ退会", group_group_users_path(group_user.group.id), method: :delete, data: {confirm: "本当に#{group_user.group.name}から退会しますか？"} %>
-      </div>
+
+        <div class="card-reveal center">
+          <span class="card-title grey-text text-darken-4" style="border-bottom: double 1px #ff7f50;">
+            <%= group_user.group.name %>
+            <i class="material-icons right">close</i>
+          </span>
+          <div class="actions">
+            <%= link_to "KPTをみる",  group_comments_path(group_user.group.id) %>
+          </div>
+          <div class="actions">
+            <%= link_to "グループメンバー", group_path(group_user.group.id) %>
+          </div>
+          <div class="actions">
+            <%= link_to "グループ編集", edit_group_path(group_user.group.id) %>
+          </div>
+          <div class="actions">
+            <%= link_to "グループ退会", group_group_users_path(group_user.group.id), method: :delete, data: {confirm: "本当に#{group_user.group.name}から退会しますか？"} %>
+          </div>
+        </div>
+      <% end %>
     </div>
   <% end %>
 </div>
