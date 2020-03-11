@@ -6,7 +6,9 @@
     </div>
     <div class="card-content center" style="height: 115px;">
       <span class="card-title">
-        <%= user.nick_name %>
+        <%= link_to user_path(user) do %>
+          <%= user.nick_name %>
+        <% end %>
       </span>
       <%= user.introduction %>
     </div>
