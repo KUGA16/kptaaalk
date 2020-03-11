@@ -4,8 +4,10 @@ class CommentsController < ApplicationController
 
   def index
     @group = Group.find(params[:group_id])
-    #このグループに参加しているユーザー
-    @group_users = GroupUser.where(group_id: params[:group_id]).where(is_confirmed: true)
+#参加しているユーザー
+    @group_users = GroupUser.where(group_id: @group.id).where(is_confirmed: true)
+#招待しているユーザー
+    @inviting_users = GroupUser.where(group_id: @group.id).where(is_confirmed: false)
     # place_statusでKPTを分けて取得
     @keep_comments, @keep_comment_ranking = Comment.get_right_ranking(params[:group_id], "keep")
 

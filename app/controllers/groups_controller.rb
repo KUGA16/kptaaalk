@@ -5,6 +5,7 @@ class GroupsController < ApplicationController
   def show
     @group = Group.find(params[:id])
     @group_users = GroupUser.where(group_id: @group.id).where(is_confirmed: true)
+    @inviting_users = GroupUser.where(group_id: @group.id).where(is_confirmed: false)
   end
 
   def new
