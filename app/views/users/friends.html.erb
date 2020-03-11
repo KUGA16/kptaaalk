@@ -19,11 +19,11 @@
   </div>
 <!-- フォロー -->
   <div id="followings" class="col s9 m9">
-    <%= render 'following', following_users: @following_users %>
+    <%= render 'follow_users', users: @following_users %>
   </div>
 <!-- フォロワー -->
   <div id="followers" class="col s12 m9">
-    <%= render 'follower', follower_users: @follower_users %>
+    <%= render 'follow_users', users: @follower_users %>
   </div>
 
 </div>
