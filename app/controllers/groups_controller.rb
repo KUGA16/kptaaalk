@@ -1,6 +1,7 @@
 class GroupsController < ApplicationController
 
   before_action :authenticate_user!
+  before_action :barrier_group, only: [:show, :edit, :update, :destroy]
 
   def show
     @group = Group.find(params[:id])
@@ -51,6 +52,15 @@ class GroupsController < ApplicationController
 
   def group_params
     params.require(:group).permit(:name, :group_image)
+  end
+
+#url直接入力禁止
+  def barrier_group
+       group = Group.find(params[:id])
+       group_user = GroupUser.where(user_id: current_user.id).where(is_confirmed: true)
+    unless group.id == group_user.map(&:group_id)
+      redirect_to user_path(current_user)
+    end
   end
 
 end
