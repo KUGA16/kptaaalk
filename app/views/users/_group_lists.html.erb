@@ -2,7 +2,10 @@
 <div class="col s12 m9">
   <div class="card-panel teal lighten-4 z-depth-0">
     <span class="white-text">
-      <h6>参加グループ</h6>
+      <h6>参加グループ(<%= join_groups.count %>)</h6>
+        <% if is_notification.present? %> <!--グループに招待されているか -->
+          <h7>招待が届いています(<%= invited_groups.count %>)</h7>
+        <% end %>
     </span>
   </div>
 </div>
