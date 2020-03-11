@@ -1,20 +1,20 @@
-<!-- プロフィール編集画面 -->
-<div class="row edit_profile">
-  <div class="col s12">
+<!-- プロフィール編集ページ -->
+<div class="row">
 <!-- エラーメッセージ -->
-    <%= render 'shared/error_message', hoge: @user %>
+  <%= render 'shared/error_message', something: @user %>
 
+  <div class="col s12 m12 center" style="display: flex; justify-content: center; margin-top: 50px;">
     <%= form_with model: @user, local: true do |f| %>
       <div class="field">
         <%= f.label :profile_image %><br>
         <%= f.attachment_field :profile_image, direct: true %>
       </div>
 
-      <div class="field">
+      <div class="field" style="margin-top: 30px;">
         <%= f.label :name %><br>
         <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
       </div>
-      
+
       <div class="field">
         <%= f.label :nick_name %><br>
         <%= f.text_field :nick_name, autofocus: true, autocomplete: "nick_name" %>
