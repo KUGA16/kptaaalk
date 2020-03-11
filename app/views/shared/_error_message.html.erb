@@ -1,9 +1,11 @@
 <!-- エラーメッセージ表示-->
-<% if something.errors.any? %>
-	<h5><%= something.errors.count %>件のエラーがありますよ〜</h5><!--エラーメッセ-->
-	<ul>
-		<% something.errors.full_messages.each do |message| %>
-		<li><%= message %></li>
-		<% end %>
-	</ul>
-<% end %>
+<div class="error_messages">
+	<% if something.errors.any? %>
+		<h5><%= something.errors.count %>件のエラーがありますよ〜</h5><!--エラーメッセ-->
+		<ul>
+			<% something.errors.full_messages.each do |message| %>
+			<li><%= message %></li>
+			<% end %>
+		</ul>
+	<% end %>
+</div>
