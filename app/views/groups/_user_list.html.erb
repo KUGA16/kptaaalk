@@ -1,6 +1,6 @@
 <!-- ユーザー一覧 -->
 <div class="col s12 m9">
-  <% hoge.each do |user| %>
+  <% user.each do |user| %>
     <div class="card" style="width: 32%; display: inline-block;">
       <div class="card-image waves-effect waves-block waves-light">
         <%= attachment_image_tag user, :profile_image, fallback: "no_image.jpg" %>
