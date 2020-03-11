@@ -15,8 +15,8 @@ class GroupsController < ApplicationController
 
   def create
     @group_new = Group.new(group_params)
+    # グループ作成者をgroup_usersテーブルに登録
     if @group_new.save
-# グループ作成者をgroup_usersテーブルに登録
         GroupUser.create(
           user_id: current_user.id,
           group_id: @group_new.id,
@@ -47,14 +47,13 @@ class GroupsController < ApplicationController
   	redirect_to user_path(current_user), notice: "#{group.name}を削除しました"
   end
 
-
   private
 
   def group_params
     params.require(:group).permit(:name, :group_image)
   end
 
-#url直接入力禁止
+  #url直接入力禁止
   def barrier_group
     group_users = GroupUser.where(group_id: params[:id]).where(user_id: current_user.id).where(is_confirmed: true).pluck(:user_id)
     unless group_users.include?(current_user.id)
