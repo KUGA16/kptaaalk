@@ -45,8 +45,16 @@ class UsersController < ApplicationController
 
   def friends
     @user = User.find(params[:user_id])
-    @following_users = @user.followings
-    @follower_users = @user.followers
+    @following_users = @user.followings.page(params[:following_user])
+    respond_to do |format|
+      format.html
+      format.js
+    end
+    @follower_users = @user.followers.page(params[:follower_user])
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   private
