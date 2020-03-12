@@ -1,7 +1,7 @@
 jQuery(function() {
   var pagetop = $('#page_top');
   pagetop.hide();
-  $(window).scroll(function () {
+  $(window).scroll(function() {
     if ($(this).scrollTop() > 500) {
         pagetop.fadeIn();
     } else {
