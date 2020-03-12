@@ -3,28 +3,48 @@
   <div class="col s12 m6">
     <%= image_tag 'kpt_image.png', alt: "KPTAAALK icon", size:'600x600', style: "object-fit: cover;" %>
   </div>
-
   <div class="col s12 m6 center login_sigin_actions">
     <%= link_to "新規登録", new_user_registration_path, class: "signin_actions" %>
     <%= link_to "ログイン", new_user_session_path, class: "login_actions" %>
   </div>
 </div>
-
+<!-- KPTの説明 -->
 <div class="row">
-  <div class="col s12 m4" style="background-color: white; border-radius: 40px; height: 300px; margin-top: 20px;">
-    <%= image_tag 'kpt_image.png', alt: "KPTAAALK icon", size:'150x150' %>
-    <span>の使い方</span>
+  <div class="col s12 m12 center" style="color: white;">
+    <h5>KPTとは</h5>
+  </div>
+  <div class="col s12 m12 center" style="color: white;">
+    <h6>「ふりかえり」のフレームワークです。</h6>
+    <h6>
+      「<span style="color: #f48fb1;">K</span>eep」継続すること
+      「<span style="color: #ffb74d;">P</span>robrem」改善すること
+      「<span style="color: #64b5f6;">T</span>ry」新しく取り組むこと
+    </h6>
+    <h6>を考えることで次にやることが明確になります。</h6>
   </div>
 </div>
+<!-- KPTの使い方 -->
+<%= render 'about' %>
+<!-- KPTでのポイント -->
+<%= render 'kpt_important' %>
+<!-- サイトについての説明 -->
+<div class="row">
+  <div class="col s12 m12 center flex" style="justify-content: center; border-top: solid 1px white; margin-top: 150px;">
+    <%= image_tag 'kpt_image.png', alt: "KPTAAALK icon", size:'250x250' %>
+    <span style="line-height: 290px;">について</span>
+  </div>
+  <div class="col s12 m12 center" style="color: white; margin-bottom: 150px;">
+    <h6>このサイトはエンジニアスクールにて<span style="color: #4db6ac;">KPT</span>の魅力に心を奪われ</h6>
+    <h6>どこでも、いつでも、誰とでも、KPTができたら</h6>
+    <h6>一つでもの多くのチームが笑顔になれるのでは、</h6>
+    <h6>エンジニアに限らず、多くの方々のふりかえりとして、
+    <h6><span style="color: #4db6ac;">KPT</span>を取り入れて欲しい！</h6>
+    <h6>と、就職活動のポートフォリオとして作成しました。</h6>
 
-<div class="row center" style="background-color: white; border-radius: 40px; height: 600px;">
-  <div class="col s4">
-    <%= image_tag 'top_image3.png', alt: "team icon", size:'150x150' %>
   </div>
-  <div class="col s4">
-    <%= image_tag 'top_image2.png', alt: "team icon", size:'150x150' %>
-  </div>
-  <div class="col s4">
-    <%= image_tag 'top_image4.png', alt: "team icon", size:'150x150' %>
+  <div class="col s12 m12 center" style="color: white; margin-bottom: 150px;">
+    <h6>お試しKPT</h6>
+    <h6>ニックネーム</h6>
+    <h6>パスワード</h6>
   </div>
 </div>
