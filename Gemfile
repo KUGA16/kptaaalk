@@ -79,6 +79,7 @@ gem "refile-mini_magick"
 gem 'dotenv-rails'
 # 検索機能
 gem 'ransack'
+gem 'kaminari','~> 1.1.1'
 group :production do
   gem 'mysql2'
 end
