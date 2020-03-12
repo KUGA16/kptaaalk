@@ -60,6 +60,13 @@ main {
   padding-bottom: 10px;
   margin-top: 20px;
 }
+// ページトップボタン
+#page_top {
+  position: fixed;
+  right: 8px;
+  bottom: 0;
+  opacity: 0.6;
+}
 // エラーメッセージ
 #error_explanation {
   color: red;
