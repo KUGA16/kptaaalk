@@ -2,9 +2,9 @@
 <div class="col s12 m9">
   <div class="card-panel teal lighten-4 z-depth-0">
     <span class="white-text">
-      <h6>参加グループ(<%= join_groups.count %>)</h6>
+      <h6>参加グループ(<%= join_groups.total_count  %>)</h6>
         <% if is_notification.present? %> <!--グループに招待されているか -->
-          <h7>招待が届いています(<%= invited_groups.count %>)</h7>
+          <h7>招待が届いています(<%= invited_groups.total_count %>)</h7>
         <% end %>
     </span>
   </div>
@@ -39,7 +39,7 @@
       <div class="card-content">
         <span class="card-title activator grey-text text-darken-4" style="border-bottom: solid 1px #ff7f50;">
           <%= group_user.group.name %>
-<!-- ログインユーザーのみ -->
+      <!-- ログインユーザーのみ -->
       <% if user == current_user %>
           <i class="material-icons right">
             more_vert
@@ -74,4 +74,7 @@
       <% end %>
     </div>
   <% end %>
+  <!-- ページネーション -->
+  <%= paginate invited_groups, :param_name => 'invited_group', class: "paginate", remote: true %>
+  <%= paginate join_groups, :param_name => 'join_group', class: "paginate", remote: true %>
 </div>
