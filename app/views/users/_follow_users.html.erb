@@ -22,3 +22,10 @@
     </div>
   </div>
 <% end %>
+
+<!-- ページネーション -->
+<% if users == @following_users %>
+  <%= paginate users, :param_name => 'following_user', class: "paginate", remote: true %>
+<% else users == @follower_users %>
+  <%= paginate users, :param_name => 'follower_user', class: "paginate", remote: true %>
+<% end %>

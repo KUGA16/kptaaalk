@@ -13,15 +13,19 @@
 <!-- タブメニュー -->
   <div class="col s12 m9">
     <ul class="tabs tabs-fixed-width tab-demo z-depth-0">
-      <li class="tab"><a href="#followings">フォロー</a></li>
-      <li class="tab"><a href="#followers">フォロワー</a></li>
+      <li class="tab">
+        <a href="#followings">フォロー(<%= @following_users.total_count %>)</a>
+      </li>
+      <li class="tab">
+        <a href="#followers">フォロワー(<%= @follower_users.total_count %>)</a>
+      </li>
     </ul>
   </div>
-<!-- フォロー -->
-  <div id="followings" class="col s9 m9">
+  <!-- フォロー -->
+  <div id="followings" class="col s9 m9"><!-- タブ表示の為のid -->
     <%= render 'follow_users', users: @following_users %>
   </div>
-<!-- フォロワー -->
+  <!-- フォロワー -->
   <div id="followers" class="col s12 m9">
     <%= render 'follow_users', users: @follower_users %>
   </div>
