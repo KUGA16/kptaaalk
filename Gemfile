@@ -80,6 +80,9 @@ gem 'dotenv-rails'
 # 検索機能
 gem 'ransack'
 gem 'kaminari','~> 1.1.1'
+# 管理者権限用
+gem 'cancancan'
+gem 'rails_admin'
 group :production do
   gem 'mysql2'
 end
