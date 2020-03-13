@@ -16,21 +16,21 @@
 			<%= user.introduction %>
     </div>
 
+    <div class="card-action flex center" style="justify-content: center;">
+      <p>
+        <%= link_to user_friends_path(user) do %>
+				  <%= user.followings.count %><br>
+			  <% end %>
+        フォロー
+      </p>
+      <p>
+        <%= link_to user_friends_path(user) do %>
+			  <%= user.followers.count %><br>
+		    <% end %>
+        フォロワー
+      </p>
+    </div>
     <% if user.id == current_user.id %><!-- ログインユーザーのみ表示　-->
-      <div class="card-action flex center" style="justify-content: center;">
-        <p>
-          <%= link_to user_friends_path(user) do %>
-  				  <%= user.followings.count %><br>
-  			  <% end %>
-          フォロー
-        </p>
-        <p>
-          <%= link_to user_friends_path(user) do %>
-  			  <%= user.followers.count %><br>
-  		    <% end %>
-          フォロワー
-        </p>
-      </div>
       <div class="card-action center">
         <i class="material-icons">pets</i>
         <%= link_to "マイページ", user_path(user) %>
@@ -53,7 +53,9 @@
 			</div>
 		<% else %>
       <div class="card-action center">
-        <%= render 'shared/follow_button', user: user %>
+        <span id="follows_buttons_<%= user.id %>">
+          <%= render 'shared/follow_button', user: user %>
+        </span>
       </div>
     <% end %>
   </div>
