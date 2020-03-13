@@ -11,10 +11,6 @@
           <%= @group.name %>
         </span>
       </div>
-      <div class="card-action center">
-        <i class="material-icons">build</i>
-        <%= link_to "グループ編集", edit_group_path(@group) %>
-      </div>
     </div>
   </div>
 
@@ -28,24 +24,40 @@
 
   <div class="col s12 m9">
     <%= form_with model: [@group,@group_user_new], local: true do |f| %>
-      <% @can_invite_users.each do |user| %>
-        <div class="card" style="width: 32%; display: inline-block;">
-          <div class="card-image waves-effect waves-block waves-light">
-            <%= attachment_image_tag user, :profile_image, fallback: "no_image.jpg" %>
+<!-- 招待できるユーザーがいる場合 -->
+      <% if @can_invite_users.present? %>
+        <% @can_invite_users.each do |user| %>
+          <div class="card" style="width: 32%; display: inline-block;">
+            <div class="card-image waves-effect waves-block waves-light">
+              <%= attachment_image_tag user, :profile_image, fallback: "no_image.jpg" %>
+            </div>
+            <div class="card-content">
+              <label>
+                <%= f.check_box :user_id, { multiple: true ,include_hidden: false }, checked_value = user.id %>
+                <span class="card-title activator grey-text text-darken-4">
+                  <%= user.nick_name %>
+                </span>
+              </label>
+            </div>
           </div>
-          <div class="card-content">
-            <label>
-              <%= f.check_box :user_id, { multiple: true ,include_hidden: false }, checked_value = user.id %>
-              <span class="card-title activator grey-text text-darken-4">
-                <%= user.nick_name %>
-              </span>
-            </label>
-          </div>
+        <% end %>
+        <div class="actions">
+          <%= f.submit "招待", class: "btn-large" %>
         </div>
+<!-- 招待できるユーザーがいない場合 -->
+      <% else %>
+          <div class="card-panel z-depth-0">
+            <span class="brack-text">
+              招待できるユーザーがいません。
+            </span>
+          </div>
+          <div class="actions">
+            <%= link_to "マイページへ戻る", user_path(current_user) %>
+          </div>
+          <div class="actions">
+            <%= link_to "お仲間探しする", result_users_path %>
+          </div>
       <% end %>
-      <div class="actions">
-        <%= f.submit "次へ", class: "btn-large" %>
-      </div>
     <% end %>
   </div>
 

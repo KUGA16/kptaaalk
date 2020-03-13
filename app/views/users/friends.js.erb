@@ -1,0 +1,3 @@
+$("#followings").html("<%= j(render partial: 'follow_users', locals: { users: @following_users }) %>");
+
+$("followers").html("<%= j(render partial: 'follow_users', locals: { users: @follower_users }) %>");

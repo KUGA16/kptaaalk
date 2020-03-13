@@ -11,25 +11,28 @@
   <body>
     <!-- topページ以外 -->
     <% if request.path != '/' %>
-    <header>
-      <nav>
-        <div class="nav-wrapper">
-          <a href="/">
-            <%= image_tag 'kpt_image.png', alt: "KPTAAALK icon", class: "brand-logo center" %>
-          </a>
-          <% if user_signed_in? %>
-            <!-- ユーザーサインイン時 -->
-            <%= render 'layouts/login_header' %>
-          <% else %>
-            <!-- ユーザーサインアウト時 -->
-            <%= render 'layouts/signout_header'%>
-          <% end %>
-        </div>
-      </nav>
-    </header>
+      <header>
+        <nav>
+          <div class="nav-wrapper">
+            <a href="/">
+              <%= image_tag 'kpt_image.png', alt: "KPTAAALK icon", class: "brand-logo center" %>
+            </a>
+            <% if user_signed_in? %>
+              <!-- ユーザーサインイン時 -->
+              <%= render 'layouts/login_header' %>
+            <% else %>
+              <!-- ユーザーサインアウト時 -->
+              <%= render 'layouts/signout_header'%>
+            <% end %>
+          </div>
+        </nav>
+      </header>
     <% else %>
     <!-- topページのみ -->
       <div style="background-color: #b2dfdb">
+        <div id="scroll_icon">
+          <p> -------- SCROLL</p>
+        </div>
     <% end %>
 
     <!-- 共通 -->
@@ -52,6 +55,12 @@
           KPTAAALK
         </div>
       </footer>
+      </div>
+
+    <!-- ページトップに戻るボタン -->
+    <div id="page_top">
+      <a href="#"><%= image_tag 'arrow.png', alt: "page_top icon", size: "60x60" %></a>
+    </div>
 
   </body>
 </html>
