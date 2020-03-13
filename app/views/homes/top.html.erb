@@ -1,30 +1,31 @@
 <!-- トップページ且アバウトページ -->
 <div class="row">
   <div class="col s12 m6">
-    <%= image_tag 'kpt_image.png', alt: "KPTAAALK icon", size:'600x550' %>
+    <%= image_tag 'kpt_image.png', alt: "KPTAAALK icon", size:'600x600', style: "object-fit: cover;" %>
   </div>
-
   <div class="col s12 m6 center login_sigin_actions">
     <%= link_to "新規登録", new_user_registration_path, class: "signin_actions" %>
     <%= link_to "ログイン", new_user_session_path, class: "login_actions" %>
   </div>
 </div>
-
+<!-- KPTの説明 -->
 <div class="row">
-  <div class="col s12 m12" style="background-color: white; border-radius: 40px; height: 300px; margin-top: 20px;">
-    <%= image_tag 'kpt_image.png', alt: "KPTAAALK icon", size:'150x150' %>
-    <span>の使い方</span>
+  <div class="col s12 m12 center" style="color: white;">
+    <h5>KPTとは</h5>
+  </div>
+  <div class="col s12 m12 center" style="color: white;">
+    <h6>「ふりかえり」のフレームワークです。</h6>
+    <h6>
+      「<span style="color: #f48fb1;">K</span>eep」継続すること
+      「<span style="color: #ffb74d;">P</span>robrem」改善すること
+      「<span style="color: #64b5f6;">T</span>ry」新しく取り組むこと
+    </h6>
+    <h6>を考えることで次にやることが明確になります。</h6>
   </div>
 </div>
-
-<div class="row center" style="background-color: #80cbc4; border-radius: 40px; height: 600px;">
-  <div class="col s4">
-    <%= image_tag 'top_image3.png', alt: "team icon", size:'150x150' %>
-  </div>
-  <div class="col s4">
-    <%= image_tag 'top_image2.png', alt: "team icon", size:'150x150' %>
-  </div>
-  <div class="col s4">
-    <%= image_tag 'top_image4.png', alt: "team icon", size:'150x150' %>
-  </div>
-</div>
+<!-- KPTの使い方 -->
+<%= render 'about' %>
+<!-- KPTでのポイント -->
+<%= render 'kpt_important' %>
+<!-- サイトについての思い -->
+<%= render 'thought' %>

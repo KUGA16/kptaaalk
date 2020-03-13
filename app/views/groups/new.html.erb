@@ -1,15 +1,15 @@
 <!-- グループ作成ページ -->
 <div class="row">
+<!-- エラー文 -->
+  <%= render 'shared/error_message', something: @group_new %>
 
-  <%= render 'shared/error_message', hoge: @group_new %>
-
-  <div class="col s4 m4 center" style="width: 50%;">
-    <%= form_with model: @group_new, lacol: true do |f| %>
+  <div class="col s12 m12 center" style="display: flex; justify-content: center; margin-top: 50px;">
+    <%= form_with model: @group_new, local: true do |f| %>
       <%= f.label :group_image %>
-      <div class="group_new_field">
+      <div class="field" style="margin-top: 30px;">
         <%= f.attachment_field :group_image %>
       </div>
-      <div class="group_new_field">
+      <div class="field" style="margin-top: 30px;">
         <%= f.label :name %>
         <%= f.text_field :name %>
       </div>

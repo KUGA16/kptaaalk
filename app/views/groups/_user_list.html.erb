@@ -1,6 +1,6 @@
 <!-- ユーザー一覧 -->
 <div class="col s12 m9">
-  <% hoge.each do |user| %>
+  <% user.each do |user| %>
     <div class="card" style="width: 32%; display: inline-block;">
       <div class="card-image waves-effect waves-block waves-light">
         <%= attachment_image_tag user, :profile_image, fallback: "no_image.jpg" %>
@@ -13,11 +13,10 @@
       </div>
       <div class="card-action center">
         <% if current_user != user %>
-          <% if user.followed_by?(current_user) %>
-              <%=link_to "フォロー済み", user_relationships_path(user.id), method: :delete, class: "btn" %>
-          <% else %>
-              <%=link_to "フォローする", user_relationships_path(user.id), method: :post, class: "btn" %>
-          <% end %>
+          <!-- フォローボタンをajaxで実装 -->
+          <span id="follows_buttons_<%= user.id %>">
+            <%= render 'shared/follow_button', user: user %>
+          </span>
         <% else %>
           <%=link_to "マイページ", user_path(user), class: "btn" %>
         <% end %>

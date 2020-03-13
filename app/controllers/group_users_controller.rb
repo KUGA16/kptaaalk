@@ -1,17 +1,17 @@
 class GroupUsersController < ApplicationController
 
   before_action :authenticate_user!
+  before_action :barrier_group_user, except: [:update]
 
   def new
     @group_user_new = GroupUser.new
     @group = Group.find(params[:group_id])
-    follower_ids = current_user.followings.pluck(:id) #フォローしているユーザーを配列で取得
-    #params[:group_id]と同じgroup_idのGroupUserのuser_idを配列かつint型で取得
-    group_user_ids = GroupUser.where(group_id: params[:group_id]).pluck(:user_id).map!(&:to_i)
+    #フォローしているユーザーを配列で取得
+    follower_ids = current_user.followings.pluck(:id)
+    #params[:group_id]と同じidのuserを配列かつint型で取得
+    group_user_ids = GroupUser.where(group_id: @group.id).pluck(:user_id).map!(&:to_i)
     invite_user_ids = follower_ids - group_user_ids #差分を取得
-    @can_invite_users = User.find(invite_user_ids) #差分user_idを持つuserの情報を取得
-    # チェックした瞬間にユーザー表示
-    # @join_users = GroupUser.where(group_id: params[:group_id])
+    @can_invite_users = User.find(invite_user_ids)
   end
 
   def create
@@ -35,7 +35,7 @@ class GroupUsersController < ApplicationController
     join_group = GroupUser.find_by(group_id: params[:group_id], user_id: current_user)
     if join_group.update(is_confirmed: true)
       flash[:notice] = "「#{join_group.group.name}」に参加しました！"
-      redirect_to user_path(current_user)
+      redirect_to group_comments_path(join_group.group.id)
     else
       flash[:notice] = "「#{join_group.group.name}」に参加できませんでした！"
       redirect_to user_path(current_user)
@@ -45,14 +45,22 @@ class GroupUsersController < ApplicationController
   def destroy
     no_join_group = GroupUser.find_by(group_id: params[:group_id], user_id: current_user)
     no_join_group.destroy
-    redirect_to user_path(current_user), notice: "「#{no_join_group.group.name}」の参加を取り止めました！"
+    flash[:notice] = "「#{no_join_group.group.name}」の参加を取り止めました！"
+    redirect_to user_path(current_user)
   end
-
 
   private
 
   def params_group_user_ids
     params.require(:group_user).permit(user_id: [])
+  end
+
+  #url直接入力禁止
+  def barrier_group_user
+    group_users = GroupUser.where(group_id: params[:group_id]).where(user_id: current_user.id).where(is_confirmed: true).pluck(:user_id)
+    unless group_users.include?(current_user.id)
+      redirect_to user_path(current_user)
+    end
   end
 
 end
