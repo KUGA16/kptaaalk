@@ -16,7 +16,7 @@
 			<%= user.introduction %>
     </div>
 
-    <% if user == current_user %><!-- ログインユーザーのみ表示　-->
+    <% if user.id == current_user.id %><!-- ログインユーザーのみ表示　-->
       <div class="card-action flex center" style="justify-content: center;">
         <p>
           <%= link_to user_friends_path(user) do %>
