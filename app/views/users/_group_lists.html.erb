@@ -40,19 +40,19 @@
         <span class="card-title activator grey-text text-darken-4" style="border-bottom: solid 1px #ff7f50;">
           <%= group_user.group.name %>
       <!-- ログインユーザーのみ -->
-      <% if user == current_user %>
+      <% if user.id == current_user.id %>
           <i class="material-icons right">
             more_vert
           </i>
       <% end %>
         </span>
-      <% if user == current_user %>
+      <% if user.id == current_user.id %>
           <p class="center" style="width: 100px; background-color: #f8bbd0; border-radius: 20px;">
             参加中
           </p>
       <% end %>
       </div>
-      <% if user == current_user %>
+      <% if user.id == current_user.id %>
         <div class="card-reveal center">
           <span class="card-title grey-text text-darken-4" style="border-bottom: solid 1px #ff7f50;">
             <%= group_user.group.name %>

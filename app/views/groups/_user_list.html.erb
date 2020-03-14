@@ -7,18 +7,20 @@
       </div>
       <div class="card-content center" style="height: 115px;">
         <span class="card-title" style="border-bottom: solid 1px #ff7f50;">
-          <%= user.nick_name %>
+          <%= link_to user_path(user) do %>
+            <%= user.nick_name %>
+          <% end %>
         </span>
         <%= user.introduction %>
       </div>
       <div class="card-action center">
-        <% if current_user != user %>
+        <% if user.id =! current_user.id %>
           <!-- フォローボタンをajaxで実装 -->
           <span id="follows_buttons_<%= user.id %>">
             <%= render 'shared/follow_button', user: user %>
           </span>
-        <% else %>
-          <%=link_to "マイページ", user_path(user), class: "btn" %>
+        <% else user.id == current_user.id %>
+          <%= link_to "マイページ", user_path(user), class: "btn" %>
         <% end %>
       </div>
     </div>
