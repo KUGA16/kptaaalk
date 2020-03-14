@@ -17,14 +17,14 @@ class GroupsController < ApplicationController
     @group_new = Group.new(group_params)
     # グループ作成者をgroup_usersテーブルに登録
     if @group_new.save
-        GroupUser.create(
-          user_id: current_user.id,
-          group_id: @group_new.id,
-          is_confirmed: true
-        )
-        redirect_to new_group_group_users_path(@group_new), notice: "「#{@group_new.name}」グループを作成しました！"
+      GroupUser.create(
+        user_id: current_user.id,
+        group_id: @group_new.id,
+        is_confirmed: true
+      )
+      redirect_to new_group_group_users_path(@group_new), notice: "「#{@group_new.name}」グループを作成しました！"
     else
-        render 'new'
+      render 'new'
     end
   end
 
@@ -34,10 +34,10 @@ class GroupsController < ApplicationController
 
   def update
     @group = Group.find(params[:id])
-    if  @group.update(group_params)
-        redirect_to group_path(@group), notice: "グループのプロフィールを変更しました！"
+    if @group.update(group_params)
+      redirect_to group_path(@group), notice: "グループのプロフィールを変更しました！"
     else
-        render 'edit'
+      render 'edit'
     end
   end
 
