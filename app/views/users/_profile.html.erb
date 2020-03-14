@@ -16,6 +16,12 @@
 			<%= user.introduction %>
     </div>
 
+    <div class="card-action center">
+      <%= link_to user_path(user) do %>
+        参加グループ
+      <% end %>
+    </div>
+
     <div class="card-action flex center" style="justify-content: center;">
       <p>
         <%= link_to user_friends_path(user) do %>
