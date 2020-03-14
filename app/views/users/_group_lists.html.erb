@@ -2,7 +2,7 @@
 <div class="col s12 m9">
   <div class="card-panel teal lighten-4 z-depth-0">
     <span class="white-text">
-      <h6>参加グループ(<%= join_groups.total_count %>)</h6>
+      <h6>参加グループ(<%= join_groups.count %>)</h6>
         <% if is_notification.present? %> <!--グループに招待されているか -->
           <h7>招待が届いています(<%= invited_groups.total_count %>)</h7>
         <% end %>
@@ -59,16 +59,16 @@
             <i class="material-icons right">close</i>
           </span>
           <div class="actions" style="margin-top: 30px;">
-            <%= link_to "KPTをみる",  group_comments_path(group_user.group.id) %>
+            <%= link_to "KPTをみる",  group_comments_path(group_user.group) %>
           </div>
           <div class="actions" style="margin-top: 10px;">
-            <%= link_to "グループメンバー", group_path(group_user.group.id) %>
+            <%= link_to "グループメンバー", group_path(group_user.group) %>
           </div>
           <div class="actions" style="margin-top: 10px;">
-            <%= link_to "グループ編集", edit_group_path(group_user.group.id) %>
+            <%= link_to "グループ編集", edit_group_path(group_user.group) %>
           </div>
           <div class="actions" style="margin-top: 10px;">
-            <%= link_to "グループ退会", group_group_users_path(group_user.group.id), method: :delete, data: {confirm: "本当に#{group_user.group.name}から退会しますか？"} %>
+            <%= link_to "グループ退会", group_group_users_path(group_user.group), method: :delete, data: {confirm: "本当に#{group_user.group.name}から退会しますか？"} %>
           </div>
         </div>
       <% end %>

@@ -14,7 +14,7 @@
         <%= user.introduction %>
       </div>
       <div class="card-action center">
-        <% if user.id =! current_user.id %>
+        <% if user.id != current_user.id %>
           <!-- フォローボタンをajaxで実装 -->
           <span id="follows_buttons_<%= user.id %>">
             <%= render 'shared/follow_button', user: user %>
