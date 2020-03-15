@@ -17,10 +17,10 @@
         </div>
       <% end %>
   </div>
-  <!-- probrem投稿内容　-->
-  <div class="comments p_comments drop_area" id="probrem">
-    <span>Probrem</span>
-    <% probrem_comments.each do |comment| %>
+  <!-- problem投稿内容　-->
+  <div class="comments p_comments drop_area" id="problem">
+    <span>Problem</span>
+    <% problem_comments.each do |comment| %>
       <div class="col s4 kpt_comments item" name="<%= comment.id %>">
         <%= attachment_image_tag comment.user, :profile_image, :fill, 80, 80, fallback: "no_group_image.jpg", size:'80x80' %>
         <%= comment.user.nick_name %>
