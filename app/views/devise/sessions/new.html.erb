@@ -1,16 +1,13 @@
-
 <div class="row flex">
   <div class="col m4 center center-block">
       <h4 class="border">ログイン</h4>
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <div class="field">
-          <%= f.label :nick_name %><br />
-          <%= f.text_field :nick_name, autofocus: true, autocomplete: "nick_name" %>
+          <%= f.text_field :nick_name, autofocus: true, autocomplete: "nick_name", placeholder: "ニックネーム" %>
         </div>
 
         <div class="field">
-          <%= f.label :password %><br />
-          <%= f.password_field :password, autocomplete: "current-password" %>
+          <%= f.password_field :password, autocomplete: "current-password", placeholder: "パスワード" %>
         </div>
 
         <% if devise_mapping.rememberable? %>
@@ -20,7 +17,7 @@
           </div>
         <% end %>
 
-        <div class="actions">
+        <div class="actions" style="margin: 10px 0 10px 0;">
           <%= f.submit "ログイン", class: "btn" %>
         </div>
       <% end %>
