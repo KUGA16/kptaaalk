@@ -11,7 +11,7 @@ class CommentsController < ApplicationController
     @inviting_users = GroupUser.where(group_id: @group.id).where(is_confirmed: false)
     # place_statusでKPTを分けて取得
     @keep_comments, @keep_comment_ranking = Comment.get_right_ranking(params[:group_id], "keep")
-    @probrem_comments, @probrem_comment_ranking = Comment.get_right_ranking(params[:group_id], "probrem")
+    @problem_comments, @problem_comment_ranking = Comment.get_right_ranking(params[:group_id], "problem")
     @try_comments, @try_comment_ranking = Comment.get_right_ranking(params[:group_id], "try")
     @comment_new = Comment.new
   end
@@ -23,7 +23,7 @@ class CommentsController < ApplicationController
 
   def create
     @keep_comments, @keep_comment_ranking = Comment.get_right_ranking(params[:group_id], "keep")
-    @probrem_comments, @probrem_comment_ranking = Comment.get_right_ranking(params[:group_id], "probrem")
+    @problem_comments, @problem_comment_ranking = Comment.get_right_ranking(params[:group_id], "problem")
     @try_comments, @try_comment_ranking = Comment.get_right_ranking(params[:group_id], "try")
     # hidden_fieldでuser_idとgroup_idを取得
     @comment_new = Comment.new(params_post_comment_id)
@@ -32,8 +32,8 @@ class CommentsController < ApplicationController
         if params_post_comment_id[:place_status] == "keep"
           @keep_comment_ranking << Comment.find(@comment_new.id)
         end
-        if params_post_comment_id[:place_status] == "probrem"
-          @probrem_comment_ranking << Comment.find(@comment_new.id)
+        if params_post_comment_id[:place_status] == "problem"
+          @problem_comment_ranking << Comment.find(@comment_new.id)
         end
         if params_post_comment_id[:place_status] == "try"
           @try_comment_ranking << Comment.find(@comment_new.id)
