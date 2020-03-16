@@ -3,10 +3,16 @@
   <div class="col s12 m6">
     <%= image_tag 'kpt_image.png', alt: "KPTAAALK icon", size:'600x600', style: "object-fit: cover;" %>
   </div>
-  <div class="col s12 m6 center login_sigin_actions">
-    <%= link_to "新規登録", new_user_registration_path, class: "signin_actions" %>
-    <%= link_to "ログイン", new_user_session_path, class: "login_actions" %>
-  </div>
+  <% if user_signed_in? %>
+    <div class="col s12 m6 center login_sigin_actions">
+      <%= link_to "ログイン中", user_path(current_user), class: "login_actions"  %>
+    </div>
+  <% else %>
+    <div class="col s12 m6 center login_sigin_actions">
+      <%= link_to "新規登録", new_user_registration_path, class: "signin_actions" %>
+      <%= link_to "ログイン", new_user_session_path, class: "login_actions" %>
+    </div>
+  <% end %>
 </div>
 <!-- KPTの説明 -->
 <div class="row">
