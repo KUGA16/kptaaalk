@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_14_072448) do
+ActiveRecord::Schema.define(version: 2020_03_16_072451) do
 
   create_table "comments", force: :cascade do |t|
     t.integer "user_id"
@@ -62,7 +62,6 @@ ActiveRecord::Schema.define(version: 2020_03_14_072448) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.string "name"
     t.string "nick_name"
     t.string "profile_image_id"
     t.text "introduction"
