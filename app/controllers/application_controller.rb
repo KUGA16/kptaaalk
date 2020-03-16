@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
   protected
   #sign_up,sign_in,account_updateの際に、keyのデータを許可
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:email,:name, :nick_name])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:email, :nick_name])
     devise_parameter_sanitizer.permit(:sign_in, keys: [:nick_name])
     devise_parameter_sanitizer.permit(:account_update, keys: [:nick_name])
   end

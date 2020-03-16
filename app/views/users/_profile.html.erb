@@ -3,11 +3,6 @@
   <div class="card z-depth-0">
     <div class="card-image">
       <%= attachment_image_tag user, :profile_image, fallback: "no_image.jpg" %>
-      <span class="card-title">
-      	<% if user == current_user %>
-					<%= user.name %>
-				<% end %>
-      </span>
     </div>
     <div class="card-content center">
       <span class="card-title">

@@ -9,10 +9,6 @@
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
 
       <div class="field">
-        <%= f.text_field :name, autofocus: true, autocomplete: "name", placeholder: "ユーザー名" %>
-      </div>
-
-      <div class="field">
         <%= f.text_field :nick_name, autofocus: true, autocomplete: "nick_name", placeholder: "ニックネーム" %>
       </div>
 
@@ -31,7 +27,7 @@
       <div class="actions" style="margin-bottom: 10px;">
         <%= f.submit "登録", class: "btn" %>
       </div>
-      
+
     <% end %>
     <%= render "devise/shared/links" %>
   </div>
