@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  #deviseのコントローラを修正
+  protect_from_forgery with: :exception
   #devise利用の機能（ユーザ登録、ログイン認証など）の前に実行
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :is_notification
@@ -22,8 +22,9 @@ class ApplicationController < ActionController::Base
   protected
   #sign_up,sign_in,account_updateの際に、keyのデータを許可
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:email, :nick_name])
-    devise_parameter_sanitizer.permit(:sign_in, keys: [:nick_name])
-    devise_parameter_sanitizer.permit(:account_update, keys: [:nick_name])
+    added_attrs = [:email, :nick_name, :password, :password_confirmation]
+    devise_parameter_sanitizer.permit :sign_up, keys: added_attrs
+    devise_parameter_sanitizer.permit :sign_in, keys: added_attrs
+    devise_parameter_sanitizer.permit :account_update, keys: added_attrs
   end
 end
