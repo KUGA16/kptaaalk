@@ -22,7 +22,7 @@ class GroupsController < ApplicationController
         group_id: @group_new.id,
         is_confirmed: true
       )
-      redirect_to new_group_group_users_path(@group_new), notice: "「#{@group_new.name}」グループを作成しました！"
+      redirect_to new_group_group_users_path(@group_new), notice: "「#{@group_new.name}」を作成しました！"
     else
       render 'new'
     end
