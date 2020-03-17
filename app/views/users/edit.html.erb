@@ -5,14 +5,9 @@
 
   <div class="col s12 m12 center" style="display: flex; justify-content: center; margin-top: 50px;">
     <%= form_with model: @user, local: true do |f| %>
-      <div class="field">
+      <div class="field" style="margin-bottom: 20px;">
         <%= f.label :profile_image %><br>
         <%= f.attachment_field :profile_image, direct: true %>
-      </div>
-
-      <div class="field" style="margin-top: 30px;">
-        <%= f.label :name %><br>
-        <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
       </div>
 
       <div class="field">

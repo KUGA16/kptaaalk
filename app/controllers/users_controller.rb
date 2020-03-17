@@ -33,16 +33,6 @@ class UsersController < ApplicationController
   def destroy
   end
 
-  def result
-    # (qurey)検索フォームで入力された値をパラメータで取得
-    @q = User.ransack(params[:q])
-    if params[:q] == nil || params[:q][:nick_name_cont] == ""
-      @search_users = []
-      return
-    end
-    @search_users = @q.result(distinct: true).where.not(id: current_user.id)
-  end
-
   def friends
     @user = User.find(params[:user_id])
     @following_users = @user.followings.page(params[:following_user])
