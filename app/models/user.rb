@@ -20,7 +20,6 @@ class User < ApplicationRecord
 
   attachment :profile_image #refileが指定のカラムにアクセスするために必要
 
-  validates :name,      presence: true #名前:空白禁止
   validates :nick_name, presence: true, uniqueness: true #ニックネーム:空白禁止、一意である
 
   def followed_by?(user)
