@@ -3,37 +3,42 @@
   <div class="card-panel teal lighten-4 z-depth-0">
     <span class="white-text">
       <h6>参加グループ(<%= join_groups.count %>)</h6>
-        <% if is_notification.present? %> <!--グループに招待されているか -->
-          <h7>招待が届いています(<%= invited_groups.total_count %>)</h7>
+        <% if user.id == current_user.id %>
+          <!--グループに招待されているか -->
+          <% if is_notification.present? %>
+            <h7>招待が届いています(<%= invited_groups.total_count %>)</h7>
+          <% end %>
         <% end %>
     </span>
   </div>
 </div>
 
 <div class="col s12 m9">
-  <% if is_notification.present? %> <!--グループに招待されているか -->
-    <% invited_groups.each do |group_user| %>
-      <div class="card" style="width: 32%; display: inline-block;">
-        <div class="card-image waves-effect waves-block waves-light">
-          <%= attachment_image_tag group_user.group, :group_image, :fill, 298, 298, fallback: "no_group_image.jpg" %>
+  <% if user.id == current_user.id %>
+    <% if is_notification.present? %> <!--グループに招待されているか -->
+      <% invited_groups.each do |group_user| %>
+        <div class="card" style="width: 32%; display: inline-block;">
+          <div class="card-image waves-effect waves-block waves-light">
+            <%= attachment_image_tag group_user.group, :group_image, :fill, 233, 233, fallback: "no_group_image.jpg" %>
+          </div>
+          <div class="card-content" style="height: 116px;">
+            <span class="card-title activator grey-text text-darken-4">
+              <%= group_user.group.name %>
+            </span>
+          </div>
+          <div class="card-action center">
+            <%= link_to "参加", group_group_users_path(group_user.group.id), method: :put, class: "btn", style: "border-radius: 20px;" %>
+            <%= link_to "不参加", group_group_users_path(group_user.group.id), method: :delete, data: {confirm: "本当に参加しませんか？"}, class: "btn", style: "border-radius: 20px;" %>
+          </div>
         </div>
-        <div class="card-content" style="height: 116px;">
-          <span class="card-title activator grey-text text-darken-4">
-            <%= group_user.group.name %>
-          </span>
-          <p class="center">
-            <%= link_to "参加", group_group_users_path(group_user.group.id), method: :put, class: "btn" %>
-            <%= link_to "不参加", group_group_users_path(group_user.group.id), method: :delete, data: {confirm: "本当に参加しませんか？"}, class: "btn" %>
-          </p>
-        </div>
-      </div>
+      <% end %>
     <% end %>
   <% end %>
 
   <% join_groups.each do |group_user| %>
     <div class="card" style="width: 32%; display: inline-block;">
       <div class="card-image waves-effect waves-block waves-light">
-        <%= attachment_image_tag group_user.group, :group_image, :fill, 298, 298, fallback: "no_group_image.jpg" %>
+        <%= attachment_image_tag group_user.group, :group_image, :fill, 233, 233, fallback: "no_group_image.jpg" %>
       </div>
 
       <div class="card-content">

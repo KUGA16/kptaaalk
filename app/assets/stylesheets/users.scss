@@ -34,6 +34,10 @@ main {
 }
 .card-title {
   font-size: 18px !important;
+  // width: 185px;
+  // white-space: nowrap;// 改行禁止
+  // overflow: hidden;// 表示領域外非表示
+  // text-overflow: ellipsis;// 末尾「...」
 }
 .card .card-action a:not(.btn):not(.btn-large):not(.btn-small):not(.btn-large):not(.btn-floating) {
   margin-right: 5px !important;
