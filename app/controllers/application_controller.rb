@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   before_action :is_notification
   #ログイン後の画面遷移
   def after_sign_in_path_for(resource)
-    result_users_path
+    search_users_path
   end
   #ログアウト後の画面遷移
   def after_sign_out_path_for(resource)
