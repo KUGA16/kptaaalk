@@ -35,10 +35,12 @@
         <i class="material-icons">people</i>
         <%= link_to "グループ作成", new_group_path %>
       </div>
-    	<div class="card-action">
-				<i class="material-icons">build</i>
-				<%= link_to "編集", edit_user_path(user) %>
-			</div>
+      <% if user.nick_name != "KPT太郎" %>
+      	<div class="card-action">
+  				<i class="material-icons">build</i>
+  				<%= link_to "編集", edit_user_path(user) %>
+  			</div>
+      <% end %>
 			<div class="card-action">
 				<i class="material-icons">exit_to_app</i>
 				<%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
