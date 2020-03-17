@@ -27,8 +27,16 @@
       <div class="actions" style="margin-bottom: 10px;">
         <%= f.submit "登録", class: "btn" %>
       </div>
-
     <% end %>
+
+    <div class="actions" style="margin-bottom: 10px;">
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <%= f.hidden_field :nick_name, value: "KPT太郎" %>
+        <%= f.hidden_field :password, value: "kptaaalk" %>
+        <%= f.submit "テストユーザーとして簡単ログイン", class:"btn"%>
+      <% end %>
+    </div>
+
     <%= render "devise/shared/links" %>
   </div>
 </div>
