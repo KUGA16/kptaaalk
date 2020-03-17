@@ -17,21 +17,16 @@ main {
   pointer-events: auto;
 }
 // 新規登録フォーム
-.border{
+.border {
   border-bottom: solid 1px #ff7f50;
 }
-// 6文字以上　テキスト
-.field,em {
-  font-size: 12px;
-  color: grey;
-}
 // パスワード変更ページ
-.flex{
+.flex {
   display: flex;
   flex-wrap: wrap;
 }
 // edit.html.erb
-.edit_profile{
+.edit_profile {
   display: flex;
   justify-content: center;
   text-align: center;
@@ -39,4 +34,7 @@ main {
 }
 .card-title {
   font-size: 18px !important;
- }
+}
+.card .card-action a:not(.btn):not(.btn-large):not(.btn-small):not(.btn-large):not(.btn-floating) {
+  margin-right: 5px !important;
+}
