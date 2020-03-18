@@ -5,12 +5,13 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @join_groups = GroupUser.where(user_id: current_user.id).where(is_confirmed: true).page(params[:join_group])
+    @join_groups = GroupUser.where(user_id:
+      @user.id).where(is_confirmed: true).page(params[:join_group])
     respond_to do |format|
       format.html
       format.js
     end
-    @invited_groups = GroupUser.where(user_id: current_user.id).where(is_confirmed: false).page(params[:invited_group])
+    @invited_groups = GroupUser.where(user_id: @user.id).where(is_confirmed: false).page(params[:invited_group])
     respond_to do |format|
       format.html
       format.js
