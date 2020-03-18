@@ -1,12 +1,13 @@
 class GroupsController < ApplicationController
 
   before_action :authenticate_user!
-  before_action :barrier_group, only: [:show, :edit, :update, :destroy]
+  before_action :barrier_group, only: [:edit, :update, :destroy]
 
   def show
     @group = Group.find(params[:id])
-    @group_users = GroupUser.where(group_id: @group.id).where(is_confirmed: true)
-    @inviting_users = GroupUser.where(group_id: @group.id).where(is_confirmed: false)
+    @join_users = GroupUser.where(group_id: @group.id).where(is_confirmed: true)
+    @invit_users = GroupUser.where(group_id: @group.id).where(is_confirmed: false)
+    @join_user = @join_users.any? {|group| group.user_id == current_user.id}
   end
 
   def new
@@ -55,9 +56,13 @@ class GroupsController < ApplicationController
 
   #url直接入力禁止
   def barrier_group
-    group_users = GroupUser.where(group_id: params[:id]).where(user_id: current_user.id).where(is_confirmed: true).pluck(:user_id)
-    unless group_users.include?(current_user.id)
-      redirect_to user_path(current_user)
+    # group_users = GroupUser.where(group_id: params[:id]).where(user_id: current_user.id).where(is_confirmed: true).pluck(:user_id)
+    # unless group_users.include?(current_user)
+    #   redirect_to user_path(current_user)
+    # end
+    group = Group.find(params[:id])
+    unless GroupUser.where(group_id: group.id, is_confirmed: true).any? {|group| group.user_id == current_user.id}
+       redirect_to user_path(current_user)
     end
   end
 

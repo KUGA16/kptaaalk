@@ -4,8 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :groups, through: :group_users
   has_many :group_users, dependent: :destroy #userが消えるとgroup_userも消える
+  has_many :groups, through: :group_users
   has_many :comments,    dependent: :destroy #userが消えるとcommentも消える
   has_many :rights,      dependent: :destroy #userが消えるとrightも消える
 
