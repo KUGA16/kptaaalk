@@ -5,17 +5,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @join_groups = GroupUser.where(user_id:
-      @user.id).where(is_confirmed: true).page(params[:join_group])
-    respond_to do |format|
-      format.html
-      format.js
-    end
-    @invited_groups = GroupUser.where(user_id: @user.id).where(is_confirmed: false).page(params[:invited_group])
-    respond_to do |format|
-      format.html
-      format.js
-    end
+    @join_groups = GroupUser.where(user_id: @user.id, is_confirmed: true).page(params[:page])
+    @invited_groups = GroupUser.where(user_id: @user.id, is_confirmed: false).page(params[:page])
   end
 
   def edit
@@ -37,15 +28,7 @@ class UsersController < ApplicationController
   def friends
     @user = User.find(params[:user_id])
     @following_users = @user.followings.page(params[:following_user])
-    respond_to do |format|
-      format.html
-      format.js
-    end
     @follower_users = @user.followers.page(params[:follower_user])
-    respond_to do |format|
-      format.html
-      format.js
-    end
   end
 
   private

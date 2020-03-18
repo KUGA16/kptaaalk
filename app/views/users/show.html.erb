@@ -1,7 +1,14 @@
 <!-- マイページ -->
 <div class="row">
+  <!-- ユーザープロフィール -->
   <%= render 'profile', user: @user %>
+  <!-- グループ一覧 -->
   <div id="group_lists">
-    <%= render 'group_lists', user: @user, is_notification: @is_notification, invited_groups: @invited_groups, join_groups: @join_groups %>
+    <%= render 'group_lists',
+      user: @user,
+      is_notification: @is_notification,
+      invited_groups: @invited_groups,
+      join_groups: @join_groups
+    %>
   </div>
 </div>
