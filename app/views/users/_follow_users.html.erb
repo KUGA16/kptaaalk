@@ -4,7 +4,7 @@
     <div class="card-image waves-effect waves-block waves-light">
       <%= attachment_image_tag user, :profile_image, :fill, 233, 175, fallback: "no_image.jpg" %>
     </div>
-    <div class="card-content center" style="height: 115px;">
+    <div class="card-content friend-introduction center">
       <span class="card-title">
         <%= link_to user_path(user) do %>
           <%= user.nick_name %>
