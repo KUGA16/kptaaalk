@@ -2,7 +2,7 @@
 <!-- ログイン中ヘッダー　-->
 <ul id="nav-mobile" class="right hide-on-med-and-down">
   <li>
-    <!--グループに招待されているか -->
+    <!--招待されているグループがあるか -->
     <% if @is_notification.present? %>
       <%= link_to user_path(current_user) do %>
         <i class="material-icons">notifications_active</i>

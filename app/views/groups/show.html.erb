@@ -6,10 +6,10 @@
   <div class="col s12 m9">
     <div class="card-panel teal lighten-4 z-depth-0">
       <span class="white-text">
-        <h6>参加メンバー(<%= @group_users.count%>)</h6>
+        <h6>参加メンバー(<%= @join_users.count%>)</h6>
       </span>
     </div>
   </div>
 <!-- グループのユーザー一覧 -->
-  <%= render 'user_list', user: @group_users.map(&:user) %>
+  <%= render 'user_list', user: @join_users.map(&:user) %>
 </div>

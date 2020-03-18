@@ -13,9 +13,7 @@ class ApplicationController < ActionController::Base
   end
   #ログインユーザーがグループに招待されているか
   def is_notification
-    if user_signed_in?
-      @is_notification = GroupUser.is_notification?(current_user)
-    end
+    @is_notification = GroupUser.where(user_id: current_user.id).where(is_confirmed: false)
   end
 
   #他のコントローラからも参照可能
