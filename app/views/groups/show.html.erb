@@ -2,7 +2,7 @@
 <div class="row">
 <!-- グループのプロフィール -->
   <%= render 'group_profile', group: @group, group_users: @group_users %>
-<!-- メンバー一覧 -->
+<!-- 見出し -->
   <div class="col s12 m9">
     <div class="card-panel teal lighten-4 z-depth-0">
       <span class="white-text">
@@ -11,5 +11,7 @@
     </div>
   </div>
 <!-- グループのユーザー一覧 -->
-  <%= render 'user_list', user: @join_users.map(&:user) %>
+  <div class="col s12 m9">
+    <%= render 'shared/user_lists', users: @join_users.map(&:user) %>
+  </div>
 </div>
