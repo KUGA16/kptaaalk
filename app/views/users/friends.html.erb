@@ -23,11 +23,11 @@
   </div>
   <!-- フォロー -->
   <div id="followings" class="col s9 m9"><!-- タブ表示の為のid -->
-    <%= render 'follow_users', users: @following_users %>
+    <%= render 'shared/user_lists', users: @following_users %>
   </div>
   <!-- フォロワー -->
   <div id="followers" class="col s12 m9">
-    <%= render 'follow_users', users: @follower_users %>
+    <%= render 'shared/user_lists', users: @follower_users %>
   </div>
 
 </div>
