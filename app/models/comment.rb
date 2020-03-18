@@ -6,7 +6,7 @@ class Comment < ApplicationRecord
   validates :comment,
     presence: true #テキスト:空白禁止
 
-  enum place_status: {keep:0, probrem:1, try:2}
+  enum place_status: {keep:0, problem:1, try:2}
 
   # それなボタンにログインユーザーが存在するか
   def righted_by?(user)
