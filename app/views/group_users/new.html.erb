@@ -29,7 +29,7 @@
         <% @can_invite_users.each do |user| %>
           <div class="card" style="width: 32%; display: inline-block;">
             <div class="card-image waves-effect waves-block waves-light">
-              <%= attachment_image_tag user, :profile_image, fallback: "no_image.jpg" %>
+              <%= attachment_image_tag user, :profile_image, :fill, 233, 174, fallback: "no_image.jpg" %>
             </div>
             <div class="card-content">
               <label>
