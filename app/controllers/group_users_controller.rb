@@ -1,7 +1,7 @@
 class GroupUsersController < ApplicationController
 
   before_action :authenticate_user!
-  before_action :barrier_group_user, except: [:update]
+  before_action :barrier_group_user, only: [:new, :create]
 
   def new
     @group_user_new = GroupUser.new
@@ -43,8 +43,8 @@ class GroupUsersController < ApplicationController
   end
 
   def destroy
-    no_join_group = GroupUser.find_by(group_id: params[:group_id], user_id: current_user)
-    no_join_group.destroy
+    no_join_user = GroupUser.find_by(group_id: params[:group_id], user_id: current_user)
+    no_join_user.destroy
     flash[:notice] = "「#{no_join_group.group.name}」の参加を取り止めました！"
     redirect_to user_path(current_user)
   end
