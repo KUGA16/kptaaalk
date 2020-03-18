@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
 
   before_action :authenticate_user!
-  before_action :barrier_comment, except: [:place_status_update]
+  before_action :barrier_comment, only: [:index, :new, :create, :destroy]
 
   def index
     @group = Group.find(params[:group_id])
