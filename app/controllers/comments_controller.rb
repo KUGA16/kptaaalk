@@ -97,10 +97,6 @@ class CommentsController < ApplicationController
      params.require(:comment).permit(:id, :place_status)
   end
 
-  def status_params
-    params.require(:comment).permit(:id, :place_status)
-  end
-
   #url直接入力禁止
   def barrier_comment
     # group_users = GroupUser.where(group_id: params[:group_id]).where(user_id: current_user.id).where(is_confirmed: true).pluck(:user_id)
