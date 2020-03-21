@@ -3,11 +3,11 @@
   <!-- 見出し -->
   <div class="card-panel teal lighten-4 z-depth-0">
     <span class="white-text">
-      <h6>参加グループ(<%= join_groups.total_count %>)</h6>
+      <h6>参加グループ(<%= joined_groups.total_count %>)</h6>
         <% if user.id == current_user.id %>
           <!--グループに招待されているか -->
           <% if is_notification.present? %>
-            <h7>招待が届いています(<%= invited_groups.total_count %>)</h7>
+            <p>招待が届いています(<%= invited_groups.total_count %>)</p>
           <% end %>
         <% end %>
     </span>
@@ -50,7 +50,7 @@
     <% end %>
   <% end %>
   <!-- 参加グループ -->
-  <% join_groups.each do |group_user| %>
+  <% joined_groups.each do |group_user| %>
     <div class="card" style="width: 32%; display: inline-block;">
       <div class="card-image waves-effect waves-block waves-light">
         <%= attachment_image_tag group_user.group, :group_image, :fill, 233, 233, fallback: "no_group_image.jpg" %>
