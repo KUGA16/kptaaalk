@@ -26,7 +26,7 @@ class Comment < ApplicationRecord
     no_rights_ids.each do | id |
       comment_ranking << Comment.find(id)
     end
-    return comments, comment_ranking
+    return comment_ranking
   end
 
 end

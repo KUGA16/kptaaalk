@@ -17,6 +17,7 @@ class GroupUsersController < ApplicationController
   def create
     group = Group.find(params[:group_id])
     if params[:group_user].blank? #ユーザーを未選択でsubmitした時
+      flash[:notice] = '招待するお仲間を選択してください'
       redirect_to new_group_group_users_path(group)
       return
     end

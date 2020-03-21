@@ -1,6 +1,10 @@
-
+// モーダルウィンドウでの投稿create
 <% if @status == 'success' %>
-  $("#comment_box").html("<%= j(render("kpt_list", keep_comments: @keep_comments, problem_comments: @problem_comments, try_comments: @try_comments)) %>");
+  $("#comment_box").html("<%= j(render('kpt_list',
+    keep_comments: @keep_comment_ranking,
+    problem_comments: @problem_comment_ranking,
+    try_comments: @try_comment_ranking
+  )) %>");
 <% elsif @status == 'fail' %>
   alert('入力に誤りがあります!');
 <% end %>
