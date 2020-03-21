@@ -1,7 +1,7 @@
 class GroupUsersController < ApplicationController
 
   before_action :authenticate_user!
-  before_action :barrier_group_user, only: [:new, :create]
+  before_action :only_group_user, only: [:new, :create]
 
   def new
     @group_user_new = GroupUser.new
@@ -53,14 +53,6 @@ class GroupUsersController < ApplicationController
 
   def params_group_user_ids
     params.require(:group_user).permit(user_id: [])
-  end
-
-  #url直接入力禁止
-  def barrier_group_user
-    group = Group.find(params[:group_id])
-    unless GroupUser.where(group_id: group.id, is_confirmed: true).any? {|group| group.user_id == current_user.id}
-       redirect_to user_path(current_user)
-    end
   end
 
 end

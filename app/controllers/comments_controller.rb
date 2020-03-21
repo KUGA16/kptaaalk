@@ -1,10 +1,9 @@
 class CommentsController < ApplicationController
 
   before_action :authenticate_user!
-  before_action :barrier_comment, only: [:index, :new, :create, :destroy]
+  before_action :only_group_user, only: [:index, :new, :create, :destroy]
 
   def index
-    @group = Group.find(params[:group_id])
     #参加しているユーザー
     @join_users = GroupUser.where(group_id: @group.id).where(is_confirmed: true)
     #招待しているユーザー
@@ -19,7 +18,6 @@ class CommentsController < ApplicationController
 
   def new
     @comment_new = Comment.new
-    @group = Group.find(params[:group_id])
   end
 
   def create
@@ -45,13 +43,10 @@ class CommentsController < ApplicationController
   end
 
   def edit
-    @comment = Comment.find(params[:id])
-    @group = Group.find(params[:group_id])
   end
 
   def update
-    comment = Comment.find(params[:id])
-    if comment.update(params_post_comment_id)
+    if @comment.update(params_post_comment_id)
       @keep_comment_ranking = Comment.get_right_ranking(params[:group_id], "keep")
       @problem_comment_ranking = Comment.get_right_ranking(params[:group_id], "problem")
       @try_comment_ranking = Comment.get_right_ranking(params[:group_id], "try")
@@ -62,15 +57,14 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    comment = Comment.find(params[:id])
-    comment.destroy
+    @comment.destroy
     redirect_to group_comments_path, notice: "投稿を削除しました"
   end
 
   def place_status_update
     update_comment = Comment.find(params[:comment][:id])
     if update_comment.place_status == update_status_params[:place_status]
-      return {"hoge":"hoge"}
+      return
     end
       update_comment.update(
         id: update_comment.id,
@@ -101,14 +95,6 @@ class CommentsController < ApplicationController
 
   def update_status_params
      params.require(:comment).permit(:id, :place_status)
-  end
-
-  #url直接入力禁止
-  def barrier_comment
-    group = Group.find(params[:group_id])
-    unless GroupUser.where(group_id: group.id, is_confirmed: true).any? {|group| group.user_id == current_user.id}
-       redirect_to user_path(current_user)
-    end
   end
 
 end
