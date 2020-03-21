@@ -4,6 +4,8 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :is_notification
   before_action :set_user
+  before_action :set_group
+  before_action :set_comment
 
   #ログイン後の画面遷移
   def after_sign_in_path_for(resource)
@@ -20,6 +22,14 @@ class ApplicationController < ActionController::Base
     @user = User.find(params[:user_id]) if params[:user_id].present?
   end
 
+  def set_group
+    @group = Group.find(params[:group_id]) if params[:group_id].present?
+  end
+
+  def set_comment
+    @comment = Comment.find(params[:comment_id]) if params[:comment_id].present?
+  end
+
   #ログインユーザーがグループに招待されているか
   def is_notification
    if user_signed_in?
@@ -27,8 +37,16 @@ class ApplicationController < ActionController::Base
    end
   end
 
+  #url直接入力禁止
+  def only_group_user
+    unless GroupUser.where(group_id: @group.id, is_confirmed: true).any? {|group| group.user_id == current_user.id}
+       redirect_to user_path(current_user)
+    end
+  end
+
   #他のコントローラからも参照可能
   protected
+  
   #sign_up,sign_in,account_updateの際に、keyのデータを許可
   def configure_permitted_parameters
     added_attrs = [:email, :nick_name, :password, :password_confirmation]

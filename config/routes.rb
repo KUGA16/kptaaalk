@@ -15,10 +15,12 @@ Rails.application.routes.draw do
   end
 
   #groups
-  resources :groups,       only: [:show, :new, :create, :edit, :update, :destroy] do
-    #groups/group_users
+  resources :groups, only: [:show, :new, :create, :edit, :update, :destroy], param: :group_id
+  resources :groups, only: [] do
+    #group_users
     resource :group_users, only: [:new, :create, :update, :destroy]
-    resources :comments,   only: [:index, :new, :create, :edit, :update, :destroy]do
+    resources :comments,   only: [:index, :new, :create, :edit, :update, :destroy], param: :comment_id
+    resources :comments,   only: [] do
       resource :rights,    only: [:create, :destroy]
     end
   end

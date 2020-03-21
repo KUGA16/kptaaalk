@@ -1,10 +1,9 @@
 class GroupsController < ApplicationController
 
   before_action :authenticate_user!
-  before_action :barrier_group, only: [:edit, :update, :destroy]
+  before_action :only_group_user, only: [:edit, :update, :destroy]
 
   def show
-    @group = Group.find(params[:id])
     @join_users = GroupUser.where(group_id: @group.id).where(is_confirmed: true)
     @invit_users = GroupUser.where(group_id: @group.id).where(is_confirmed: false)
     @join_user = @join_users.any? {|group| group.user_id == current_user.id}
@@ -30,11 +29,9 @@ class GroupsController < ApplicationController
   end
 
   def edit
-    @group = Group.find(params[:id])
   end
 
   def update
-    @group = Group.find(params[:id])
     if @group.update(group_params)
       redirect_to group_path(@group), notice: "グループのプロフィールを変更しました！"
     else
@@ -43,23 +40,14 @@ class GroupsController < ApplicationController
   end
 
   def destroy
-    group = Group.find(params[:id])
-  	group.destroy
-  	redirect_to user_path(current_user), notice: "#{group.name}を削除しました"
+  	@group.destroy
+  	redirect_to user_path(current_user), notice: "#{@group.name}を削除しました"
   end
 
   private
 
   def group_params
     params.require(:group).permit(:name, :group_image)
-  end
-
-  #url直接入力禁止
-  def barrier_group
-    group = Group.find(params[:id])
-    unless GroupUser.where(group_id: group.id, is_confirmed: true).any? {|group| group.user_id == current_user.id}
-       redirect_to user_path(current_user)
-    end
   end
 
 end

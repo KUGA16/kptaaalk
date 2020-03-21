@@ -13,11 +13,11 @@
             <%= render 'rights/button', comment: comment %>
           </span>
           <!-- 編集ボタン -->
-          <%= link_to edit_group_comment_path(group_id: comment.group_id, id: comment.id), remote: true, class: "btn  blue-grey lighten-3 z-depth-0" do %>
+          <%= link_to edit_group_comment_path(group_id: comment.group_id, comment_id: comment.id), remote: true, class: "btn  blue-grey lighten-3 z-depth-0" do %>
             <i class="material-icons">settings</i>
           <% end %>
           <!-- 削除ボタン -->
-          <%= link_to group_comment_path(group_id: comment.group_id, id: comment.id), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn  blue-grey lighten-3 z-depth-0" do %>
+          <%= link_to group_comment_path(group_id: comment.group_id, comment_id: comment.id), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn  blue-grey lighten-3 z-depth-0" do %>
             <i class="material-icons">delete_forever</i>
           <% end %>
         </div>
@@ -36,11 +36,11 @@
           <%= render 'rights/button', comment: comment %>
         </span>
         <!-- 編集ボタン -->
-        <%= link_to edit_group_comment_path(group_id: comment.group_id, id: comment.id), remote: true, class: "btn  blue-grey lighten-3 z-depth-0" do %>
+        <%= link_to edit_group_comment_path(group_id: comment.group_id, comment_id: comment.id), remote: true, class: "btn  blue-grey lighten-3 z-depth-0" do %>
           <i class="material-icons">settings</i>
         <% end %>
         <!-- 削除ボタン -->
-        <%= link_to group_comment_path(group_id: comment.group_id, id: comment.id), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn  blue-grey lighten-3 z-depth-0" do %>
+        <%= link_to group_comment_path(group_id: comment.group_id, comment_id: comment.id), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn  blue-grey lighten-3 z-depth-0" do %>
           <i class="material-icons">delete_forever</i>
         <% end %>
       </div>
@@ -61,11 +61,11 @@
         <%= render 'rights/button', comment: comment %>
       </span>
       <!-- 編集ボタン -->
-      <%= link_to edit_group_comment_path(group_id: comment.group_id, id: comment.id), remote: true, class: "btn  blue-grey lighten-3 z-depth-0" do %>
+      <%= link_to edit_group_comment_path(group_id: comment.group_id, comment_id: comment.id), remote: true, class: "btn  blue-grey lighten-3 z-depth-0" do %>
         <i class="material-icons">settings</i>
       <% end %>
       <!-- 削除ボタン -->
-      <%= link_to group_comment_path(group_id: comment.group_id, id: comment.id), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn  blue-grey lighten-3 z-depth-0" do %>
+      <%= link_to group_comment_path(group_id: comment.group_id, comment_id: comment.id), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn  blue-grey lighten-3 z-depth-0" do %>
         <i class="material-icons">delete_forever</i>
       <% end %>
     </div>
