@@ -13,6 +13,7 @@ class CommentsController < ApplicationController
     @keep_comments, @keep_comment_ranking = Comment.get_right_ranking(params[:group_id], "keep")
     @problem_comments, @problem_comment_ranking = Comment.get_right_ranking(params[:group_id], "problem")
     @try_comments, @try_comment_ranking = Comment.get_right_ranking(params[:group_id], "try")
+    # jsにidを送る為のform用
     @comment_new = Comment.new
   end
 
@@ -27,8 +28,8 @@ class CommentsController < ApplicationController
     @try_comments, @try_comment_ranking = Comment.get_right_ranking(params[:group_id], "try")
     # hidden_fieldでuser_idとgroup_idを取得
     @comment_new = Comment.new(params_post_comment_id)
-    respond_to do |format|
-      if @comment_new.save
+    # respond_to do |format|
+      if @comment_new.save!
         if params_post_comment_id[:place_status] == "keep"
           @keep_comment_ranking << Comment.find(@comment_new.id)
         end
@@ -38,18 +39,22 @@ class CommentsController < ApplicationController
         if params_post_comment_id[:place_status] == "try"
           @try_comment_ranking << Comment.find(@comment_new.id)
         end
-        format.html { redirect_to @comment_new, notice: 'KPTを投稿しました！' }
-        format.json { render :new, status: :created, location: @comment_new }
-        format.js { @status = 'success' }
+        # format.html { redirect_to @comment_new, notice: 'KPTを投稿しました！' }
+        # format.json { render :new, status: :created, location: @comment_new }
+        # format.js { @status = 'success' }
+        @status = 'success'
       else
-        format.html { render :new }
-        format.json { render json: @comment_new.errors, status: :unprocessable_entity }
-        format.js { @status = 'fail' }
+        # format.html { render :new }
+        # format.json { render json: @comment_new.errors, status: :unprocessable_entity }
+        # format.js { @status = 'fail' }
+        @status = 'fail'
       end
-    end
+    # end
   end
 
   def edit
+    @comment = Comment.find(params[:id])
+    @group = Group.find(params[:group_id])
   end
 
   def update
