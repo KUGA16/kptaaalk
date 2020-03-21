@@ -1,0 +1,61 @@
+// モーダルウィンドウでの投稿update
+<% if @status == 'success' %>
+  $("#comment_box").html("<%= j(render('kpt_list',
+    keep_comments: @keep_comment_ranking,
+    problem_comments: @problem_comment_ranking,
+    try_comments: @try_comment_ranking
+  )) %>");
+<% elsif @status == 'fail' %>
+  alert('入力に誤りがあります!');
+<% end %>
+$('#comment-modal').modal('close');
+
+
+// ドラッグ&ドロップ
+$( document ).ready(function() {
+  $('.item').draggable();
+  $('.drop_area').droppable({
+    drop: function(e,ui) {
+      // $(this)
+      //   .addClass("ui-state-highlight")
+        // .css('background', '#e0e0e0')
+
+        var comment_id = ui.draggable.attr('name');
+        var place_status = $(this).attr('id');
+        // ui.draggabledされた　.attr 指定した属性の値を取得
+
+        $('#update_comment_id').val(comment_id);
+        $('#update_place_status').val(place_status);
+        // 上記で取得した値を戻り値として設定
+
+        // Ajax通信を開始
+        $.ajax({
+          url: '/place_status_update', // アクセス先パス
+          type: 'POST', //通信に利用するHTTPメソッド (デフォルトGET)
+          data: $('#status_update_form').serialize() //送信するデータ
+        })
+        // Ajaxリクエストが成功した時
+        .done((data) => {
+          location.reload();
+　　　　　　return;
+            // let id = parseInt(data.id);
+            // let user_id = parseInt(data.user_id);
+            // let nick_name = data.nick_name;
+            // let comment = data.comment;
+            // let group_id = parseInt(data.group_id);
+            // let user_image = data.user_image; // imageの受け取り方不明
+            // let place_status = data.place_status;
+            // let right = data.right;
+            // changeDom(id,user_id,nick_name,comment,group_id,user_image,place_status,right);
+        })
+        // Ajaxリクエストが失敗した時
+        .fail((data) => {
+          window.alert('エラーが発生しました。');
+        });
+        // Ajaxリクエストが成功・失敗どちらでも発動
+        // .always(function(data) => {
+        // });
+
+    }
+  });
+});

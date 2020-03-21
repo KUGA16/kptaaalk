@@ -10,9 +10,9 @@ class CommentsController < ApplicationController
     #招待しているユーザー
     @invit_users = GroupUser.where(group_id: @group.id).where(is_confirmed: false)
     # place_statusでKPTを分けて取得
-    @keep_comments, @keep_comment_ranking = Comment.get_right_ranking(params[:group_id], "keep")
-    @problem_comments, @problem_comment_ranking = Comment.get_right_ranking(params[:group_id], "problem")
-    @try_comments, @try_comment_ranking = Comment.get_right_ranking(params[:group_id], "try")
+    @keep_comment_ranking = Comment.get_right_ranking(params[:group_id], "keep")
+    @problem_comment_ranking = Comment.get_right_ranking(params[:group_id], "problem")
+    @try_comment_ranking = Comment.get_right_ranking(params[:group_id], "try")
     # jsにidを送る為のform用
     @comment_new = Comment.new
   end
@@ -23,33 +23,25 @@ class CommentsController < ApplicationController
   end
 
   def create
-    @keep_comments, @keep_comment_ranking = Comment.get_right_ranking(params[:group_id], "keep")
-    @problem_comments, @problem_comment_ranking = Comment.get_right_ranking(params[:group_id], "problem")
-    @try_comments, @try_comment_ranking = Comment.get_right_ranking(params[:group_id], "try")
+    @keep_comment_ranking = Comment.get_right_ranking(params[:group_id], "keep")
+    @problem_comment_ranking = Comment.get_right_ranking(params[:group_id], "problem")
+    @try_comment_ranking = Comment.get_right_ranking(params[:group_id], "try")
     # hidden_fieldでuser_idとgroup_idを取得
-    @comment_new = Comment.new(params_post_comment_id)
-    # respond_to do |format|
-      if @comment_new.save!
-        if params_post_comment_id[:place_status] == "keep"
-          @keep_comment_ranking << Comment.find(@comment_new.id)
-        end
-        if params_post_comment_id[:place_status] == "problem"
-          @problem_comment_ranking << Comment.find(@comment_new.id)
-        end
-        if params_post_comment_id[:place_status] == "try"
-          @try_comment_ranking << Comment.find(@comment_new.id)
-        end
-        # format.html { redirect_to @comment_new, notice: 'KPTを投稿しました！' }
-        # format.json { render :new, status: :created, location: @comment_new }
-        # format.js { @status = 'success' }
-        @status = 'success'
-      else
-        # format.html { render :new }
-        # format.json { render json: @comment_new.errors, status: :unprocessable_entity }
-        # format.js { @status = 'fail' }
-        @status = 'fail'
+    comment = Comment.new(params_post_comment_id)
+    if comment.save!
+      if params_post_comment_id[:place_status] == "keep"
+        @keep_comment_ranking << Comment.find(comment.id)
       end
-    # end
+      if params_post_comment_id[:place_status] == "problem"
+        @problem_comment_ranking << Comment.find(comment.id)
+      end
+      if params_post_comment_id[:place_status] == "try"
+        @try_comment_ranking << Comment.find(comment.id)
+      end
+      @status = 'success'
+    else
+      @status = 'fail'
+    end
   end
 
   def edit
@@ -58,6 +50,15 @@ class CommentsController < ApplicationController
   end
 
   def update
+    comment = Comment.find(params[:id])
+    if comment.update(params_post_comment_id)
+      @keep_comment_ranking = Comment.get_right_ranking(params[:group_id], "keep")
+      @problem_comment_ranking = Comment.get_right_ranking(params[:group_id], "problem")
+      @try_comment_ranking = Comment.get_right_ranking(params[:group_id], "try")
+      @status = 'success'
+    else
+      @status = 'fail'
+    end
   end
 
   def destroy
