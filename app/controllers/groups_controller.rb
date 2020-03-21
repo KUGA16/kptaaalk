@@ -17,7 +17,7 @@ class GroupsController < ApplicationController
   def create
     @group_new = Group.new(group_params)
     # グループ作成者をgroup_usersテーブルに登録
-    if @group_new.save
+    if @group_new.save!
       GroupUser.create(
         user_id: current_user.id,
         group_id: @group_new.id,
