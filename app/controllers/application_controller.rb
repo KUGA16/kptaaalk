@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   #devise利用の機能（ユーザ登録、ログイン認証など）の前に実行
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :is_notification
+  before_action :set_user
 
   #ログイン後の画面遷移
   def after_sign_in_path_for(resource)
@@ -12,6 +13,13 @@ class ApplicationController < ActionController::Base
   def after_sign_out_path_for(resource)
     root_path
   end
+
+  private
+
+  def set_user
+    @user = User.find(params[:user_id]) if params[:user_id].present?
+  end
+
   #ログインユーザーがグループに招待されているか
   def is_notification
    if user_signed_in?

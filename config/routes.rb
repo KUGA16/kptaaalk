@@ -5,15 +5,13 @@ Rails.application.routes.draw do
   #homes
   root 'homes#top'
 
+  #users
   #deviseを使用する際にURLとしてusersを含む
   devise_for :users
-  #users
-  resources :users,          only: [:show, :edit, :update, :destroy] do
-    resource :relationships, only: [:create,:destroy]
+  resources :users, only: [:show, :edit, :update], param: :user_id
+  resources :users, only: [] do
+    resource :relationships, only: [:create, :destroy]
     get 'friends' #フォロー、フォロワー一覧
-    member do
-      get 'withdraw' #サイト退会ページ
-    end
   end
 
   #groups
