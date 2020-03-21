@@ -17,19 +17,18 @@ class GroupUsersController < ApplicationController
   def create
     group = Group.find(params[:group_id])
     if params[:group_user].blank? #ユーザーを未選択でsubmitした時
-      flash[:notice] = '招待するお仲間を選択してください'
+      flash[:notice] = '招待するお仲間を選択してください。'
       redirect_to new_group_group_users_path(group)
       return
     end
-    begin #通常時
+    GroupUser.transaction do
       params_group_user_ids[:user_id].each do |id|
         GroupUser.create!(user_id: id, group_id: group.id)
       end
-    rescue => e #エラー時
-      redirect_to new_group_group_users_path(group)
-      return
     end
       redirect_to group_comments_path(group), notice: "KPTを作成しました！"
+    rescue => e
+      redirect_to new_group_group_users_path(group), notice: "エラーが発生しました"
   end
 
   def update
