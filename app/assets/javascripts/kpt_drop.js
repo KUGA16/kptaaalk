@@ -15,9 +15,9 @@ $( document ).ready(function() {
         .addClass("ui-state-highlight")
 
         // comment一つ一つにnameクラスを取得(comment.id)
-        var comment_id = ui.draggable.attr('name');
+        let comment_id = ui.draggable.attr('name');
         // ui.draggabledされた　.attr 指定した属性の値を取得
-        var place_status = $(this).attr('id');
+        let place_status = $(this).attr('id');
 
         // 上記で取得した値を戻り値として設定
         $('#update_comment_id').val(comment_id);
@@ -29,25 +29,25 @@ $( document ).ready(function() {
           type: 'POST', //通信に利用するHTTPメソッド (デフォルトGET)
           data: $('#status_update_form').serialize() //送信するデータ
           // Ajaxリクエストが成功した時
-        }).done((data) => {
-            if (data) {
-              let com = ui.draggable;
-              ui.draggable.remove();
-              changeDom(data.place_status, com);
-            }
-          // Ajaxリクエストが失敗した時
-        }).fail((data) => {
-          window.alert('エラーが発生しました。');
-          // Ajaxリクエストが成功・失敗どちらでも
-        }).always(() => {　　
-          $('.item').attr('style', 'position: relative;');
-          $('.item').draggable();
-        });
+          }).done((data) => {
+              if (data) {
+                let com = ui.draggable;
+                ui.draggable.remove();
+                changeDom(data.place_status, com);
+              }
+            // Ajaxリクエストが失敗した時
+          }).fail((data) => {
+            window.alert('エラーが発生しました。');
+            // Ajaxリクエストが成功・失敗どちらでも
+          }).always(() => {　　
+            $('.item').attr('style', 'position: relative;');
+            $('.item').draggable();
+          });
     }
   });
 });
 
 // DOM操作用のfunction
-function changeDom(data.place_status, com) {
-  
+function changeDom(place_status, com) {
+
 }
