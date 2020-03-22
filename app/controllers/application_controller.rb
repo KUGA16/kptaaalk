@@ -43,9 +43,6 @@ class ApplicationController < ActionController::Base
        redirect_to user_path(current_user)
     end
   end
-
-  #他のコントローラからも参照可能
-  protected
   
   #sign_up,sign_in,account_updateの際に、keyのデータを許可
   def configure_permitted_parameters

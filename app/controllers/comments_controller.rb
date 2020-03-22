@@ -76,14 +76,7 @@ class CommentsController < ApplicationController
       user = User.find(update_comment.user_id)
       right = Comment.find(update_comment.id).rights.count
       render json: {
-        'id': update_comment.id,
-        'user_id': update_comment.user_id,
-        'nick_name': user.nick_name,
-        'comment': update_comment.comment,
-        'group_id': update_comment.group_id,
-        'user_image': user.profile_image,
-        'place_status': update_status_params[:place_status],
-        'right': right
+        'place_status': update_status_params[:place_status]
       }
   end
 

@@ -2,7 +2,7 @@
 $( document ).ready(function() {
   $('.item').draggable();
   // drop_area以外にドロップされた場合 :not()
-  $(":not('.drop_area')").droppable( {
+  $(":not(.drop_area)").droppable( {
     drop: function(e, ui) {
       // id itemにstyleを適応　relative は移動するときの基準が元いた位置
       $('.item').attr('style', 'position: relative;');
@@ -49,5 +49,16 @@ $( document ).ready(function() {
 
 // DOM操作用のfunction
 function changeDom(place_status, com) {
-
+  let isAllMoreThan = true;
+  let fav_count = parseInt($(com).attr('data-count'));
+  $('#' + place_status).find('.item').each(function(index, element){
+    if (parseInt($(element).attr('data-count')) <= fav_count){
+      $(element).before(com);
+      isAllMoreThan = false;
+      return false;
+    }
+  });
+  if(isAllMoreThan) {
+    $('#' + place_status).append(com);
+  }
 }
