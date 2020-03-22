@@ -5,7 +5,7 @@ class UsersController < ApplicationController
 
   def show
     @joined_groups = GroupUser.where(user_id: @user.id, is_confirmed: true).page(params[:page])
-    @invited_groups = GroupUser.where(user_id: @user.id, is_confirmed: false).page(params[:page])
+    @invited_groups = GroupUser.where(user_id: @user.id, is_confirmed: false)
   end
 
   def edit

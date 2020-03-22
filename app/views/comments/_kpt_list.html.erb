@@ -4,7 +4,7 @@
   <div class="comments drop_area" id="keep">
     <span>Keep</span>
       <% keep_comments.each do |comment| %>
-        <div class="col s4 kpt_comments item" name="<%= comment.id %>"　>
+        <div class="col s4 kpt_comments item" name="<%= comment.id %>" data-count="<%= comment.rights.count %>">
           <%= attachment_image_tag comment.user, :profile_image, :fill, 80, 80, fallback: "no_group_image.jpg", size:'80x80' %>
           <%= comment.user.nick_name %>
           <%= comment.comment %>
@@ -27,7 +27,7 @@
   <div class="comments p_comments drop_area" id="problem">
     <span>Problem</span>
     <% problem_comments.each do |comment| %>
-      <div class="col s4 kpt_comments item" name="<%= comment.id %>">
+      <div class="col s4 kpt_comments item" name="<%= comment.id %>" data-count="<%= comment.rights.count %>">
         <%= attachment_image_tag comment.user, :profile_image, :fill, 80, 80, fallback: "no_group_image.jpg", size:'80x80' %>
         <%= comment.user.nick_name %>
         <%= comment.comment %>
@@ -52,7 +52,7 @@
 <div class="comments_right comments drop_area" id="try">
   <span>Try</span>
   <% try_comments.each do |comment| %>
-    <div class="col s4 kpt_comments item" name="<%= comment.id %>">
+    <div class="col s4 kpt_comments item" name="<%= comment.id %>" data-count="<%= comment.rights.count %>">
       <%= attachment_image_tag comment.user, :profile_image, :fill, 80, 80, fallback: "no_group_image.jpg", size:'80x80' %>
         <%= comment.user.nick_name %>
       <%= comment.comment %>
