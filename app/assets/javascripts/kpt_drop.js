@@ -38,7 +38,7 @@ $( document ).ready(function() {
             // Ajaxリクエストが失敗した時
           }).fail((data) => {
             window.alert('エラーが発生しました。');
-            // Ajaxリクエストが成功・失敗どちらでも
+            // Ajaxリクエストが成功・失敗どちらも発動
           }).always(() => {　　
             $('.item').attr('style', 'position: relative;');
             $('.item').draggable();
@@ -49,7 +49,9 @@ $( document ).ready(function() {
 
 // DOM操作用のfunction
 function changeDom(place_status, com) {
+  // 自分以外のそれな数を全て大きいと設定する
   let isAllMoreThan = true;
+  // 一つ一つの投稿のそれな数をint型に変更して代入
   let fav_count = parseInt($(com).attr('data-count'));
   $('#' + place_status).find('.item').each(function(index, element){
     if (parseInt($(element).attr('data-count')) <= fav_count){
