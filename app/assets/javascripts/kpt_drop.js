@@ -19,7 +19,7 @@ $( document ).ready(function() {
         // ui.draggabledされた　.attr 指定した属性の値を取得
         let place_status = $(this).attr('id');
 
-        // 上記で取得した値を戻り値として設定
+        // 上記で取得した値をformのid設定
         $('#update_comment_id').val(comment_id);
         $('#update_place_status').val(place_status);
 
