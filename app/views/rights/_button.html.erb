@@ -1,0 +1,17 @@
+
+<!-- それなボタンを押しているか-->
+<% if comment.righted_by?(current_user) %>
+  <%= link_to group_comment_rights_path(comment_id: comment.id), method: :delete, remote: true do %>
+    <i class="material-icons" style="color: red">thumb_up</i>
+    <span class="rights_count" name="<%= comment.rights.count %>">
+      <%= comment.rights.count %>
+    </span>それな
+  <% end %>
+<% else %>
+  <%= link_to group_comment_rights_path(comment_id: comment.id), method: :post, remote: true do %>
+    <i class="material-icons" style="color: grey">thumb_up</i>
+    <span class="rights_count" name="<%= comment.rights.count %>">
+      <%= comment.rights.count %>それな
+    </span>
+  <% end %>
+<% end %>

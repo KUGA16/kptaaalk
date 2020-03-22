@@ -1,0 +1,3 @@
+$("#followings").html("<%= j(render partial: 'shared/user_lists', locals: { users: @following_users }) %>");
+
+$("#followers").html("<%= j(render partial: 'shared/user_lists', locals: { users: @follower_users }) %>");

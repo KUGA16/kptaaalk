@@ -1,0 +1,42 @@
+<div class="row center">
+  <!-- エラーメッセージ -->
+  <%= render "devise/shared/error_messages", resource: resource %>
+</div>
+
+<div class="row flex">
+  <div class="col s12 m4 center center-block">
+    <h4 class="border">新規登録</h4>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+
+      <div class="field">
+        <%= f.text_field :nick_name, autofocus: true, autocomplete: "nick_name", placeholder: "ニックネーム" %>
+      </div>
+
+      <div class="field">
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレス" %>
+      </div>
+
+      <div class="field">
+        <%= f.password_field :password, autocomplete: "new-password", placeholder: "パスワード(6文字)" %>
+      </div>
+
+      <div class="field">
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "パスワード確認" %>
+      </div>
+
+      <div class="actions" style="margin-bottom: 10px;">
+        <%= f.submit "登録", class: "btn" %>
+      </div>
+    <% end %>
+
+    <div class="actions" style="margin-bottom: 10px;">
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <%= f.hidden_field :nick_name, value: "KPT太郎" %>
+        <%= f.hidden_field :password, value: "kptaaalk" %>
+        <%= f.submit "テストユーザーとして簡単ログイン", class:"btn"%>
+      <% end %>
+    </div>
+
+    <%= render "devise/shared/links" %>
+  </div>
+</div>

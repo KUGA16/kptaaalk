@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: MyString
+  group_id: MyString
+  is_confirmed: false
+
+two:
+  user_id: MyString
+  group_id: MyString
+  is_confirmed: false

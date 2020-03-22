@@ -1,0 +1,22 @@
+
+#カラムの日本語化
+ja:
+  activerecord:
+    models:
+      user: "ユーザー"
+      group: "グループ"
+      comment: "コメント"
+    attributes:
+      user:
+        name: ユーザー名
+        nick_name: ニックネーム
+        profile_image: プロフィール画像
+        password: パスワード
+        password_confirmation: パスワード確認
+        email: メールアドレス
+        introduction: ステータスメッセージ
+      group:
+        name: グループ名
+        group_image: グループ画像
+      comment:
+        comment: コメント

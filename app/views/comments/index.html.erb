@@ -1,0 +1,54 @@
+<!-- KPTページ -->
+<div class="row">
+<!-- グループのプロフィール -->
+  <div class="col s3 m3">
+    <div class="card z-depth-0">
+      <%= link_to group_path(@group) do%>
+        <div class="card-image">
+            <%= attachment_image_tag @group, :group_image, fallback: "no_group_image.jpg" %>
+        </div>
+        <div class="card-content center">
+          <span class="card-title">
+            <%= @group.name %>
+          </span>
+        </div>
+      <% end %>
+      <div class="card-action center">
+        <p>
+          <i class="material-icons">sms_failed</i>
+          参加メンバー<%= @join_users.count %>人
+        </p>
+      </div>
+      <div class="card-action center">
+        <p>
+          <i class="material-icons">sms</i>
+          招待メンバー<%= @invit_users.count %>人
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- KPT投稿フォーム -->
+<div class="row">
+  <div class="kpt_actions center">
+<!-- remte: trueでjsファイルを探しにいく-->
+    <%= link_to "KPTを投稿する", new_group_comment_path, remote: true, class: "btn btn-large" %>
+  </div>
+</div>
+<div id="comment-modal" class="modal">
+  <!-- ここに_formが入る -->
+</div>
+
+<!-- KPT -->
+<div id="comment_box">
+  <%= render 'kpt_list', keep_comments: @keep_comment_ranking, problem_comments: @problem_comment_ranking, try_comments: @try_comment_ranking %><!-- ここにcreate.jsが上書き -->
+</div>
+
+<div style="display: none;">
+  <%= form_with model: @comment_new, url: place_status_update_path, id: "status_update_form" do |f| %>
+    <%= f.text_field :group_id, value: @group.id %>
+    <%= f.text_field :id, id: "update_comment_id" %> <!-- comment.idが入る、idを設定 -->
+    <%= f.text_field :place_status, id: "update_place_status" %><!-- place_statusが入る -->
+  <% end %>
+</div>

@@ -1,0 +1,37 @@
+<!-- トップページ且アバウトページ -->
+<div class="row">
+  <div class="col s12 m6">
+    <%= image_tag 'kpt_image.png', alt: "KPTAAALK icon", size:'600x600', style: "object-fit: cover;" %>
+  </div>
+  <% if user_signed_in? %>
+    <div class="col s12 m6 center login_sigin_actions">
+      <%= link_to "ログイン中", user_path(current_user), class: "login_actions"  %>
+    </div>
+  <% else %>
+    <div class="col s12 m6 center login_sigin_actions">
+      <%= link_to "新規登録", new_user_registration_path, class: "signin_actions" %>
+      <%= link_to "ログイン", new_user_session_path, class: "login_actions" %>
+    </div>
+  <% end %>
+</div>
+<!-- KPTの説明 -->
+<div class="row">
+  <div class="col s12 m12 center" style="color: white;">
+    <h5>KPTとは</h5>
+  </div>
+  <div class="col s12 m12 center" style="color: white;">
+    <h6>「ふりかえり」のフレームワークです。</h6>
+    <h6>
+      「<span style="color: #ef5350; font-size: 25px;">K</span>eep」継続すること
+      「<span style="color: #ff9100; font-size: 25px;">P</span>roblem」改善すること
+      「<span style="color: #01579b; font-size: 25px;">T</span>ry」新しく取り組むこと
+    </h6>
+    <h6>を考えることで次にやることが明確になります。</h6>
+  </div>
+</div>
+<!-- KPTの使い方 -->
+<%= render 'about' %>
+<!-- KPTでのポイント -->
+<%= render 'kpt_important' %>
+<!-- サイトについての思い -->
+<%= render 'thought' %>

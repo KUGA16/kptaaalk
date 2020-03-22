@@ -1,24 +1,75 @@
-# README
+<img src="https://user-images.githubusercontent.com/58260334/76679099-0447f500-6621-11ea-8381-5cecd9e277f0.png" width="300px">
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+[KPTAAALK](http://kptaaalk.com)
 
-Things you may want to cover:
+## 概要
+KPTという振り返りのフレームワークの魅力をもっと多くの方々に伝えたいという想いで開発しました。<br>いつでも、どこでも気軽にKPTを楽しんで、有意義な振り返りの時間をお手伝いできたら幸いです。:relieved:
 
-* Ruby version
+## 機能
 
-* System dependencies
+**1.ユーザー登録**<br>
+  以下の項目を入力することでユーザー登録を行うことができます。すべて必須項目です。<br>ニックネームに関しては、他のユーザーが既に使用している場合は登録できません。
+  * 名前
+  * ニックネーム
+  * メールアドレス
+  * パスワード
 
-* Configuration
+**2.お仲間検索**<br>
+  ニックネームでお仲間を検索して、フォローすることができます。
 
-* Database creation
+**3.フォロー、フォロワー**<br>
+  KPTを一緒にするお仲間をフォローすることができます。
+  自分がフォローしているお仲間および、自分をフォローしてくれているお仲間は、フォロー、フォロワーボタンからで確認することができます。
 
-* Database initialization
+**4.グループ登録、招待**<br>
+  以下の項目を入力することでグループ登録を行うことができます。
+  * 名前
+  * チームイメージ画像
 
-* How to run the test suite
+  フォローしているユーザーのみ、グループに招待ができます。（追加で招待も可能です）<br>
+  1度、招待したお仲間が参加、不参加を決めるまでは、同じグループに招待はできません。
 
-* Services (job queues, cache servers, search engines, etc.)
+**5.なんちゃって通知機能**<br>
+  グループに招待されたお仲間はヘッダーに電球マークが灯るのでクリックするか、マイページからグループに参加するか、しないかを選択できます。
 
-* Deployment instructions
+**6.KPT登録**<br>
+  以下の項目を入力することでKPT登録を行うことができます。すべて必須項目です
+  * K、P、Tどこの意見なのかのボタン
+  * 投稿内容
 
-* ...
+**7.ドラッグ&ドロップ機能**<br>
+  投稿された内容はドラッグ&ドロップで場所を移動することができます。
+
+  ![kpt_drag](https://user-images.githubusercontent.com/58260334/77245666-a42a0200-6c63-11ea-8df5-ceaece024f22.gif)
+
+
+**8.それな機能**<br>
+  同じこと思った！など同意見の投稿内容に対して「それな」の印をつけることができます。
+
+**9.ランキンング機能**<br>
+  KPTの投稿内容は「それな」の多い順に表示されています。<br>
+  「それな」の多いものから問題を解決したり、次の目標にしてみたりするのもいいかもしれません。
+
+## 使用ツール
+
+**1.開発環境**
+  * git version 2.17.1
+  * ruby 2.5.7
+  * Rails 5.2.4.1
+
+**2.gem**
+  * devise
+  * materialize-sass ~> 1.0.0
+  * material_icons
+  * refile、refile-mini_magick
+  * kaminari
+  * ransack
+  * jquery-rails
+  * jquery-ui-rails
+
+**3.デプロイ**
+  * AWS
+
+## 作成情報
+  * DMM WebCamp 3ヶ月目ポートフォリオとして作成 :hatching_chick:
+  * [Twitter](https://twitter.com/@kuririn_16)

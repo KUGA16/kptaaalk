@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: one
+  group_id: one
+  comment: MyText
+  place_status: 1
+
+two:
+  user_id: two
+  group_id: two
+  comment: MyText
+  place_status: 1

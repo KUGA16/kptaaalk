@@ -1,0 +1,73 @@
+
+<div class="comments_left">
+<!-- keep投稿内容　-->
+  <div class="comments drop_area" id="keep">
+    <span>Keep</span>
+      <% keep_comments.each do |comment| %>
+        <div class="col s4 kpt_comments item" name="<%= comment.id %>" data-count="<%= comment.rights.count %>">
+          <%= attachment_image_tag comment.user, :profile_image, :fill, 80, 80, fallback: "no_group_image.jpg", size:'80x80' %>
+          <%= comment.user.nick_name %>
+          <%= comment.comment %>
+          <!-- それなボタン -->
+          <span id="rights_buttons_<%= comment.id %>">
+            <%= render 'rights/button', comment: comment %>
+          </span>
+          <!-- 編集ボタン -->
+          <%= link_to edit_group_comment_path(group_id: comment.group_id, comment_id: comment.id), remote: true, class: "btn  blue-grey lighten-3 z-depth-0" do %>
+            <i class="material-icons">settings</i>
+          <% end %>
+          <!-- 削除ボタン -->
+          <%= link_to group_comment_path(group_id: comment.group_id, comment_id: comment.id), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn  blue-grey lighten-3 z-depth-0" do %>
+            <i class="material-icons">delete_forever</i>
+          <% end %>
+        </div>
+      <% end %>
+  </div>
+  <!-- problem投稿内容　-->
+  <div class="comments p_comments drop_area" id="problem">
+    <span>Problem</span>
+    <% problem_comments.each do |comment| %>
+      <div class="col s4 kpt_comments item" name="<%= comment.id %>" data-count="<%= comment.rights.count %>">
+        <%= attachment_image_tag comment.user, :profile_image, :fill, 80, 80, fallback: "no_group_image.jpg", size:'80x80' %>
+        <%= comment.user.nick_name %>
+        <%= comment.comment %>
+        <!-- それなボタン -->
+        <span id="rights_buttons_<%= comment.id %>">
+          <%= render 'rights/button', comment: comment %>
+        </span>
+        <!-- 編集ボタン -->
+        <%= link_to edit_group_comment_path(group_id: comment.group_id, comment_id: comment.id), remote: true, class: "btn  blue-grey lighten-3 z-depth-0" do %>
+          <i class="material-icons">settings</i>
+        <% end %>
+        <!-- 削除ボタン -->
+        <%= link_to group_comment_path(group_id: comment.group_id, comment_id: comment.id), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn  blue-grey lighten-3 z-depth-0" do %>
+          <i class="material-icons">delete_forever</i>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<!-- try投稿内容　-->
+<div class="comments_right comments drop_area" id="try">
+  <span>Try</span>
+  <% try_comments.each do |comment| %>
+    <div class="col s4 kpt_comments item" name="<%= comment.id %>" data-count="<%= comment.rights.count %>">
+      <%= attachment_image_tag comment.user, :profile_image, :fill, 80, 80, fallback: "no_group_image.jpg", size:'80x80' %>
+        <%= comment.user.nick_name %>
+      <%= comment.comment %>
+      <!-- それなボタン -->
+      <span id="rights_buttons_<%= comment.id %>">
+        <%= render 'rights/button', comment: comment %>
+      </span>
+      <!-- 編集ボタン -->
+      <%= link_to edit_group_comment_path(group_id: comment.group_id, comment_id: comment.id), remote: true, class: "btn  blue-grey lighten-3 z-depth-0" do %>
+        <i class="material-icons">settings</i>
+      <% end %>
+      <!-- 削除ボタン -->
+      <%= link_to group_comment_path(group_id: comment.group_id, comment_id: comment.id), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn  blue-grey lighten-3 z-depth-0" do %>
+        <i class="material-icons">delete_forever</i>
+      <% end %>
+    </div>
+  <% end %>
+</div>

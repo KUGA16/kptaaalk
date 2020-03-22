@@ -1,0 +1,64 @@
+<!-- メンバー追加ページ -->
+<div class="row">
+
+  <div class="col s12 m3">
+    <div class="card z-depth-0">
+      <div class="card-image">
+        <%= attachment_image_tag @group, :group_image, fallback: "no_group_image.jpg" %>
+      </div>
+      <div class="card-content center">
+        <span class="card-title">
+          <%= @group.name %>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="col s12 m9">
+    <div class="card-panel teal lighten-4 z-depth-0">
+      <span class="white-text">
+        <h6>招待するメンバーを選択してください</h6>
+      </span>
+    </div>
+  </div>
+
+  <div class="col s12 m9">
+    <%= form_with model: [@group,@group_user_new], local: true do |f| %>
+<!-- 招待できるユーザーがいる場合 -->
+      <% if @can_invite_users.present? %>
+        <% @can_invite_users.each do |user| %>
+          <div class="card" style="width: 32%; display: inline-block;">
+            <div class="card-image waves-effect waves-block waves-light">
+              <%= attachment_image_tag user, :profile_image, :fill, 233, 174, fallback: "no_image.jpg" %>
+            </div>
+            <div class="card-content">
+              <label>
+                <%= f.check_box :user_id, { multiple: true ,include_hidden: false }, checked_value = user.id %>
+                <span class="card-title activator grey-text text-darken-4">
+                  <%= user.nick_name %>
+                </span>
+              </label>
+            </div>
+          </div>
+        <% end %>
+        <div class="actions">
+          <%= f.submit "招待", class: "btn-large" %>
+        </div>
+<!-- 招待できるユーザーがいない場合 -->
+      <% else %>
+          <div class="card-panel z-depth-0">
+            <span class="brack-text">
+              招待できるユーザーがいません。
+            </span>
+          </div>
+          <div class="actions">
+            <%= link_to "マイページへ戻る", user_path(current_user) %>
+          </div>
+          <div class="actions">
+            <%= link_to "お仲間探しする", result_users_path %>
+          </div>
+      <% end %>
+    <% end %>
+  </div>
+
+</div>

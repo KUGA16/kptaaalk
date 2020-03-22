@@ -1,0 +1,4 @@
+$('#rights_buttons_<%= @comment.id %>').html("<%= j(render partial: 'button', locals: { comment: @comment }) %>");
+
+// それな数の変更を反映
+$('div[name = <%= @comment.id %>]').attr('data-count', '<%= @comment.rights.count %>');
