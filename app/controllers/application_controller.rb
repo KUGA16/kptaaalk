@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
 
   #ログイン後の画面遷移
   def after_sign_in_path_for(resource)
-    search_users_path
+    user_path(current_user)
   end
   #ログアウト後の画面遷移
   def after_sign_out_path_for(resource)
@@ -43,7 +43,7 @@ class ApplicationController < ActionController::Base
        redirect_to user_path(current_user)
     end
   end
-  
+
   #sign_up,sign_in,account_updateの際に、keyのデータを許可
   def configure_permitted_parameters
     added_attrs = [:email, :nick_name, :password, :password_confirmation]
