@@ -27,7 +27,7 @@ class GroupUsersController < ApplicationController
       end
     end
       redirect_to group_comments_path(group), notice: "KPTを作成しました！"
-    rescue => e
+    rescue
       redirect_to new_group_group_users_path(group), notice: "エラーが発生しました"
   end
 
