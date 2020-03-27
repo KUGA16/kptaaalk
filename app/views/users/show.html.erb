@@ -1,4 +1,9 @@
 <!-- マイページ -->
+<% if @user == current_user %>
+  <% @page_title = "マイページ" %>
+<% else %>
+  <% @page_title = "#{@user.nick_name}" %>
+<% end %>
 <div class="row">
   <!-- ユーザープロフィール -->
   <%= render 'profile', user: @user %>
