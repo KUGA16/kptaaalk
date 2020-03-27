@@ -9,6 +9,12 @@
       <div class="field" style="margin-bottom: 20px;">
         <%= f.label :profile_image %><br>
         <%= f.attachment_field :profile_image, direct: true %>
+        <p style="margin-top: 20px;">
+          <label>
+            <%= f.check_box :remove_profile_image %>
+            <span style="font-size: 15px;">画像を削除する</span>
+          </label>
+        </p>
       </div>
 
       <div class="field">

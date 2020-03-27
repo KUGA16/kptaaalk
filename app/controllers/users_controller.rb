@@ -30,7 +30,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :nick_name, :introduction, :profile_image)
+    params.require(:user).permit(:name, :nick_name, :introduction, :profile_image, :remove_profile_image)
   end
 
   #url直接入力禁止
