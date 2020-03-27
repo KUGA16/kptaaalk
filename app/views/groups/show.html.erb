@@ -1,4 +1,5 @@
 <!-- グループ詳細ページ -->
+<% @page_title = "#{@group.name}" %>
 <div class="row">
 <!-- グループのプロフィール -->
   <%= render 'group_profile', group: @group, group_users: @group_users %>

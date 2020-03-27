@@ -7,7 +7,9 @@ Rails.application.routes.draw do
 
   #users
   #deviseを使用する際にURLとしてusersを含む
-  devise_for :users
+  devise_for :users, :controllers => {
+    :registrations => 'users/registrations'
+  }
   resources :users, only: [:show, :edit, :update], param: :user_id
   resources :users, only: [] do
     resource :relationships, only: [:create, :destroy]

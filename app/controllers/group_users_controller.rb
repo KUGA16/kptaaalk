@@ -27,7 +27,7 @@ class GroupUsersController < ApplicationController
       end
     end
       redirect_to group_comments_path(group), notice: "KPTを作成しました！"
-    rescue => e
+    rescue
       redirect_to new_group_group_users_path(group), notice: "エラーが発生しました"
   end
 
@@ -45,7 +45,7 @@ class GroupUsersController < ApplicationController
   def destroy
     no_join_group = GroupUser.find_by(group_id: params[:group_id], user_id: current_user)
     no_join_group.destroy
-    flash[:notice] = "「#{no_join_group.group.name}」の参加を取り止めました！"
+    flash[:notice] = "「#{no_join_group.group.name}」を退会しました！"
     redirect_to user_path(current_user)
   end
 
