@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   #homes
@@ -8,8 +7,7 @@ Rails.application.routes.draw do
   #users
   #deviseを使用する際にURLとしてusersを含む
   devise_for :users, :controllers => {
-    :registrations => 'users/registrations',
-    :sessions => 'users/sessions'
+    :registrations => 'users/registrations'
   }
   resources :users, only: [:show, :edit, :update], param: :user_id
   resources :users, only: [] do
@@ -33,5 +31,8 @@ Rails.application.routes.draw do
 
   #search
   get 'search' => 'search#users', as: 'search_users'
+
+  # admin
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
 end
