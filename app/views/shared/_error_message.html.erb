@@ -1,7 +1,7 @@
 <!-- エラーメッセージ表示-->
 <div class="error_messages">
 	<% if something.errors.any? %>
-		<h5><%= something.errors.count %>件のエラーがありますよ〜</h5><!--エラーメッセ-->
+		<h5><%= something.errors.count %>件のエラーがありますよ〜</h5>
 		<ul>
 			<% something.errors.full_messages.each do |message| %>
 			<li><%= message %></li>
