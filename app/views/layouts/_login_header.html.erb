@@ -1,4 +1,3 @@
-
 <!-- ログイン中ヘッダー　-->
 <ul id="nav-mobile" class="right hide-on-med-and-down">
   <li>
@@ -10,11 +9,20 @@
     <% end %>
   </li>
   <li>
-    <%= render 'layouts/dropdown' %> <!-- ドロップダウン子メニュー -->
-
     <a class="dropdown-trigger" data-target="dropdown">
       <%= attachment_image_tag current_user, :profile_image, :fill, 80, 80, fallback: "no_image.jpg", size:'80x80'%>
       <i class="material-icons right">arrow_drop_down</i>
     </a>
   </li>
+</ul>
+
+<!-- data-targetで呼ばれる、ドロップダウン子メニュー -->
+<ul id="dropdown" class="dropdown-content">
+  <li><%= link_to "マイページ", user_path(current_user) %></li>
+  <li class="divider"></li>
+  <li><%= link_to "お仲間検索", search_users_path %></li>
+  <li class="divider"></li>
+  <li><%= link_to "グループ作成", new_group_path %></li>
+  <li class="divider"></li>
+  <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
 </ul>
