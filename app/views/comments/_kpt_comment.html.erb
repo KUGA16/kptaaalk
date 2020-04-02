@@ -1,5 +1,5 @@
 <div class="col s4 kpt_comments item" name="<%= comment.id %>" data-count="<%= comment.rights.count %>">
-  <%= attachment_image_tag comment.user, :profile_image, :fill, 80, 80, fallback: "no_group_image.jpg", size:'80x80' %>
+  <%= attachment_image_tag comment.user, :profile_image, :fill, 50, 50, fallback: "no_group_image.jpg", size:'50x50' %>
   <%= comment.user.nick_name %>
   <%= comment.comment %>
   <!-- それなボタン -->
