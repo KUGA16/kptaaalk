@@ -40,7 +40,9 @@
     <main>
       <div class="container">
         <!-- フラッシュメッセージ -->
-        <%= render 'shared/flash_message' %>
+        <% if flash[:notice] %>
+          <div class="alert"><%= flash[:notice] %></div>
+        <% end %>
         <%= yield %>
       </div>
     </main>
