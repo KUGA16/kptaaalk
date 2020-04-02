@@ -8,7 +8,6 @@ class Group < ApplicationRecord
   #グループ名:空白禁止、一意であること、1文字以上20文字以内
   validates :name,
     presence: true,
-    uniqueness: true,
     length: { in: 1..20 }
 
 end
