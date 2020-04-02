@@ -17,7 +17,7 @@
         <span id="follows_buttons_<%= user.id %>">
           <%= render 'shared/follow_button', user: user %>
         </span>
-      <% else user.id == current_user.id %>
+      <% else %>
         <%= link_to "マイページ", user_path(user), class: "btn" %>
       <% end %>
     </div>
