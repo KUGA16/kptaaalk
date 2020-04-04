@@ -1,6 +1,6 @@
 <!-- 投稿フォーム -->
 <div class="modal-content">
-  <%= form_with model: comment, url:{controller: 'comments', action: 'create'} do |f| %>
+  <%= form_with model: comment, url:{controller: 'comments', action: action} do |f| %>
 
     <div class="radio-inline">
       <label>

@@ -17,7 +17,9 @@ class CommentsController < ApplicationController
   end
 
   def new
-    @comment_new = Comment.new
+    @comment = Comment.new
+    @action = 'create'
+    render 'new_modal'
   end
 
   def create
@@ -40,10 +42,12 @@ class CommentsController < ApplicationController
     else
       @status = 'fail'
     end
-    render 'modal'
+    render 'change_modal'
   end
 
   def edit
+    @action = 'update'
+    render 'new_modal'
   end
 
   def update
@@ -55,7 +59,7 @@ class CommentsController < ApplicationController
     else
       @status = 'fail'
     end
-    render 'modal'
+    render 'change_modal'
   end
 
   def destroy
@@ -89,7 +93,7 @@ class CommentsController < ApplicationController
   end
 
   def update_status_params
-     params.require(:comment).permit(:id, :place_status)
+     params.require(:comment).permit(:id, :place_status, :group_id)
   end
 
 end
