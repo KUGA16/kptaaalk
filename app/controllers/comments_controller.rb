@@ -17,7 +17,9 @@ class CommentsController < ApplicationController
   end
 
   def new
-    @comment_new = Comment.new
+    @comment = Comment.new
+    @action = 'create'
+    render 'new_modal'
   end
 
   def create
@@ -26,7 +28,7 @@ class CommentsController < ApplicationController
     @try_comment_ranking = Comment.get_right_ranking(params[:group_id], "try")
     # hidden_fieldでuser_idとgroup_idを取得
     comment = Comment.new(params_post_comment_id)
-    if comment.save!
+    if comment.save
       if params_post_comment_id[:place_status] == "keep"
         @keep_comment_ranking << Comment.find(comment.id)
       end
@@ -40,9 +42,12 @@ class CommentsController < ApplicationController
     else
       @status = 'fail'
     end
+    render 'change_modal'
   end
 
   def edit
+    @action = 'update'
+    render 'new_modal'
   end
 
   def update
@@ -54,6 +59,7 @@ class CommentsController < ApplicationController
     else
       @status = 'fail'
     end
+    render 'change_modal'
   end
 
   def destroy
@@ -87,7 +93,7 @@ class CommentsController < ApplicationController
   end
 
   def update_status_params
-     params.require(:comment).permit(:id, :place_status)
+     params.require(:comment).permit(:id, :place_status, :group_id)
   end
 
 end

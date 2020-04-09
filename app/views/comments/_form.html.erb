@@ -1,6 +1,6 @@
 <!-- 投稿フォーム -->
 <div class="modal-content">
-  <%= form_with model: comment, url:{controller: 'comments', action: 'create'} do |f| %>
+  <%= form_with model: comment, url:{controller: 'comments', action: action} do |f| %>
 
     <div class="radio-inline">
       <label>
@@ -27,6 +27,7 @@
       <%= f.label :comment %>
       <%= f.text_area :comment, placeholder: "投稿内容を入力" %>
     </div>
+
     <div class="actions">
       <%= f.hidden_field :user_id, :value => current_user.id %>
       <%= f.hidden_field :group_id, :value => group.id %>

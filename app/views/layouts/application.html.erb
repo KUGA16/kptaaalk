@@ -20,10 +20,10 @@
             </a>
             <% if user_signed_in? %>
               <!-- ユーザーサインイン時 -->
-              <%= render 'layouts/login_header' %>
+              <%= render 'shared/login_header' %>
             <% else %>
               <!-- ユーザーサインアウト時 -->
-              <%= render 'layouts/signout_header'%>
+              <%= render 'shared/signout_header'%>
             <% end %>
           </div>
         </nav>
@@ -40,7 +40,9 @@
     <main>
       <div class="container">
         <!-- フラッシュメッセージ -->
-        <%= render 'shared/flash_message' %>
+        <% if flash[:notice] %>
+          <div class="alert"><%= flash[:notice] %></div>
+        <% end %>
         <%= yield %>
       </div>
     </main>
