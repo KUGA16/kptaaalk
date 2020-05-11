@@ -13,20 +13,13 @@
     <!-- root以外対象 -->
     <% if request.path != '/' %>
       <header>
-        <nav>
-          <div class="nav-wrapper">
-            <a href="/">
-              <%= image_tag 'kpt_image.png', alt: "KPTAAALK icon", class: "brand-logo center" %>
-            </a>
-            <% if user_signed_in? %>
-              <!-- ユーザーサインイン時 -->
-              <%= render 'shared/login_header' %>
-            <% else %>
-              <!-- ユーザーサインアウト時 -->
-              <%= render 'shared/signout_header'%>
-            <% end %>
-          </div>
-        </nav>
+        <% if user_signed_in? %>
+          <!-- ユーザーサインイン時 -->
+          <%= render 'shared/login_header' %>
+        <% else %>
+          <!-- ユーザーサインアウト時 -->
+          <%= render 'shared/signout_header'%>
+        <% end %>
       </header>
     <% end %>
 
