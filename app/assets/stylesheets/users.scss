@@ -2,26 +2,12 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-body {
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
-}
-
-main {
-  flex: 10 auto;
-}
 
 // ログインフォーム
 #user_remember_me{
   opacity: initial;
   position: inherit;
   pointer-events: auto;
-}
-
-// 新規登録フォーム
-.border {
-  border-bottom: solid 1px #ff7f50;
 }
 
 // パスワード変更ページ

@@ -74,6 +74,16 @@ nav .nav-wrapper {
   object-fit: cover;
 }
 
+// フッター固定
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+main {
+  flex: 10 auto;
+}
+
 // フッター
 .root-footer {
   font-size: 25px;
@@ -113,11 +123,26 @@ nav .nav-wrapper {
 #error_explanation {
   color: red;
 }
-.error_messages {
-  color: red;
-}
 
 // フラッシュメッセージ
-.alert{
+.alert {
   color: #9e9e9e;
+}
+
+// 新規登録フォーム
+.border-orange {
+  border-bottom: solid 1px #ff7f50;
+}
+
+// 文字太く
+.font-weight-bold {
+  font-weight: bold;
+}
+
+// flex-box
+.d-flex {
+  display: flex;
+}
+.justify-content-center {
+  justify-content: center;
 }
