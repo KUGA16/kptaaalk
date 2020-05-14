@@ -154,6 +154,12 @@ main {
 .alert {
   color: #9e9e9e;
 }
+// ログインを記憶するチェックボックス
+#user_remember_me{
+  opacity: initial;
+  position: inherit;
+  pointer-events: auto;
+}
 // ログイン・新規登録ボタン
 .devise_actions {
   font-size: 30px;
