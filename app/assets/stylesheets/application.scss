@@ -44,36 +44,67 @@ html {
   font-family: "Yu Gothic",YuGothic,sans-serif,"Hiragino Kaku Gothic ProN","Hiragino Kaku Gothic Pro",sans-serif,"ＭＳ ゴシック";
 }
 
+
+.font-weight-bold {
+  font-weight: bold;
+}
+.bb-orange {
+  border-bottom: solid 1px #ff7f50;
+}
+.bt-white {
+  border-top: solid 1px white;
+}
+.bb-white {
+  border-bottom: solid 1px white;
+}
+.object-fit-cover {
+  object-fit: cover;
+}
+.line-height {
+  line-height: 1.85;
+}
+
+// flex-box
+.d-flex {
+  display: flex;
+}
+.f-warp {
+  flex-wrap: wrap;
+}
+.justify-content-center {
+  justify-content: center;
+}
+.align-self-center {
+  align-self: center;
+}
+
+
+
 // ヘッダー
 nav .nav-wrapper {
   height: 100px;
   background-color: #b2dfdb;
 }
-
 // ナビゲーション
 .nav-link {
   font-size: 20px;
   height: 100px;
   line-height: 100px;
 }
-
-// KPTAAALKロゴ
+// ヘッダーKPTAAALKロゴ
 .brand-logo {
   width: 180px;
   height: 100px;
   object-fit: cover;
 }
-
 // ログインユーザーimg
 .dropdown-trigger {
   height: 100px;
 }
-
 .dropdown-trigger > img {
   border-radius: 40px;
   object-fit: cover;
 }
-
 // フッター固定
 body {
   display: flex;
@@ -83,7 +114,6 @@ body {
 main {
   flex: 10 auto;
 }
-
 // フッター
 .root-footer {
   font-size: 25px;
@@ -95,7 +125,6 @@ main {
   color: #cfd8dc;
   background-color: white;
 }
-
 // ページトップボタン
 #page_top {
   position: fixed;
@@ -112,37 +141,32 @@ main {
   left: 20px;
   opacity: 0.5;
 }
-
 // ページネーション
 .pagination {
   margin-top: 20px;
   text-align: center;
 }
-
 // エラーメッセージ
 #error_explanation {
   color: red;
 }
-
 // フラッシュメッセージ
 .alert {
   color: #9e9e9e;
 }
-
-// 新規登録フォーム
-.border-orange {
-  border-bottom: solid 1px #ff7f50;
+// ログイン・新規登録ボタン
+.devise_actions {
+  font-size: 30px;
+  color: white;
+  border: 2px solid white;
 }
-
-// 文字太く
-.font-weight-bold {
-  font-weight: bold;
+// ボタン押すとボーダーを点線にする
+.devise_actions:hover {
+  border-style: dashed;
 }
-
-// flex-box
-.d-flex {
-  display: flex;
-}
-.justify-content-center {
-  justify-content: center;
+// トップページの簡単ログインのところ
+.try-form {
+  background-color: white;
+  border-radius: 60px;
+  height: 200px;
 }
