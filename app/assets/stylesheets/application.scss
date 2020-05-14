@@ -79,8 +79,7 @@ html {
 }
 
 
-
-// ヘッダー
+/////////// ヘッダー ///////////
 nav .nav-wrapper {
   height: 100px;
   background-color: #b2dfdb;
@@ -105,7 +104,8 @@ nav .nav-wrapper {
   border-radius: 40px;
   object-fit: cover;
 }
-// フッター固定
+/////////// フッター ///////////
+// 固定
 body {
   display: flex;
   min-height: 100vh;
@@ -114,7 +114,7 @@ body {
 main {
   flex: 10 auto;
 }
-// フッター
+// 固定
 .root-footer {
   font-size: 25px;
   color: #80cbc4;
@@ -124,6 +124,23 @@ main {
   font-size: 25px;
   color: #cfd8dc;
   background-color: white;
+}
+/////////// トップページ ///////////
+// ログイン・新規登録ボタン
+.devise_actions {
+  font-size: 30px;
+  color: white;
+  border: 2px solid white;
+}
+// ボタン押すとボーダーを点線にする
+.devise_actions:hover {
+  border-style: dashed;
+}
+// トップページの簡単ログインのところ
+.try-form {
+  background-color: white;
+  border-radius: 60px;
+  height: 200px;
 }
 // ページトップボタン
 #page_top {
@@ -141,6 +158,8 @@ main {
   left: 20px;
   opacity: 0.5;
 }
+
+
 // ページネーション
 .pagination {
   margin-top: 20px;
@@ -159,20 +178,4 @@ main {
   opacity: initial;
   position: inherit;
   pointer-events: auto;
-}
-// ログイン・新規登録ボタン
-.devise_actions {
-  font-size: 30px;
-  color: white;
-  border: 2px solid white;
-}
-// ボタン押すとボーダーを点線にする
-.devise_actions:hover {
-  border-style: dashed;
-}
-// トップページの簡単ログインのところ
-.try-form {
-  background-color: white;
-  border-radius: 60px;
-  height: 200px;
 }
