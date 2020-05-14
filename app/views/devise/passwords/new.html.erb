@@ -1,6 +1,4 @@
 <h4 class="bb-orange pb-2 mb-5 center">パスワードをお忘れですか？</h4>
-
-
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
 <div class="row center">
   <%= render "devise/shared/error_messages", resource: resource %>
