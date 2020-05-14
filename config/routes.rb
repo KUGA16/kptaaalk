@@ -8,7 +8,6 @@ Rails.application.routes.draw do
   }
 
   root 'homes#top'
-  
   resources :users, only: [:show, :edit, :update], param: :user_id
   resources :users, only: [] do
     resource :relationships, only: [:create, :destroy]
