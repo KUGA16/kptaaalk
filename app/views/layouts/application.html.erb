@@ -33,9 +33,12 @@
     <% end %>
         <div class="container">
           <!-- フラッシュメッセージ -->
-          <% if flash[:notice] %>
-            <div class="alert"><%= flash[:notice] %></div>
-          <% end %>
+          <div class="row">
+            <% if flash[:notice] %>
+              <div class="grey-text"><%= flash[:notice] %></div>
+            <% end %>
+          </div>
+
           <%= yield %>
         </div>
       </main>
