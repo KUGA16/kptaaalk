@@ -1,10 +1,10 @@
 <% users.each do |user| %>
-  <div class="card" style="width: 32%; display: inline-block;">
+  <div class="card hoverable" style="width: 32%; display: inline-block;">
     <div class="card-image waves-effect waves-block waves-light">
       <%= attachment_image_tag user, :profile_image, :fill, 233, 175, fallback: "no_image.jpg" %>
     </div>
     <div class="card-content friend-introduction center">
-      <span class="card-title" style="border-bottom: solid 1px #ff7f50;">
+      <span class="card-title bb-orange">
         <%= link_to user_path(user) do %>
           <%= user.nick_name %>
         <% end %>

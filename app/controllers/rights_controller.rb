@@ -1,7 +1,6 @@
 class RightsController < ApplicationController
   def create
-    right = current_user.rights.new(comment_id: @comment.id, group_id: params[:group_id])
-    right.save
+    current_user.rights.create(comment_id: @comment.id, group_id: params[:group_id])
     render 'right'
   end
 

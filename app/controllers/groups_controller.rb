@@ -10,19 +10,20 @@ class GroupsController < ApplicationController
   end
 
   def new
-    @group_new = Group.new
+    @group = Group.new
   end
 
   def create
-    @group_new = Group.new(group_params)
+    @group = Group.new(group_params)
     # グループ作成者をgroup_usersテーブルに登録
-    if @group_new.save
+    if @group.save
       GroupUser.create(
         user_id: current_user.id,
-        group_id: @group_new.id,
+        group_id: @group.id,
         is_confirmed: true
       )
-      redirect_to new_group_group_users_path(@group_new), notice: "「#{@group_new.name}」を作成しました！"
+      flash[:notice] = "「#{@group.name}」を作成しました。"
+      redirect_to new_group_group_users_path(@group)
     else
       render 'new'
     end
@@ -33,7 +34,8 @@ class GroupsController < ApplicationController
 
   def update
     if @group.update(group_params)
-      redirect_to group_path(@group), notice: "グループのプロフィールを変更しました！"
+      flash[:notice] = "グループのプロフィールを変更しました。"
+      redirect_to group_path(@group)
     else
       render 'edit'
     end
@@ -41,7 +43,8 @@ class GroupsController < ApplicationController
 
   def destroy
   	@group.destroy
-  	redirect_to user_path(current_user), notice: "#{@group.name}を削除しました"
+    flash[:notice] = "#{@group.name}を削除しました。"
+  	redirect_to user_path(current_user)
   end
 
   private

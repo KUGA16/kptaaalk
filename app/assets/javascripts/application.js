@@ -29,3 +29,7 @@ $( document ).ready(function(){
 $(document).ready(function(){
   $('.tabs').tabs();
 });
+// 新規登録時のパスワード数表示
+$(document).ready(function(){
+  $('#pass,#pass_conf').characterCounter();
+});

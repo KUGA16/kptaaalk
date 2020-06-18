@@ -16,27 +16,85 @@
  @import "materialize";
  @import "material_icons";
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+ main {
+  padding-top: 20px;
+ }
+
+ // 可変margin padding 0~100
+ @for $i from 0 through 10 {
+   .m-#{$i} {margin: #{$i * 10}px;}
+   .mt-#{$i} {margin-top: #{$i * 10}px;}
+   .mr-#{$i} {margin-right: #{$i * 10}px;}
+   .mb-#{$i} {margin-bottom: #{$i * 10}px;}
+   .ml-#{$i} {margin-left: #{$i * 10}px;}
+   .mx-#{$i} {margin: 0 #{$i * 10}px;}
+   .my-#{$i} {margin: #{$i * 10}px 0;}
+
+   .p-#{$i} {padding: #{$i * 10}px;}
+   .pt-#{$i} {padding-top: #{$i * 10}px;}
+   .pr-#{$i} {padding-right: #{$i * 10}px;}
+   .pb-#{$i} {padding-bottom: #{$i * 10}px;}
+   .pl-#{$i} {padding-left: #{$i * 10}px;}
+   .px-#{$i} {padding: 0 #{$i * 10}px;}
+   .py-#{$i} {padding: #{$i * 10i}px 0;}
+ }
+
 html {
   font-size: 18px;
   font-family: "Yu Gothic",YuGothic,sans-serif,"Hiragino Kaku Gothic ProN","Hiragino Kaku Gothic Pro",sans-serif,"ＭＳ ゴシック";
 }
-// ヘッダー
+
+
+.font-weight-bold {
+  font-weight: bold;
+}
+.bb-orange {
+  border-bottom: solid 1px #ff7f50;
+}
+.bt-white {
+  border-top: solid 1px white;
+}
+.bb-white {
+  border-bottom: solid 1px white;
+}
+.object-fit-cover {
+  object-fit: cover;
+}
+.line-height {
+  line-height: 1.85;
+}
+.position-stiky {
+  position: sticky;
+  top: 0;
+}
+
+// flex-box
+.d-flex {
+  display: flex;
+}
+.f-warp {
+  flex-wrap: wrap;
+}
+.justify-content-center {
+  justify-content: center;
+}
+.align-self-center {
+  align-self: center;
+}
+
+
+/////////// ヘッダー ///////////
 nav .nav-wrapper {
   height: 100px;
   background-color: #b2dfdb;
 }
 // ナビゲーション
-nav .nav-wrapper i {
+.nav-link {
   font-size: 20px;
   height: 100px;
   line-height: 100px;
 }
-// KPTAAALKロゴ
+// ヘッダーKPTAAALKロゴ
 .brand-logo {
   width: 180px;
   height: 100px;
@@ -47,18 +105,46 @@ nav .nav-wrapper i {
   height: 100px;
 }
 .dropdown-trigger > img {
-  margin-top: 10px;
   border-radius: 40px;
   object-fit: cover;
 }
-main {
-  padding-top: 20px;
+/////////// フッター ///////////
+// 固定
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
 }
-// フッター
-.page-footer {
+main {
+  flex: 10 auto;
+}
+// 固定
+.root-footer {
   font-size: 25px;
-  padding-bottom: 10px;
-  margin-top: 20px;
+  color: #80cbc4;
+  background-color: #b2dfdb;
+}
+.main-footer {
+  font-size: 25px;
+  color: #cfd8dc;
+  background-color: white;
+}
+/////////// トップページ ///////////
+// ログイン・新規登録ボタン
+.devise_actions {
+  font-size: 30px;
+  color: white;
+  border: 2px solid white;
+}
+// ボタン押すとボーダーを点線にする
+.devise_actions:hover {
+  border-style: dashed;
+}
+// トップページの簡単ログインのところ
+.try-form {
+  background-color: white;
+  border-radius: 60px;
+  height: 200px;
 }
 // ページトップボタン
 #page_top {
@@ -85,10 +171,17 @@ main {
 #error_explanation {
   color: red;
 }
-.error_messages {
-  color: red;
+// ログインを記憶するチェックボックス
+#user_remember_me{
+  opacity: initial;
+  position: inherit;
+  pointer-events: auto;
 }
-// フラッシュメッセージ
-.alert{
-  color: #9e9e9e;
+.group_user_new {
+  width: 32%;
+  display: inline-block;
+}
+// 英数字のはみだし防止
+.word-break {
+  word-break: break-word;
 }

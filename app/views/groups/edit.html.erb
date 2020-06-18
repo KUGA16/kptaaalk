@@ -1,25 +1,6 @@
-<!-- グループ編集ページ -->
 <% @page_title = "#{@group.name}編集" %>
-<div class="row edit_group_profile">
-<!-- エラーメッセージ -->
-  <%= render 'shared/error_message', something: @group %>
+<h4 class="bb-orange pb-2 mb-5">グループ編集</h4>
 
-  <div class="col s12 m12 center" style="display: flex; justify-content: center; margin-top: 50px;">
-    <%= form_with model: @group, local: true do |f| %>
-
-      <div class="field center">
-        <%= f.label :group_image %><br>
-        <%= f.attachment_field :group_image %>
-      </div>
-
-      <div class="field" style="margin-top: 30px;">
-        <%= f.label :name %><br>
-        <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
-      </div>
-
-      <div class="actions">
-        <%= f.submit "保存", class: "btn btn-primary" %>
-      </div>
-    <% end %>
-  </div>
+<div class="row">
+  <%= render "shared/group_field", group: @group %>
 </div>
