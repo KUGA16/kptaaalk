@@ -1,25 +1,23 @@
 <% users.each do |user| %>
   <div class="card hoverable" style="width: 32%; display: inline-block;">
-    <div class="card-image waves-effect waves-block waves-light">
+    <div class="card-image waves-effect waves-block waves-light position-relative">
       <%= attachment_image_tag user, :profile_image, :fill, 233, 175, fallback: "no_image.jpg" %>
+      <span class="follow_button position-absolute">
+        <% unless current_user.id == user.id %>
+          <!-- フォローボタンをajaxで実装 -->
+          <span id="follows_buttons_<%= user.id %>">
+            <%= render 'shared/follow_button', user: user %>
+          </span>
+        <% end %>
+      </span>
     </div>
     <div class="card-content friend-introduction center">
       <span class="card-title bb-orange">
-        <%= link_to user_path(user) do %>
+        <%= link_to user_path(user), class: "black-text" do %>
           <%= user.nick_name %>
         <% end %>
       </span>
-      <%= user.introduction %>
-    </div>
-    <div class="card-action center">
-      <% if current_user != user %>
-        <!-- フォローボタンをajaxで実装 -->
-        <span id="follows_buttons_<%= user.id %>">
-          <%= render 'shared/follow_button', user: user %>
-        </span>
-      <% else %>
-        <%= link_to "マイページ", user_path(user), class: "btn" %>
-      <% end %>
+      <span class="grey-text"><%= user.introduction %></span>
     </div>
   </div>
 <% end %>
