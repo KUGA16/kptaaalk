@@ -43,8 +43,8 @@ ja:
       update_needs_confirmation: 'アカウント情報を変更しました。変更されたメールアドレスの本人確認のため、本人確認用メールより確認処理をおこなってください。'
       updated: 'アカウント情報を変更しました。'
     sessions:
-      signed_in: 'ようこそKPTAAALKへ！'
-      signed_out: 'ログアウトしました！'
+      signed_in: 'Welcome to KPTAAALK.'
+      signed_out: 'See you again.'
       already_signed_out: '既にログアウト済みです。'
     unlocks:
       send_instructions: 'アカウントの凍結解除方法を数分以内にメールでご連絡します。'
@@ -59,7 +59,7 @@ ja:
       not_locked: 'は凍結されていません。'
       not_saved:
         one: "エラーが発生しました!"
-        other: "入力内容にエラーが%{count} 件あります!"
+        other: "入力内容にエラーが%{count} 件あります。"
       taken: "は既に使用されています。"
       blank: "が入力されていません。"
       too_short: "は%{count}文字以上に設定して下さい。"
