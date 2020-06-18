@@ -63,6 +63,10 @@ html {
 .line-height {
   line-height: 1.85;
 }
+.position-stiky {
+  position: sticky;
+  top: 0;
+}
 
 // flex-box
 .d-flex {
@@ -159,7 +163,11 @@ main {
   opacity: 0.5;
 }
 
-
+// カードが浮き上がるスタイル
+.card-right:hover {
+	box-shadow: 0 15px 30px -5px rgba(0,0,0,.15), 0 0 5px rgba(0,0,0,.1);
+	transform: translateY(-4px);
+}
 // ページネーション
 .pagination {
   margin-top: 20px;
