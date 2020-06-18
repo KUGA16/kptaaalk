@@ -2,18 +2,9 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-// edit.html.erb
-.edit_profile {
-  display: flex;
-  justify-content: center;
-  text-align: center;
-  width: 30%;
-}
-
 .card-title {
   font-size: 18px !important;
 }
-
 .group-name {
   width: 185px;
   height: 35px;
@@ -21,7 +12,6 @@
   overflow: hidden;// 表示領域外非表示
   text-overflow: ellipsis;// 末尾「...」
 }
-
 .friend-introduction {
   width: 233px;
   height: 115px;
@@ -29,7 +19,6 @@
   overflow: hidden;// 表示領域外非表示
   text-overflow: ellipsis;// 末尾「...」
 }
-
 .card .card-action a:not(.btn):not(.btn-large):not(.btn-small):not(.btn-large):not(.btn-floating) {
   margin-right: 5px !important;
 }
