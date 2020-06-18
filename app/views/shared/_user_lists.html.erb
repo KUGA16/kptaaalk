@@ -2,14 +2,12 @@
   <div class="card hoverable" style="width: 32%; display: inline-block;">
     <div class="card-image waves-effect waves-block waves-light position-relative">
       <%= attachment_image_tag user, :profile_image, :fill, 233, 175, fallback: "no_image.jpg" %>
-      <span class="follow_button position-absolute">
-        <% unless current_user.id == user.id %>
-          <!-- フォローボタンをajaxで実装 -->
-          <span id="follows_buttons_<%= user.id %>">
-            <%= render 'shared/follow_button', user: user %>
-          </span>
-        <% end %>
-      </span>
+      <% unless current_user.id == user.id %>
+        <!-- フォローボタンをajaxで実装 -->
+        <span id="follows_buttons_<%= user.id %>" class="follow_button position-absolute">
+          <%= render 'shared/follow_button', user: user %>
+        </span>
+      <% end %>
     </div>
     <div class="card-content friend-introduction center">
       <span class="card-title bb-orange">
