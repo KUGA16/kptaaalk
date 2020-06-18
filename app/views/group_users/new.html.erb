@@ -24,7 +24,7 @@
       <!-- 招待できるユーザーがいる場合 -->
       <% if @can_invite_users.present? %>
         <% @can_invite_users.each do |user| %>
-          <div class="card card-hover group_user_new">
+          <div class="card hoverable group_user_new">
             <div class="card-image waves-effect waves-block waves-light">
               <%= attachment_image_tag user, :profile_image, :fill, 233, 174, fallback: "no_image.jpg" %>
             </div>

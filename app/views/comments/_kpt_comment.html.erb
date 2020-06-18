@@ -1,8 +1,10 @@
-<div class="col s12 kpt_comments item" name="<%= comment.id %>" data-count="<%= comment.rights.count %>">
-  <div class="card z-depth-0">
-    <div class="card-content">
+<div class="col s12 m12 kpt_comments item" name="<%= comment.id %>" data-count="<%= comment.rights.count %>">
+  <div class="card hoverable z-depth-1">
+    <div class="card-content word-break">
       <h6 class="line-height"><%= comment.comment %></h6>
+      <p class="right-align grey-text"><%= comment.updated_at.strftime('%Y/%m/%d') %></p>
     </div>
+
     <div class="card-action d-flex">
       <%= attachment_image_tag comment.user, :profile_image, :fill, 50, 50, fallback: "no_group_image.jpg", size:'50x50' %>
       <p class="ml-1 mr-2 grey-text f-warp"><%= comment.user.nick_name %></p>

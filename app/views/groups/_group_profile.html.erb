@@ -1,5 +1,4 @@
-<!-- グループのプロフィールページ -->
-<div class="col s12 m3">
+<div class="col s12 l3">
   <div class="card z-depth-0">
     <div class="card-image">
       <%= attachment_image_tag group, :group_image, fallback: "no_group_image.jpg" %>
@@ -12,17 +11,17 @@
     <div class="card-action center">
       <p>
         <i class="material-icons">sms_failed</i>
-        参加メンバー<%= @join_users.count %>人
+        参加メンバー<%= join_users.count %>人
       </p>
     </div>
     <div class="card-action center">
       <p>
         <i class="material-icons">sms</i>
-        招待メンバー<%= @invit_users.count %>人
+        招待メンバー<%= invit_users.count %>人
       </p>
     </div>
     <!-- グループ所属ユーザーのみ表示　-->
-    <% if @join_user %>
+    <% if @join_user && request.path == "/groups/#{group.id}" %>
       <div class="card-action center">
         <i class="material-icons">web</i>
         <%= link_to "#{group.name}のKPT",  group_comments_path(group)  %>
@@ -44,6 +43,5 @@
         <%= link_to "グループ削除", group_path(group), method: :delete, data: {confirm: "本当に#{group.name}を削除しますか？"} %>
       </div>
     <% end %>
-
   </div>
 </div>

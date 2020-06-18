@@ -162,12 +162,6 @@ main {
   left: 20px;
   opacity: 0.5;
 }
-
-// カードが浮き上がるスタイル
-.card-hover:hover {
-	box-shadow: 0 15px 30px -5px rgba(0,0,0,.15), 0 0 5px rgba(0,0,0,.1);
-	transform: translateY(-4px);
-}
 // ページネーション
 .pagination {
   margin-top: 20px;
@@ -190,4 +184,8 @@ main {
 .group_user_new {
   width: 32%;
   display: inline-block;
+}
+// 英数字のはみだし防止
+.word-break {
+  word-break: break-word;
 }
