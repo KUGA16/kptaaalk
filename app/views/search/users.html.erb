@@ -9,7 +9,7 @@
   <div class="col s12 m9 center">
     <div class="card-panel teal lighten-4 z-depth-0">
       <% unless request.fullpath == "/search" %>
-        検索結果：<%= @search_users.count %>件
+        <span class="teal-text">検索結果：<%= @search_users.count %>件</span>
       <% end %>
       <%= search_form_for @q, url: search_users_path do |f| %>
         <!-- nameカラムの単語の一部分を含むものを検索 -->
