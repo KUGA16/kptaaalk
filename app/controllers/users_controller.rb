@@ -4,7 +4,8 @@ class UsersController < ApplicationController
   before_action :barrier_user, only: [:edit, :update]
 
   def show
-    @joined_groups = GroupUser.where(user_id: @user.id, is_confirmed: true).page(params[:page])
+    @q = Group.ransack(params[:q])
+    @joined_groups = GroupUser.where(user_id: @user.id, is_confirmed: true)
     @invited_groups = GroupUser.where(user_id: @user.id, is_confirmed: false)
   end
 

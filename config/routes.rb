@@ -26,6 +26,6 @@ Rails.application.routes.draw do
   #commnets > ドラッグ&ドロップ
   post 'place_status_update' => 'comments#place_status_update'
   #search
-  get 'search' => 'search#users', as: 'search_users'
-
+  get 'search_users' => 'search#users', as: 'search_users'
+  get 'search_groups' => 'search#groups', as: 'search_groups'
 end

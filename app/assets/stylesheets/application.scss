@@ -63,6 +63,12 @@ html {
 .line-height {
   line-height: 1.85;
 }
+.position-relative {
+  position: relative;
+}
+.position-absolute {
+  position: absolute;
+}
 .position-stiky {
   position: sticky;
   top: 0;
@@ -184,4 +190,13 @@ main {
 // 英数字のはみだし防止
 .word-break {
   word-break: break-word;
+}
+// フォローボタンのレイアウト
+.card-image .follow_button {
+  color: white;
+  top: 5px;
+  right: 5px;
+}
+.follow-icon {
+  color: white;
 }
