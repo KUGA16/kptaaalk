@@ -64,7 +64,7 @@ class CommentsController < ApplicationController
 
   def destroy
     @comment.destroy
-    redirect_to group_comments_path, notice: "投稿を削除しました"
+    redirect_to group_comments_path, notice: "投稿を削除しました。"
   end
 
   def place_status_update

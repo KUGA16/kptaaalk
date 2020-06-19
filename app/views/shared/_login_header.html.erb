@@ -1,28 +1,33 @@
-<!-- ログイン中ヘッダー　-->
-<ul id="nav-mobile" class="right hide-on-med-and-down">
-  <li>
-    <!--招待されているグループがあるか -->
-    <% if @is_notification.present? %>
-      <%= link_to user_path(current_user) do %>
-        <i class="material-icons">notifications_active</i>
-      <% end %>
+<nav>
+  <div class="nav-wrapper">
+    <%= link_to root_path do %>
+      <%= image_tag 'kpt_image.png', alt: "KPTAAALK icon", class: "brand-logo center" %>
     <% end %>
-  </li>
-  <li>
-    <a class="dropdown-trigger" data-target="dropdown">
-      <%= attachment_image_tag current_user, :profile_image, :fill, 80, 80, fallback: "no_image.jpg", size:'80x80'%>
-      <i class="material-icons right">arrow_drop_down</i>
-    </a>
-  </li>
-</ul>
-
-<!-- data-targetで呼ばれる、ドロップダウン子メニュー -->
-<ul id="dropdown" class="dropdown-content">
-  <li><%= link_to "マイページ", user_path(current_user) %></li>
-  <li class="divider"></li>
-  <li><%= link_to "お仲間検索", search_users_path %></li>
-  <li class="divider"></li>
-  <li><%= link_to "グループ作成", new_group_path %></li>
-  <li class="divider"></li>
-  <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
-</ul>
+    <!-- ログイン中ヘッダー　-->
+    <ul class="right hide-on-med-and-down">
+      <li class="nav-link">
+        <% if @is_notification.present? %>
+          <%= link_to user_path(current_user) do %>
+            <div class="material-icons">notifications_active</div>
+          <% end %>
+        <% end %>
+      </li>
+      <li class="nav-link">
+        <a class="dropdown-trigger d-flex" data-target="dropdown">
+          <%= attachment_image_tag current_user, :profile_image, :fill, 80, 80, fallback: "no_image.jpg", size:"80x80", class:"mt-1" %>
+          <i class="material-icons right align-self-center">arrow_drop_down</i>
+        </a>
+      </li>
+    </ul>
+    <!-- data-targetで呼ばれる、ドロップダウン子メニュー -->
+    <ul id="dropdown" class="dropdown-content">
+      <li><%= link_to "マイページ", user_path(current_user) %></li>
+      <li class="divider"></li>
+      <li><%= link_to "お仲間検索", search_users_path %></li>
+      <li class="divider"></li>
+      <li><%= link_to "グループ作成", new_group_path %></li>
+      <li class="divider"></li>
+      <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+    </ul>
+  </div>
+</nav>

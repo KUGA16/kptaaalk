@@ -1,18 +1,19 @@
-<!-- グループ詳細ページ -->
 <% @page_title = "#{@group.name}" %>
 <div class="row">
-<!-- グループのプロフィール -->
-  <%= render 'group_profile', group: @group, group_users: @group_users %>
-<!-- 見出し -->
-  <div class="col s12 m9">
+  <div class="col s3 l3">
+  <!-- グループのプロフィール -->
+    <%= render 'group_profile', group: @group, join_users: @join_users, invit_users: @invit_users %>
+  </div>
+  <!-- 見出し -->
+  <div class="col s9 l9">
     <div class="card-panel teal lighten-4 z-depth-0">
       <span class="white-text">
         <h6><%= @group.name %>(<%= @join_users.count %>)</h6>
       </span>
     </div>
   </div>
-<!-- グループのユーザー一覧 -->
-  <div class="col s12 m9">
+  <!-- グループのユーザー一覧 -->
+  <div class="col s12 l9">
     <%= render 'shared/user_lists', users: @join_users.map(&:user) %>
   </div>
 </div>

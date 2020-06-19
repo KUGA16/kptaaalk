@@ -1,18 +1,18 @@
-<!-- ログアウト中ヘッダー -->
-<ul id="nav-mobile" class="right hide-on-med-and-down">
-  <li>
-    <%= link_to root_path, :class => "nav-link" do %>
-    <i style="font-style: normal;">トップページ</i>
+<nav>
+  <div class="nav-wrapper">
+    <%= link_to root_path do %>
+      <%= image_tag 'kpt_image.png', alt: "KPTAAALK icon", class: "brand-logo center" %>
     <% end %>
-  </li>
-  <li>
-    <%= link_to new_user_session_path, :class => "nav-link" do %>
-      <i style="font-style: normal;">ログイン</i>
-    <% end %>
-  </li>
-  <li>
-    <%= link_to new_user_registration_path, :class => "nav-link" do %>
-      <i style="font-style: normal;">新規登録</i>
-    <% end %>
-  </li>
-</ul>
+    <ul class="right hide-on-med-and-down">
+      <li class="nav-link">
+        <%= link_to "トップページ", root_path %>
+      </li>
+      <li class="nav-link">
+        <%= link_to "ログイン", new_user_session_path %>
+      </li>
+      <li class="nav-link">
+        <%= link_to "新規登録", new_user_registration_path %>
+      </li>
+    </ul>
+  </div>
+</nav>

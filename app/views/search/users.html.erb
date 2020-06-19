@@ -2,23 +2,28 @@
 <% @page_title = "お仲間検索" %>
 <div class="row">
 <!-- ログインユーザープロフィール -->
-  <%= render 'users/profile', user: current_user %>
+  <div class="col s3 l3 position-stiky">
+    <%= render 'users/profile', user: current_user %>
+  </div>
 
-  <div class="col s12 m9">
+  <div class="col s12 m9 center">
     <div class="card-panel teal lighten-4 z-depth-0">
-      <div class="search_form">
-        <div class="form center">
-          <%= search_form_for @q, url: search_users_path do |f| %>
-    <!-- nameカラムの単語の一部分を含むものを検索 -->
-            <%= f.search_field :nick_name_cont, :placeholder => "ニックネームを入力", style: "width: 300px; background-color: white;" %>
-            <%= f.submit "検索", class: 'btn btn-primary' %>
-          <% end %>
-        </div>
-      </div>
+      <% unless request.fullpath == "/search_users" %>
+        <span class="teal-text">検索結果：<%= @search_users.count %>件</span>
+      <% end %>
+      <%= search_form_for @q, url: search_users_path do |f| %>
+        <!-- nameカラムの単語の一部分を含むものを検索 -->
+        <%= f.search_field :nick_name_cont, :placeholder => "ニックネームを入力", style: "width: 300px; background-color: white;" %>
+        <%= f.submit "検索", class: 'btn btn-primary' %>
+      <% end %>
     </div>
   </div>
   <!-- 検索結果のユーザー -->
   <div class="col s12 m9">
-    <%= render 'shared/user_lists', users: @search_users %>
+    <% if request.fullpath == "/search" %>
+      <%= render 'shared/user_lists', users: current_user.followings %>
+    <% else %>
+      <%= render 'shared/user_lists', users: @search_users %>
+    <% end %>
   </div>
 </div>

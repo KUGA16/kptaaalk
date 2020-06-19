@@ -10,60 +10,55 @@
   </head>
 
   <body>
-    <!-- topページ以外 -->
+    <!-- root以外対象 -->
     <% if request.path != '/' %>
-      <header>
-        <nav>
-          <div class="nav-wrapper">
-            <a href="/">
-              <%= image_tag 'kpt_image.png', alt: "KPTAAALK icon", class: "brand-logo center" %>
-            </a>
-            <% if user_signed_in? %>
-              <!-- ユーザーサインイン時 -->
-              <%= render 'shared/login_header' %>
-            <% else %>
-              <!-- ユーザーサインアウト時 -->
-              <%= render 'shared/signout_header'%>
-            <% end %>
-          </div>
-        </nav>
+      <header class="mb-5">
+        <% if user_signed_in? %>
+          <!-- ユーザーサインイン時 -->
+          <%= render 'shared/login_header' %>
+        <% else %>
+          <!-- ユーザーサインアウト時 -->
+          <%= render 'shared/signout_header'%>
+        <% end %>
       </header>
-    <% else %>
-    <!-- topページのみ -->
-      <div style="background-color: #b2dfdb">
-        <div id="scroll_icon">
-          <p> -------- SCROLL</p>
-        </div>
     <% end %>
 
-    <!-- 共通 -->
-    <main>
-      <div class="container">
-        <!-- フラッシュメッセージ -->
-        <% if flash[:notice] %>
-          <div class="alert"><%= flash[:notice] %></div>
-        <% end %>
-        <%= yield %>
-      </div>
-    </main>
-
-    <!-- topページのみ -->
     <% if request.path == '/' %>
-      <footer class="page-footer center" style="color: #80cbc4; background-color: #b2dfdb">
+      <main style="background-color: #b2dfdb">
+        <div id="scroll_icon">
+          <p> ＜＜　　 SCROLL</p>
+        </div>
     <% else %>
-      <!-- topページ以外 -->
-      <footer class="page-footer center" style="color: #cfd8dc; background-color: white">
+      <main>
     <% end %>
         <div class="container">
-          KPTAAALK
-        </div>
-      </footer>
-      </div>
+          <!-- フラッシュメッセージ -->
+          <div class="row">
+            <% if flash[:notice] %>
+              <div class="grey-text"><%= flash[:notice] %></div>
+            <% end %>
+          </div>
 
-    <!-- ページトップに戻るボタン -->
-    <div id="page_top">
-      <a href="#"><%= image_tag 'arrow.png', alt: "page_top icon", size: "60x60" %></a>
-    </div>
+          <%= yield %>
+        </div>
+      </main>
+
+      <!-- rootの場合 -->
+      <% if request.path == '/' %>
+        <footer class="root-footer center pb-1">
+      <% else %>
+        <!-- root以外 -->
+        <footer class="main-footer center pb-1 mt-5">
+      <% end %>
+          <div class="container">
+            KPTAAALK
+          </div>
+        </footer>
+
+      <!-- ページトップに戻るボタン -->
+      <div id="page_top">
+        <%= image_tag 'arrow.png', alt: "page_top icon", size: "60x60" %>
+      </div>
 
   </body>
 </html>

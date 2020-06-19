@@ -1,98 +1,100 @@
-<!-- グループ一覧 -->
-<div class="col s12 m9">
-  <!-- 見出し -->
-  <div class="card-panel teal lighten-4 z-depth-0">
-    <span class="white-text">
-      <h6>参加グループ(<%= joined_groups.total_count %>)</h6>
-        <% if user.id == current_user.id %>
-          <!--グループに招待されているか -->
-          <% if is_notification.present? %>
-            <p>招待が届いています(<%= invited_groups.count %>)</p>
-          <% end %>
+<div class="card-panel teal lighten-4 z-depth-0">
+  <span class="white-text">
+    <div class="col l5">
+      <h6>参加グループ(<%= joined_groups.count %>)</h6>
+      <% if user.id == current_user.id %>
+        <!--グループに招待されているか -->
+        <% if is_notification.present? %>
+          招待が届いています(<%= invited_groups.count %>)
         <% end %>
-    </span>
-  </div>
-</div>
-
-<div class="col s12 m9">
-  <% if user.id == current_user.id %>
-     <!--グループに招待されているか -->
-    <% if is_notification.present? %>
-    <!-- 招待されているグループ -->
-      <% invited_groups.each do |group_user| %>
-        <div class="card" style="width: 32%; display: inline-block;">
-          <div class="card-image waves-effect waves-block waves-light">
-            <%= attachment_image_tag group_user.group, :group_image, :fill, 233, 233, fallback: "no_group_image.jpg" %>
-          </div>
-          <div class="card-content" style="height: 131px;">
-            <span class="card-title group-name activator"  style="border-bottom: solid 1px #ff7f50;">
-              <%= group_user.group.name %>
-            </span>
-            <span class="card-title activator">
-              <i class="material-icons right">more_vert</i>
-              <%= link_to "参加", group_group_users_path(group_user.group.id), method: :put, class: "btn", style: "border-radius: 20px;" %>
-              <%= link_to "不参加", group_group_users_path(group_user.group.id), method: :delete, data: {confirm: "本当に参加しませんか？"}, class: "btn", style: "border-radius: 20px;" %>
-            </span>
-          </div>
-          <div class="card-reveal center">
-            <span class="card-title" style="border-bottom: solid 1px #ff7f50;">
-              <%= group_user.group.name %>
-            </span>
-            <span class="card-title">
-              <i class="material-icons right">close</i>
-            </span>
-            <div class="actions" style="margin-top: 30px;">
-              <%= link_to "グループメンバー", group_path(group_user.group) %>
-            </div>
-          </div>
-        </div>
+      <% end %>
+    </div>
+    <% if user.id == current_user.id %>
+      <%= search_form_for @q, url: search_groups_path do |f| %>
+        <!-- nameカラムの単語の一部分を含むものを検索 -->
+        <%= f.search_field :name_cont, :placeholder => "グループ名を入力", style: "width: 300px; background-color: white;" %>
+        <%= f.submit "検索", class: 'btn btn-primary' %>
       <% end %>
     <% end %>
-  <% end %>
-  <!-- 参加グループ -->
-  <% joined_groups.each do |group_user| %>
-    <div class="card" style="width: 32%; display: inline-block;">
-      <div class="card-image waves-effect waves-block waves-light">
-        <%= attachment_image_tag group_user.group, :group_image, :fill, 233, 233, fallback: "no_group_image.jpg" %>
-      </div>
-      <div class="card-content">
-        <span class="card-title group-name activator" style="border-bottom: solid 1px #ff7f50;">
-          <%= group_user.group.name %>
-        </span>
-        <!-- ログインユーザーのみ -->
-        <% if user.id == current_user.id %>
+  </span>
+</div>
+<!------------------ 招待されているグループ -------------------->
+<% if user.id == current_user.id %>
+  <!--グループに招待されているか -->
+  <% if is_notification.present? %>
+    <!--グループ一覧なのにgroup_user回してる私。。。 -->
+    <% invited_groups.each do |group_user| %>
+      <div class="card hoverable" style="width: 32%; display: inline-block;">
+        <div class="card-image waves-effect waves-block waves-light">
+          <%= attachment_image_tag group_user.group, :group_image, :fill, 233, 233, fallback: "no_group_image.jpg" %>
+        </div>
+        <div class="card-content" style="height: 131px;">
+          <span class="card-title group-name bb-orange">
+            <%= group_user.group.name %>
+          </span>
           <span class="card-title activator">
             <i class="material-icons right">more_vert</i>
-            <p class="center" style="width: 100px; background-color: #f8bbd0; border-radius: 20px;">
-              参加中
-            </p>
+            <%= link_to "参加", group_group_users_path(group_user.group.id), method: :put, class: "btn z-depth-0" %>
+            <%= link_to "不参加", group_group_users_path(group_user.group.id), method: :delete, data: {confirm: "本当に参加しませんか？"}, class: "btn z-depth-0" %>
           </span>
-        <% end %>
-      </div>
-      <% if user.id == current_user.id %>
+        </div>
         <div class="card-reveal center">
-          <span class="card-title" style="border-bottom: solid 1px #ff7f50;">
+          <span class="card-title bb-orange">
             <%= group_user.group.name %>
           </span>
           <span class="card-title">
             <i class="material-icons right">close</i>
           </span>
-          <div class="actions" style="margin-top: 30px;">
-            <%= link_to "KPTをみる",  group_comments_path(group_user.group) %>
-          </div>
-          <div class="actions" style="margin-top: 10px;">
+          <div class="actions mt-3">
             <%= link_to "グループメンバー", group_path(group_user.group) %>
           </div>
-          <div class="actions" style="margin-top: 10px;">
-            <%= link_to "グループ編集", edit_group_path(group_user.group) %>
-          </div>
-          <div class="actions" style="margin-top: 10px;">
-            <%= link_to "グループ退会", group_group_users_path(group_user.group), method: :delete, data: {confirm: "本当に#{group_user.group.name}から退会しますか？"} %>
-          </div>
         </div>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>
+
+<!------------------ 参加グループ -------------------->
+<% joined_groups.each do |group_user| %>
+  <div class="card hoverable" style="width: 32%; display: inline-block;">
+    <div class="card-image waves-effect waves-block waves-light">
+      <%= attachment_image_tag group_user.group, :group_image, :fill, 233, 233, fallback: "no_group_image.jpg" %>
+    </div>
+    <div class="card-content">
+      <span class="card-title group-name bb-orange">
+        <%= group_user.group.name %>
+      </span>
+      <!-- ログインユーザーのみ -->
+      <% if user.id == current_user.id %>
+        <span class="card-title activator">
+          <i class="material-icons right">more_vert</i>
+          <p class="center" style="width: 100px; background-color: #f8bbd0;">
+            参加中
+          </p>
+        </span>
       <% end %>
     </div>
-  <% end %>
-  <!-- ページネーション -->
-  <%= paginate joined_groups, remote: true %>
-</div>
+    <% if user.id == current_user.id %>
+      <div class="card-reveal center">
+        <span class="card-title bb-orange">
+          <%= group_user.group.name %>
+        </span>
+        <span class="card-title">
+          <i class="material-icons right">close</i>
+        </span>
+        <div class="actions" style="margin-top: 30px;">
+          <%= link_to "KPTをみる",  group_comments_path(group_user.group) %>
+        </div>
+        <div class="actions" style="margin-top: 10px;">
+          <%= link_to "グループメンバー", group_path(group_user.group) %>
+        </div>
+        <div class="actions" style="margin-top: 10px;">
+          <%= link_to "グループ編集", edit_group_path(group_user.group) %>
+        </div>
+        <div class="actions" style="margin-top: 10px;">
+          <%= link_to "グループ退会", group_group_users_path(group_user.group), method: :delete, data: {confirm: "本当に#{group_user.group.name}から退会しますか？"} %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>

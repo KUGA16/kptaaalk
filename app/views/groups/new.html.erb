@@ -1,22 +1,6 @@
-<!-- グループ作成ページ -->
 <% @page_title = "グループ作成" %>
-<div class="row">
-<!-- エラー文 -->
-  <%= render 'shared/error_message', something: @group_new %>
+<h4 class="bb-orange pb-2 mb-5">グループ作成</h4>
 
-  <div class="col s12 m12 center" style="display: flex; justify-content: center; margin-top: 50px;">
-    <%= form_with model: @group_new, local: true do |f| %>
-      <%= f.label :group_image %>
-      <div class="field" style="margin-top: 30px;">
-        <%= f.attachment_field :group_image %>
-      </div>
-      <div class="field" style="margin-top: 30px;">
-        <%= f.label :name %>
-        <%= f.text_field :name %>
-      </div>
-      <div class="actions">
-        <%= f.submit "次へ", class: "btn" %>
-      </div>
-    <% end %>
-  </div>
+<div class="row">
+  <%= render "shared/group_field", group: @group %>
 </div>

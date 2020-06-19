@@ -1,19 +1,23 @@
-<!-- マイページ -->
 <% if @user == current_user %>
   <% @page_title = "マイページ" %>
 <% else %>
   <% @page_title = "#{@user.nick_name}" %>
 <% end %>
+
 <div class="row">
   <!-- ユーザープロフィール -->
-  <%= render 'profile', user: @user %>
+  <div class="col s3 l3 position-stiky">
+    <%= render 'users/profile', user: @user %>
+  </div>
   <!-- グループ一覧 -->
-  <div id="group_lists">
-    <%= render 'group_lists',
-      user: @user,
-      is_notification: @is_notification,
-      invited_groups: @invited_groups,
-      joined_groups: @joined_groups
-    %>
+  <div class="col s12 m9">
+    <div id="group_lists">
+      <%= render 'users/group_lists',
+        user: @user,
+        is_notification: @is_notification,
+        invited_groups: @invited_groups,
+        joined_groups: @joined_groups
+      %>
+    </div>
   </div>
 </div>

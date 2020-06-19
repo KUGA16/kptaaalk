@@ -1,59 +1,62 @@
-<!-- ユーザープロフィール -->
-<div class="col s12 m3">
-  <div class="card z-depth-0">
-    <div class="card-image">
-      <%= attachment_image_tag user, :profile_image, fallback: "no_image.jpg" %>
-    </div>
-    <div class="card-content center">
-      <span class="card-title">
-        <%= user.nick_name %>
+<div class="card z-depth-0">
+  <div class="card-image position-relative">
+    <%= attachment_image_tag user, :profile_image, fallback: "no_image.jpg" %>
+    <% unless current_user.id == user.id %>
+      <!-- フォローボタンをajaxで実装 -->
+      <span id="follows_buttons_<%= user.id %>" class="follow_button position-absolute">
+        <%= render 'shared/follow_button', user: user %>
       </span>
-			<%= user.introduction %>
-    </div>
-
-    <div class="card-action flex center">
-      <%= link_to user_friends_path(user) do %>
-			  <%= user.followings.count %><br>
-        フォロー
-      <% end %>
-
-      <%= link_to user_friends_path(user) do %>
-		    <%= user.followers.count %><br>
-        フォロワー
-      <% end %>
-    </div>
-    <% if user.id == current_user.id %><!-- ログインユーザーのみ表示　-->
-      <div class="card-action">
-        <i class="material-icons">pets</i>
-        <%= link_to "マイページ", user_path(user) %>
-      </div>
-      <div class="card-action">
-        <i class="material-icons">person_add</i>
-        <%= link_to "お仲間検索", search_users_path %>
-      </div>
-      <div class="card-action">
-        <i class="material-icons">people</i>
-        <%= link_to "グループ作成", new_group_path %>
-      </div>
-      <% if user.nick_name != "KPT太郎" %>
-      	<div class="card-action">
-  				<i class="material-icons">build</i>
-  				<%= link_to "編集", edit_user_path(user) %>
-  			</div>
-      <% end %>
-			<div class="card-action">
-				<i class="material-icons">exit_to_app</i>
-				<%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-			</div>
-		<% else %>
-      <div class="card-action center">
-        <%= link_to "参加グループ", user_path(user) %>
-      </div>
-      <div class="card-action center">
-        <span id="follows_buttons_<%= user.id %>">
-          <%= render 'shared/follow_button', user: user %>
-        </span>
-      </div>
     <% end %>
   </div>
+  <div class="card-content center">
+    <span class="card-title">
+      <%= user.nick_name %>
+    </span>
+		<%= user.introduction %>
+  </div>
+
+  <div class="card-action d-flex center">
+    <%= link_to user_friends_path(user) do %>
+		  <%= user.followings.count %><br>
+      フォロー
+    <% end %>
+
+    <%= link_to user_friends_path(user) do %>
+	    <%= user.followers.count %><br>
+      フォロワー
+    <% end %>
+  </div>
+  <% if current_user.id == user.id %><!-- ログインユーザーのみ表示　-->
+    <div class="card-action">
+      <div class="material-icons">pets</div>
+      <%= link_to "マイページ", user_path(user) %>
+    </div>
+    <div class="card-action">
+      <div class="material-icons">person_add</div>
+      <%= link_to "お仲間検索", search_users_path %>
+    </div>
+    <div class="card-action">
+      <div class="material-icons">people</div>
+      <%= link_to "グループ作成", new_group_path %>
+    </div>
+    <% unless user.nick_name == "KPT太郎" %>
+    	<div class="card-action">
+				<div class="material-icons">build</div>
+				<%= link_to "編集", edit_user_path(user) %>
+			</div>
+    <% end %>
+		<div class="card-action">
+			<div class="material-icons">exit_to_app</div>
+			<%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+		</div>
+	<% else %>
+    <div class="card-action center">
+      <%= link_to "参加グループ", user_path(user) %>
+    </div>
+    <div class="card-action center">
+      <span id="follows_buttons_<%= user.id %>">
+        <%= render 'shared/follow_button', user: user %>
+      </span>
+    </div>
+  <% end %>
 </div>

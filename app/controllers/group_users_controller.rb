@@ -17,7 +17,7 @@ class GroupUsersController < ApplicationController
   def create
     group = Group.find(params[:group_id])
     if params[:group_user].blank? #ユーザーを未選択でsubmitした時
-      flash[:notice] = '招待するお仲間を選択してください。'
+      flash[:notice] = "招待するお仲間を選択してください。"
       redirect_to new_group_group_users_path(group)
       return
     end
@@ -26,26 +26,28 @@ class GroupUsersController < ApplicationController
         GroupUser.create!(user_id: id, group_id: group.id)
       end
     end
-      redirect_to group_comments_path(group), notice: "KPTを作成しました！"
+      flash[:notice] = "KPTを作成しました。"
+      redirect_to group_comments_path(group)
     rescue
-      redirect_to new_group_group_users_path(group), notice: "エラーが発生しました"
+      flash[:notice] = "エラーが発生しました。"
+      redirect_to new_group_group_users_path(group)
   end
 
   def update
-    join_group = GroupUser.find_by(group_id: params[:group_id], user_id: current_user)
+    join_group = current_user.group_users.find_by(group_id: params[:group_id])
     if join_group.update(is_confirmed: true)
-      flash[:notice] = "「#{join_group.group.name}」に参加しました！"
+      flash[:notice] = "「#{join_group.group.name}」に参加しました。"
       redirect_to group_comments_path(join_group.group.id)
     else
-      flash[:notice] = "「#{join_group.group.name}」に参加できませんでした！"
+      flash[:notice] = "「#{join_group.group.name}」に参加できませんでした。"
       redirect_to user_path(current_user)
     end
   end
 
   def destroy
-    no_join_group = GroupUser.find_by(group_id: params[:group_id], user_id: current_user)
+    no_join_group = current_user.group_users.find_by(group_id: params[:group_id])
     no_join_group.destroy
-    flash[:notice] = "「#{no_join_group.group.name}」を退会しました！"
+    flash[:notice] = "「#{no_join_group.group.name}」を退会しました。"
     redirect_to user_path(current_user)
   end
 
