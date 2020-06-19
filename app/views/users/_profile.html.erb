@@ -39,7 +39,7 @@
       <div class="material-icons">people</div>
       <%= link_to "グループ作成", new_group_path %>
     </div>
-    <% if user.nick_name != "KPT太郎" %>
+    <% unless user.nick_name == "KPT太郎" %>
     	<div class="card-action">
 				<div class="material-icons">build</div>
 				<%= link_to "編集", edit_user_path(user) %>
