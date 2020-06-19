@@ -34,6 +34,7 @@ class SearchController < ApplicationController
         # group_user.user_idがcurrent_userでない時は[]で返す
       end
     end
+    flash[:notice] = "検索結果：#{groups.count}件"
     render "users/show"
   end
 
