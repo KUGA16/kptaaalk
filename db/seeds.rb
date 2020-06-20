@@ -1,5 +1,5 @@
 # テストユーザー
-User.create!(nick_name: "KPT太郎", email: "kpt@kpt", password: "kptlove")
+User.create!(nick_name: "KPT太郎", email: "kpt@kpt", password: "kptaaalk")
 
 50.times do |i|
 
