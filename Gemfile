@@ -60,6 +60,10 @@ group :test do
   gem 'chromedriver-helper'
 end
 
+group :production do
+  gem 'mysql2'
+end
+
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 #デバッグ用
@@ -81,5 +85,5 @@ gem "refile-mini_magick"
 gem 'dotenv-rails'
 # 検索機能
 gem 'ransack'
-# ページネーション 
+# ページネーション
 gem 'kaminari','~> 1.1.1'
